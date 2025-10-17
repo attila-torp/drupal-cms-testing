@@ -1,0 +1,45 @@
+<ul{{ attributes.addClass('navbar-nav', 'me-auto') }}>
+  {% for item in items %}
+    {% set classes = ['nav-item'] %}
+    {% if item.is_expanded %}
+      {% set classes = classes|merge(['dropdown']) %}
+    {% endif %}
+    {% if item.in_active_trail %}
+      {% set classes = classes|merge(['active']) %}
+    {% endif %}
+    <li{{ item.attributes.addClass(classes) }}>
+      {% if item.below %}
+        <a class="nav-link dropdown-toggle"
+           href="{{ item.url }}"
+           id="dropdown-{{ loop.index }}"
+           role="button"
+           data-bs-toggle="dropdown"
+           aria-expanded="false">
+          {{ item.title }}
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="dropdown-{{ loop.index }}">
+          {{ _self.menu_links(item.below, attributes, menu_level + 1) }}
+        </ul>
+      {% else %}
+        <a class="nav-link" href="{{ item.url }}">{{ item.title }}</a>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
+
+{% macro menu_links(items, attributes, menu_level) %}
+  {% for item in items %}
+    {% set classes = ['dropdown-item'] %}
+    {% if item.in_active_trail %}
+      {% set classes = classes|merge(['active']) %}
+    {% endif %}
+    <li{{ item.attributes.addClass(classes) }}>
+      <a href="{{ item.url }}">{{ item.title }}</a>
+      {% if item.below %}
+        <ul class="dropdown-menu">
+          {{ _self.menu_links(item.below, attributes, menu_level + 1) }}
+        </ul>
+      {% endif %}
+    </li>
+  {% endfor %}
+{% endmacro %}

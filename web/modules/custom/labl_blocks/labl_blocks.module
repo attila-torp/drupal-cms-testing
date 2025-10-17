@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @file
+ * Theme hook registration for Labl Blocks module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function labl_blocks_theme($existing, $type, $theme, $path) {
+  return [
+    'hero_header_1' => [
+      'variables' => [
+        'componentTheme' => NULL,
+        'mediaLeft' => FALSE,
+        'subscribeForm' => FALSE,
+        'contentBorder' => FALSE,
+        'ctas' => [],
+        'heroHeading' => '',
+        'heroText' => '',
+        'image' => NULL,
+        'video' => NULL,
+      ],
+      'template' => 'Hero-Header-1',
+      'path' => 'themes/custom/labl/design-system/storybook/src/stories/organisms/Hero-Headers/Hero-Header-1',
+    ],
+  ];
+}

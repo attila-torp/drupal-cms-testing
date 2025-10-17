@@ -1,0 +1,21 @@
+name: "Labl"
+type: theme
+base theme: false
+description: "A custom theme for my Drupal CMS site"
+package: Custom
+core_version_requirement: ^10 || ^11
+
+regions:
+  navigation: Navigation
+  header: Header
+  content: Content
+  sidebar: Sidebar
+  footer: Footer
+
+libraries:
+  - labl/global-styling
+
+component-libraries:
+  labl:
+    paths:
+      - design-system/storybook/src

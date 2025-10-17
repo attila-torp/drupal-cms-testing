@@ -1,0 +1,69 @@
+# ————— Project-level —————
+# Ignore system files
+.DS_Store
+Thumbs.db
+*.log
+*.cache
+*.sql
+*.tar.gz
+*.zip
+
+# Node, IDEs, etc
+node_modules/
+npm-debug.log*
+yarn-error.log
+*.sublime-workspace
+*.sublime-project
+.idea/
+.vscode/
+
+# DDEV & Docker
+.ddev/
+!/.ddev/config.yaml        # optionally keep config
+.ddev/.gitignore           # DDEV’s own ignore file
+.env
+.env.local
+
+# Composer / PHP dependencies
+vendor/
+composer.lock              # You may or may not version this depending on your team
+# If you version composer.lock, remove that line above
+
+# Drupal core + contrib
+/web/core/
+/web/modules/contrib/
+/web/themes/contrib/
+/web/profiles/contrib/
+/web/libraries/
+
+# Files directory & private files
+/web/sites/*/files/
+/web/sites/*/private/
+
+# Settings, local overrides
+/web/sites/*/settings.local.php
+/web/sites/*/settings.ddev.php
+/web/sites/*/services.yml
+/web/sites/*/settings.php
+
+# Ignore scaffolding & readmes
+/web/README.txt
+/web/README.md
+/web/modules/README.txt
+/web/themes/README.txt
+/web/profiles/README.txt
+/web/sites/README.txt
+/recipes/
+/web/profiles/
+/web/sites/default/
+# If you have a config sync directory you don’t want in repo
+/config/sync/
+
+# Built assets (if built in project)
+/dist/
+/build/
+/public/build/
+*.css
+*.js
+*.map
+

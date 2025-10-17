@@ -1,0 +1,7 @@
+name: 'Labl Blocks'
+type: module
+description: 'Custom blocks for the Labl theme.'
+core_version_requirement: ^10|^11
+package: Custom
+dependencies:
+  - drupal:block

@@ -1,0 +1,22 @@
+{
+  "name": "my-drupal-theme",
+  "version": "1.0.0",
+  "description": "Drupal theme with Laravel Mix and Bootstrap integration",
+  "scripts": {
+    "dev": "mix",
+    "watch": "mix watch",
+    "build": "mix --production"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "@popperjs/core": "^2.11.8"
+  },
+  "devDependencies": {
+    "laravel-mix": "^6.0.0",
+    "sass": "^1.65.0",
+    "sass-loader": "^13.0.0",
+    "webpack": "^5.0.0",
+    "css-loader": "^6.0.0",
+    "style-loader": "^3.0.0"
+  }
+}

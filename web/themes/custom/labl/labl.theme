@@ -1,0 +1,17 @@
+<?php
+
+function labl_theme_registry_alter(array &$theme_registry) {
+  \Drupal::service('twig.loader.filesystem')
+    ->addPath(DRUPAL_ROOT . '/themes/custom/labl/design-system/storybook/src', 'storybook');
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function labl_preprocess_page(&$variables) {
+  $loader = \Drupal::service('twig.loader.filesystem');
+  $paths = $loader->getPaths('storybook');
+  \Drupal::logger('storybook')->notice('Twig namespace @labl paths: @paths', [
+    '@paths' => implode(', ', $paths),
+  ]);
+}
