@@ -180,10 +180,7 @@ class StoryDiscovery {
     }
 
     $control = $this->extractControlType($argType);
-    $options = [];
-    if (!empty($argType["options"]) && is_array($argType["options"])) {
-      $options = array_values($argType["options"]);
-    }
+    $options = $this->normalizeOptions($argType["options"] ?? NULL);
 
     $element = $this->determineElement($type, $control, $options, $value);
 
@@ -197,6 +194,82 @@ class StoryDiscovery {
       "multiple" => $element["multiple"],
       "store_json" => $element["store_json"],
     ];
+  }
+
+  /**
+   * Normalizes Storybook control options into machine => label pairs.
+   */
+  protected function normalizeOptions($options): array {
+    if (!is_array($options) || $options === []) {
+      return [];
+    }
+
+    $normalized = [];
+
+    // Sequential arrays are treated as simple lists of values.
+    if (array_values($options) === $options) {
+      foreach ($options as $option) {
+        if (is_array($option)) {
+          if (isset($option['value']) || array_key_exists('value', $option)) {
+            $value = $option['value'];
+            if (is_scalar($value) || $value === NULL) {
+              $label = $option['label'] ?? $option['name'] ?? $option['title'] ?? $value;
+              $normalized[(string) $value] = is_scalar($label) ? (string) $label : (string) $value;
+            }
+          }
+          continue;
+        }
+
+        if (is_scalar($option)) {
+          $normalized[(string) $option] = (string) $option;
+        }
+      }
+
+      return $normalized;
+    }
+
+    foreach ($options as $key => $value) {
+      if (is_array($value)) {
+        if (isset($value['value']) || array_key_exists('value', $value)) {
+          $option_value = $value['value'];
+          if (is_scalar($option_value) || $option_value === NULL) {
+            $label = $value['label'] ?? $value['name'] ?? $value['title'] ?? $option_value;
+            $normalized[(string) $option_value] = is_scalar($label) ? (string) $label : (string) $option_value;
+            continue;
+          }
+        }
+        if (is_scalar($key)) {
+          $normalized[(string) $key] = is_scalar($value) ? (string) $value : (string) $key;
+        }
+        continue;
+      }
+
+      if (!is_scalar($value)) {
+        continue;
+      }
+
+      if (is_string($key) && !is_numeric($key)) {
+        $stringKey = (string) $key;
+        $stringValue = (string) $value;
+        $keyLooksMachine = $stringKey === strtolower($stringKey);
+        $valueLooksMachine = $stringValue === strtolower($stringValue);
+
+        if (!$keyLooksMachine && $valueLooksMachine) {
+          $normalized[$stringValue] = $stringKey;
+        }
+        elseif ($keyLooksMachine && !$valueLooksMachine) {
+          $normalized[$stringKey] = $stringValue;
+        }
+        else {
+          $normalized[$stringKey] = $stringValue;
+        }
+      }
+      else {
+        $normalized[(string) $value] = (string) $value;
+      }
+    }
+
+    return $normalized;
   }
 
   protected function extractControlType(array $argType): string {
