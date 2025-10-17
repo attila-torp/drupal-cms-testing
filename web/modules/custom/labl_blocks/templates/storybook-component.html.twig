@@ -1,0 +1,8 @@
+{#
+  Proxy template that renders Storybook design system components using the
+  @storybook Twig namespace. This ensures nested includes resolve correctly.
+#}
+{% set _storybook_template = '@storybook/' ~ storybook_template %}
+{% set storybook_context = _context|without('storybook_template') %}
+{% include _storybook_template with storybook_context only %}
+
