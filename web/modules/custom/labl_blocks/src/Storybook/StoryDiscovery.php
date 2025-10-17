@@ -95,6 +95,10 @@ class StoryDiscovery {
 
     $segments = explode(DIRECTORY_SEPARATOR, $relative);
     $template = end($segments);
+    $twigFilename = $this->findTwigFilename($root, $relative, $template);
+    if ($twigFilename === NULL) {
+      return NULL;
+    }
 
     $baseId = $this->buildMachineName($template);
     $id = $baseId;
@@ -113,11 +117,37 @@ class StoryDiscovery {
       "label" => $this->buildLabel($relative),
       "relative_path" => $relative,
       "template" => $template,
-      "twig_path" => $relative . "/" . $template . ".twig",
+      "twig_path" => $relative . "/" . $twigFilename,
       "theme" => $id,
       "fields" => $fields,
       "path" => self::ORGANISMS_RELATIVE_PATH . "/" . $relative,
     ];
+  }
+
+  /**
+   * Determines the Twig filename for the story's template directory.
+   */
+  protected function findTwigFilename(string $root, string $relative, string $template): ?string {
+    $directory = rtrim($root, "/\\") . DIRECTORY_SEPARATOR . $relative;
+    $candidates = [
+      $template . '.twig',
+      $template . '.html.twig',
+    ];
+
+    foreach ($candidates as $candidate) {
+      if (is_file($directory . DIRECTORY_SEPARATOR . $candidate)) {
+        return $candidate;
+      }
+    }
+
+    // Fall back to the first Twig file within the directory, if any.
+    foreach (glob($directory . DIRECTORY_SEPARATOR . '*.twig') ?: [] as $path) {
+      if (is_file($path)) {
+        return basename($path);
+      }
+    }
+
+    return NULL;
   }
 
   /**
