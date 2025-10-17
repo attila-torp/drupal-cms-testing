@@ -8,6 +8,7 @@ use Drupal\labl_blocks\Storybook\StoryDiscovery;
 function labl_blocks_theme($existing, $type, $theme, $path) {
   $discovery = new StoryDiscovery();
   $definitions = [];
+  $module_path = \Drupal::service('extension.path.resolver')->getPath('module', 'labl_blocks');
   foreach ($discovery->discover() as $story) {
     $variables = [
       'storybook_template' => $story['twig_path'],
@@ -19,7 +20,7 @@ function labl_blocks_theme($existing, $type, $theme, $path) {
     $definitions[$story['id']] = [
       'variables' => $variables,
       'template' => 'storybook-component',
-      'path' => drupal_get_path('module', 'labl_blocks') . '/templates',
+      'path' => $module_path . '/templates',
     ];
   }
 
