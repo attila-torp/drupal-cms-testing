@@ -126,7 +126,7 @@ class StorybookBlock extends BlockBase {
 
       case 'select':
         $element['#type'] = 'select';
-        $element['#options'] = array_combine($field['options'], $field['options']);
+        $element['#options'] = $field['options'];
         if ($field['multiple']) {
           $element['#multiple'] = TRUE;
           if (is_string($value)) {
@@ -142,7 +142,7 @@ class StorybookBlock extends BlockBase {
 
       case 'checkboxes':
         $element['#type'] = 'checkboxes';
-        $element['#options'] = array_combine($field['options'], $field['options']);
+        $element['#options'] = $field['options'];
         $selected = [];
         if (is_array($value)) {
           foreach ($value as $optionKey => $optionValue) {
@@ -159,7 +159,7 @@ class StorybookBlock extends BlockBase {
 
       case 'radios':
         $element['#type'] = 'radios';
-        $element['#options'] = array_combine($field['options'], $field['options']);
+        $element['#options'] = $field['options'];
         break;
 
       case 'textfield':
