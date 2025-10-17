@@ -12,7 +12,7 @@
   the page gracefully instead of failing.
 #}
 {% set _storybook_component %}
-  {% include _storybook_template with storybook_context only ignore missing %}
+  {% include _storybook_template ignore missing with storybook_context only %}
 {% endset %}
 
 {% if _storybook_component is not empty %}
