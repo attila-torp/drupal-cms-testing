@@ -1,0 +1,4 @@
+storybook-components:
+  version: 1.x
+  css: {}
+  js: {}
