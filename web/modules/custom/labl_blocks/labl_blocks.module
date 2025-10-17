@@ -9,15 +9,17 @@ function labl_blocks_theme($existing, $type, $theme, $path) {
   $discovery = new StoryDiscovery();
   $definitions = [];
   foreach ($discovery->discover() as $story) {
-    $variables = [];
+    $variables = [
+      'storybook_template' => $story['twig_path'],
+    ];
     foreach ($story['fields'] as $field) {
       $variables[$field['name']] = $field['default'];
     }
 
     $definitions[$story['id']] = [
       'variables' => $variables,
-      'template' => $story['template'],
-      'path' => $story['path'],
+      'template' => 'storybook-component',
+      'path' => drupal_get_path('module', 'labl_blocks') . '/templates',
     ];
   }
 

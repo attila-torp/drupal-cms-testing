@@ -68,6 +68,10 @@ class StorybookBlock extends BlockBase {
       '#theme' => $definition['theme'],
     ];
 
+    if (!empty($definition['twig_path'])) {
+      $build['#storybook_template'] = $definition['twig_path'];
+    }
+
     foreach ($this->getFields() as $field) {
       $name = $field['name'];
       $build['#' . $name] = $config[$name] ?? $field['default'];

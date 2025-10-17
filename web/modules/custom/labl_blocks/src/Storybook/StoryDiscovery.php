@@ -113,6 +113,7 @@ class StoryDiscovery {
       "label" => $this->buildLabel($relative),
       "relative_path" => $relative,
       "template" => $template,
+      "twig_path" => $relative . "/" . $template . ".twig",
       "theme" => $id,
       "fields" => $fields,
       "path" => self::ORGANISMS_RELATIVE_PATH . "/" . $relative,
