@@ -1,0 +1,10 @@
+{% set attributes = attributes|default(create_attribute()) %}
+{% set menu_id = menu_id|default('primary-nav-menu') %}
+<nav{{ attributes.addClass('c-primary-nav').setAttribute('aria-label', label|default('Primary navigation')) }}>
+  <button class="c-button c-button--primary js-emulsify-toggle" type="button" data-emulsify-target="#{{ menu_id }}" aria-expanded="false">
+    {{ toggle_label|default('Menu') }}
+  </button>
+  <div id="{{ menu_id }}" class="c-primary-nav__container">
+    {{ content }}
+  </div>
+</nav>
