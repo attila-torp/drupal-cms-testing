@@ -19,6 +19,16 @@ ddev launch
 
 Drupal CMS has the same system requirements as Drupal core, so you can use your preferred setup to run it locally. [See the Drupal User Guide for more information](https://www.drupal.org/docs/user_guide/en/installation-chapter.html) on how to set up Drupal.
 
+### Additional front-end tooling
+
+This starter now pulls in the [Gutenberg module](https://www.drupal.org/project/gutenberg) and the [Emulsify theme](https://www.drupal.org/project/emulsify) via Composer. Update your dependencies with `composer update drupal/gutenberg drupal/emulsify` (or the equivalent `ddev` command) and then enable Gutenberg and install the Emulsify theme using the Drupal UI or Drush:
+
+```shell
+drush en gutenberg -y
+drush then emulsify -y
+drush config-set system.theme default emulsify -y
+```
+
 ### Installation options
 
 The Drupal CMS installer offers a list of features preconfigured with smart defaults. You will be able to customize whatever you choose, and add additional features, once you are logged in.
