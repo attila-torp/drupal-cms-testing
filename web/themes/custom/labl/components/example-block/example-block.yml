@@ -20,6 +20,8 @@ fields:
   body_paragraphs:
     type: list
     label: Body paragraphs
+    available_paragraphs:
+      - example-block
     default:
       - This promotional block highlights a single marketing message with supporting copy.
       - Use the call to action to guide visitors toward the next step.
