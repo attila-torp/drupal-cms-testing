@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: example_highlight
+label: 'Example highlight'
+icon_uuid: null
+icon_default: paragraph
+description: 'Highlight item used by the Example block paragraph.'
+behavior_plugins: { }

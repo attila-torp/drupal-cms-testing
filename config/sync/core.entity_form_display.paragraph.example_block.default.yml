@@ -12,7 +12,6 @@ dependencies:
     - link
     - paragraphs
     - text
-    - labl_blocks
 id: paragraph.example_block.default
 targetEntityType: paragraph
 bundle: example_block
