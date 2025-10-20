@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.example_block.field_example_block_body
+    - field.field.paragraph.example_block.field_example_block_highlights
+    - field.field.paragraph.example_block.field_example_block_link
+    - field.field.paragraph.example_block.field_example_block_title
+    - paragraphs.paragraphs_type.example_block
+  module:
+    - entity_reference_revisions
+    - link
+    - paragraphs
+    - text
+    - labl_blocks
+id: paragraph.example_block.default
+targetEntityType: paragraph
+bundle: example_block
+mode: default
+content: { }
+hidden:
+  field_example_block_body: true
+  field_example_block_highlights: true
+  field_example_block_link: true
+  field_example_block_title: true

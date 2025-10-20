@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the Labl Blocks module.
+ */
+
+/**
+ * Installs configuration for the Example Block paragraph.
+ */
+function labl_blocks_update_9001() {
+  /** @var \Drupal\Core\Config\ConfigInstallerInterface $config_installer */
+  $config_installer = \Drupal::service('config.installer');
+  $config_installer->installDefaultConfig('module', 'labl_blocks');
+
+  return t('Installed Example Block paragraph configuration.');
+}

@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_example_block_highlights
+    - paragraphs.paragraphs_type.example_block
+    - paragraphs.paragraphs_type.example_highlight
+  module:
+    - entity_reference_revisions
+    - labl_blocks
+id: paragraph.example_block.field_example_block_highlights
+field_name: field_example_block_highlights
+entity_type: paragraph
+bundle: example_block
+label: Highlights
+description: 'Optional highlight items displayed in a definition list.'
+required: false
+translatable: true
+default_value: { }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      example_highlight: example_highlight
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference_revisions
