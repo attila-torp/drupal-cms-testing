@@ -3,8 +3,20 @@
     <h2 class="example-block__title">{{ title }}</h2>
   {% endif %}
 
-  {% if body %}
-    <div class="example-block__body">{{ body|raw }}</div>
+  {% set body_markup %}
+    {% if body_paragraphs %}
+      {% for paragraph in body_paragraphs %}
+        <p class="example-block__paragraph">{{ paragraph|raw }}</p>
+      {% endfor %}
+    {% elseif body is defined and (body['#type'] is defined or body['#markup'] is defined) %}
+      {{ body }}
+    {% elseif body %}
+      {{ body|raw }}
+    {% endif %}
+  {% endset %}
+
+  {% if body_markup is not empty %}
+    <div class="example-block__body">{{ body_markup|raw }}</div>
   {% endif %}
 
   {% if link %}
