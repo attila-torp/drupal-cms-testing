@@ -1,0 +1,20 @@
+name: 'Emulsify'
+type: theme
+base theme: stable9
+description: 'Component-driven starter theme providing reusable UI patterns.'
+package: Components
+core_version_requirement: ^10 || ^11
+libraries:
+  - emulsify/global
+regions:
+  header: Header
+  navigation: Navigation
+  highlighted: Highlighted
+  content: Content
+  sidebar_first: 'Sidebar first'
+  sidebar_second: 'Sidebar second'
+  footer: Footer
+component-libraries:
+  emulsify:
+    paths:
+      - components

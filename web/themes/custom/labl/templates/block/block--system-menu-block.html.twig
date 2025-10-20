@@ -1,31 +1,9 @@
-{#
-Theme override for menu blocks, using Bootstrap navbar markup.
-#}
-
 {% set heading_id = attributes.id ~ '-menu'|clean_id %}
-
-<nav class="navbar navbar-expand-lg" role="navigation" aria-labelledby="{{ heading_id }}"{{ attributes.addClass('navbar-block')|without('role', 'aria-labelledby') }}>
-  <div class="container-fluid">
-    {# Toggle button for collapsed navbar on mobile #}
-    <button class="navbar-toggler" type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#{{ heading_id }}"
-            aria-controls="{{ heading_id }}"
-            aria-expanded="false"
-            aria-label="{{ 'Toggle navigation'|t }}">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="{{ heading_id }}">
-      {# Optionally include a hidden accessible label #}
-      {% if configuration.label %}
-        <h2 id="{{ heading_id }}" class="visually-hidden">{{ configuration.label }}</h2>
-      {% endif %}
-
-      {# Render the menu content itself #}
-      <div{{ content_attributes.addClass('navbar-nav-wrapper') }}>
-        {{ content }}
-      </div>
-    </div>
-  </div>
-</nav>
+{% set menu_id = heading_id ~ '--links' %}
+{% include '@emulsify/02-molecules/navigation/primary-nav/primary-nav.twig' with {
+  attributes: attributes,
+  label: configuration.label ?: 'Main navigation'|t,
+  toggle_label: 'Menu'|t,
+  content: content,
+  menu_id: menu_id,
+} %}

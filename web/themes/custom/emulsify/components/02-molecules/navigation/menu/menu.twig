@@ -1,0 +1,21 @@
+{% macro render_menu(items, level) %}
+  {% import _self as menus %}
+  {% if items %}
+    <ul class="c-primary-nav__list{% if level > 0 %} c-primary-nav__list--sub{% endif %}">
+      {% for item in items %}
+        {% set link_classes = ['c-primary-nav__link'] %}
+        {% if item.in_active_trail %}
+          {% set link_classes = link_classes|merge(['c-primary-nav__link--active']) %}
+        {% endif %}
+        <li class="c-primary-nav__item">
+          <a class="{{ link_classes|join(' ') }}" href="{{ item.url }}">{{ item.title }}</a>
+          {% if item.below %}
+            {{ menus.render_menu(item.below, level + 1) }}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endmacro %}
+
+{{ _self.render_menu(items, 0) }}

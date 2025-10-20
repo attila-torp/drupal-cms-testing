@@ -1,0 +1,11 @@
+global:
+  version: 1.x
+  css:
+    theme:
+      css/emulsify.css: {}
+  js:
+    js/emulsify.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/once
