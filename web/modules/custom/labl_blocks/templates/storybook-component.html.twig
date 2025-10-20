@@ -1,0 +1,25 @@
+{#
+  Proxy template that renders Storybook design system components using the
+  @storybook Twig namespace. This ensures nested includes resolve correctly.
+#}
+{% set _storybook_template = '@storybook/' ~ storybook_template %}
+{% set storybook_context = _context|without('storybook_template') %}
+
+{#
+  Attempt to include the requested Storybook template. When the design system
+  assets are not present, the include would normally trigger a fatal loader
+  error. Using the "ignore missing" flag allows Drupal to render the rest of
+  the page gracefully instead of failing.
+#}
+{% set _storybook_component %}
+  {% include _storybook_template ignore missing with storybook_context only %}
+{% endset %}
+
+{% if _storybook_component is not empty %}
+  {{ _storybook_component }}
+{% else %}
+  <div class="storybook-component--missing">
+    <p>{{ 'Unable to render the requested component because its Storybook template could not be located.'|t }}</p>
+  </div>
+{% endif %}
+

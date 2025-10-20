@@ -1,29 +1,28 @@
 <?php
 
-/**
- * @file
- * Theme hook registration for Labl Blocks module.
- */
+use Drupal\labl_blocks\Storybook\StoryDiscovery;
 
 /**
  * Implements hook_theme().
  */
 function labl_blocks_theme($existing, $type, $theme, $path) {
-  return [
-    'hero_header_1' => [
-      'variables' => [
-        'componentTheme' => NULL,
-        'mediaLeft' => FALSE,
-        'subscribeForm' => FALSE,
-        'contentBorder' => FALSE,
-        'ctas' => [],
-        'heroHeading' => '',
-        'heroText' => '',
-        'image' => NULL,
-        'video' => NULL,
-      ],
-      'template' => 'Hero-Header-1',
-      'path' => 'themes/custom/labl/design-system/storybook/src/stories/organisms/Hero-Headers/Hero-Header-1',
-    ],
-  ];
+  $discovery = new StoryDiscovery();
+  $definitions = [];
+  $module_path = \Drupal::service('extension.path.resolver')->getPath('module', 'labl_blocks');
+  foreach ($discovery->discover() as $story) {
+    $variables = [
+      'storybook_template' => $story['twig_path'],
+    ];
+    foreach ($story['fields'] as $field) {
+      $variables[$field['name']] = $field['default'];
+    }
+
+    $definitions[$story['id']] = [
+      'variables' => $variables,
+      'template' => 'storybook-component',
+      'path' => $module_path . '/templates',
+    ];
+  }
+
+  return $definitions;
 }

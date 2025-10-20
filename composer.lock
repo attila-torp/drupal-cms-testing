@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e7a1d5d43a03162629104495a6f74024",
+    "content-hash": "d19b247f55027f2cfe5469dc4df4d77d",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5773,6 +5773,34 @@
             "homepage": "https://www.drupal.org/project/google_tag",
             "support": {
                 "source": "https://git.drupalcode.org/project/google_tag"
+            }
+        },
+        {
+            "name": "drupal/gutenberg",
+            "version": "3.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/gutenberg.git",
+                "reference": "8.x-3.x"
+            },
+            "require": {
+                "drupal/core": "^11",
+                "php": ">=8.1"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "package": "Content authoring"
+                }
+            },
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "description": "Integrates the Gutenberg block editor with Drupal.",
+            "homepage": "https://www.drupal.org/project/gutenberg",
+            "support": {
+                "issues": "https://www.drupal.org/project/issues/gutenberg",
+                "source": "https://git.drupalcode.org/project/gutenberg"
             }
         },
         {
