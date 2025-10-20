@@ -1,0 +1,14 @@
+{#
+/**
+ * @file
+ * Theme override for the Example block paragraph bundle.
+ */
+#}
+{% set example_block = example_block|default({}) %}
+{% include '@labl/example-block/example-block.twig' with {
+  title: example_block.title,
+  body: example_block.body,
+  body_paragraphs: example_block.body_paragraphs|default([]),
+  link: example_block.link|default(null),
+  highlights: example_block.highlights|default([])
+} only %}
