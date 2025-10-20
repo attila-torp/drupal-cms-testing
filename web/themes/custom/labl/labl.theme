@@ -14,3 +14,58 @@ function labl_theme_registry_alter(array &$theme_registry): void {
     $loader->addPath($components_path, 'labl');
   }
 }
+
+/**
+ * Prepares variables for the Example block paragraph template.
+ */
+function labl_preprocess_paragraph__example_block(array &$variables): void {
+  $paragraph = $variables['paragraph'];
+
+  $example_block = [];
+
+  if (!$paragraph->get('field_example_block_title')->isEmpty()) {
+    $example_block['title'] = $paragraph->get('field_example_block_title')->value;
+  }
+
+  if (isset($variables['content']['field_example_block_body'])) {
+    $example_block['body'] = $variables['content']['field_example_block_body'];
+  }
+
+  if (isset($variables['content']['field_example_block_link'][0]['#url']) && $variables['content']['field_example_block_link'][0]['#url'] instanceof \Drupal\Core\Url) {
+    $link_item = $variables['content']['field_example_block_link'][0];
+    /** @var \Drupal\Core\Url $url */
+    $url = $link_item['#url'];
+    $example_block['link'] = [
+      'title' => $link_item['#title'] ?? $url->toString(),
+      'url' => $url->toString(),
+    ];
+  }
+
+  $highlights = [];
+  if ($paragraph->hasField('field_example_block_highlights')) {
+    foreach ($paragraph->get('field_example_block_highlights')->referencedEntities() as $highlight) {
+      $label = $highlight->get('field_highlight_label')->value ?? '';
+      $value = $highlight->get('field_highlight_value')->value ?? '';
+
+      if ($label !== '' || $value !== '') {
+        $highlights[] = [
+          'label' => $label,
+          'value' => $value,
+        ];
+      }
+    }
+  }
+
+  if ($highlights) {
+    $example_block['highlights'] = $highlights;
+  }
+
+  $variables['example_block'] = $example_block;
+
+  // Prevent Drupal from rendering individual fields since the component handles
+  // the full markup.
+  unset($variables['content']['field_example_block_title']);
+  unset($variables['content']['field_example_block_body']);
+  unset($variables['content']['field_example_block_link']);
+  unset($variables['content']['field_example_block_highlights']);
+}

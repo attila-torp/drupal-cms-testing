@@ -1,0 +1,56 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.example_block.field_example_block_body
+    - field.field.paragraph.example_block.field_example_block_highlights
+    - field.field.paragraph.example_block.field_example_block_link
+    - field.field.paragraph.example_block.field_example_block_title
+    - paragraphs.paragraphs_type.example_block
+  module:
+    - entity_reference_revisions
+    - link
+    - paragraphs
+    - text
+id: paragraph.example_block.default
+targetEntityType: paragraph
+bundle: example_block
+mode: default
+content:
+  field_example_block_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: { }
+  field_example_block_body:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: { }
+  field_example_block_link:
+    type: link_default
+    weight: 2
+    region: content
+    settings: { }
+    third_party_settings: { }
+  field_example_block_highlights:
+    type: entity_reference_revisions_paragraphs
+    weight: 3
+    region: content
+    settings:
+      title: Highlight
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      allow_new: true
+      allow_duplicate: false
+      features:
+        duplicate: duplicate
+    third_party_settings: { }
+hidden: { }
