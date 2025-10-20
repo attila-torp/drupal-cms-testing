@@ -1,6 +1,6 @@
 name: "Labl"
 type: theme
-base theme: false
+base theme: emulsify
 description: "A custom theme for my Drupal CMS site"
 package: Custom
 core_version_requirement: ^10 || ^11
