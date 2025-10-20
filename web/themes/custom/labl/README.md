@@ -48,6 +48,8 @@ The command will:
   as controls.
 - `example-block.stories.js` – a Storybook story that feeds the Twig template
   with the YAML defaults.
+- `example-block.twig` accepts `body_paragraphs` so Drupal paragraph items or
+  other multi-value fields can render each paragraph with proper markup.
 
 When Storybook runs, you will find this component under **Blocks → Example
 Content Block**. The same Twig template can be used inside Drupal by copying it

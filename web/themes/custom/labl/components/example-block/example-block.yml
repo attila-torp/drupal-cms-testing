@@ -17,6 +17,12 @@ fields:
         This promotional block highlights a single marketing message with
         supporting copy that can include HTML markup.
       </p>
+  body_paragraphs:
+    type: list
+    label: Body paragraphs
+    default:
+      - This promotional block highlights a single marketing message with supporting copy.
+      - Use the call to action to guide visitors toward the next step.
   link:
     type: link
     label: Call to action
