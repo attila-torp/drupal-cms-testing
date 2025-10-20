@@ -19,5 +19,7 @@ regions:
 component-libraries:
   labl:
     paths:
-      - ../emulsify/components
       - components
+  emulsify:
+    paths:
+      - ../emulsify/components
