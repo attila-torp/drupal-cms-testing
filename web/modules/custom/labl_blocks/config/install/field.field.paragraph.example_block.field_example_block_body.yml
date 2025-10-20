@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_example_block_body
+    - paragraphs.paragraphs_type.example_block
+  module:
+    - text
+    - labl_blocks
+id: paragraph.example_block.field_example_block_body
+field_name: field_example_block_body
+entity_type: paragraph
+bundle: example_block
+label: Body
+description: 'Supporting copy displayed inside the Example block.'
+required: false
+translatable: true
+default_value: { }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_long

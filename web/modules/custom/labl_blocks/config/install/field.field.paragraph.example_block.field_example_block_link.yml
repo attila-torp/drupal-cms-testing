@@ -1,0 +1,23 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_example_block_link
+    - paragraphs.paragraphs_type.example_block
+  module:
+    - link
+    - labl_blocks
+id: paragraph.example_block.field_example_block_link
+field_name: field_example_block_link
+entity_type: paragraph
+bundle: example_block
+label: 'Call to action link'
+description: 'Optional call to action link rendered below the body copy.'
+required: false
+translatable: true
+default_value: { }
+default_value_callback: ''
+settings:
+  link_type: 17
+  title: 1
+field_type: link

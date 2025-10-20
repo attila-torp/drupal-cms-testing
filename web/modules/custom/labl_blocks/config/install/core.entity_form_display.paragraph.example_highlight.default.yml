@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.example_highlight.field_highlight_label
+    - field.field.paragraph.example_highlight.field_highlight_value
+    - paragraphs.paragraphs_type.example_highlight
+  module:
+    - paragraphs
+    - text
+    - labl_blocks
+id: paragraph.example_highlight.default
+targetEntityType: paragraph
+bundle: example_highlight
+mode: default
+content:
+  field_highlight_label:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: { }
+  field_highlight_value:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: { }
+hidden: { }

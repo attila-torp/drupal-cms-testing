@@ -58,6 +58,9 @@ composer.lock              # You may or may not version this depending on your t
 /web/sites/default/
 # If you have a config sync directory you don’t want in repo
 /config/sync/
+!config/
+!config/sync/
+!config/sync/*.yml
 
 # Built assets (if built in project)
 /dist/

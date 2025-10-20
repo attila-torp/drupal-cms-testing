@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - labl_blocks
+id: example_block
+label: 'Example block'
+icon_uuid: null
+icon_default: paragraph
+description: 'Promotional block using the Example Block component.'
+behavior_plugins: { }
