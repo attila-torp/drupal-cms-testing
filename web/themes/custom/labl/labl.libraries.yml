@@ -1,9 +1,6 @@
 global-styling:
   css:
     theme:
-      dist/app.css: { manifest: dist/manifest.json }
-  js:
-    dist/app.js: { manifest: dist/manifest.json }
+      css/theme.css: {}
   dependencies:
-    - core/drupal
-    - core/jquery   # if you use jQuery
+    - emulsify/global

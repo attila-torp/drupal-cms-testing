@@ -1,0 +1,17 @@
+{% set tag = tag|default('button') %}
+{% set variant = variant|default('primary') %}
+{% set attributes = attributes|default(create_attribute()) %}
+
+{% if tag == 'a' %}
+  <a{{ attributes.addClass('c-button', 'c-button--' ~ variant) }} href="{{ url|default('#') }}">
+    {% block content %}
+      {{ text|default('Learn more') }}
+    {% endblock %}
+  </a>
+{% else %}
+  <button{{ attributes.addClass('c-button', 'c-button--' ~ variant) }} type="{{ type|default('button') }}">
+    {% block content %}
+      {{ text|default('Learn more') }}
+    {% endblock %}
+  </button>
+{% endif %}

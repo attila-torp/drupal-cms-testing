@@ -1,21 +1,23 @@
 name: "Labl"
 type: theme
-base theme: false
-description: "A custom theme for my Drupal CMS site"
+base theme: emulsify
+description: "Drupal CMS theme powered by the Emulsify design system."
 package: Custom
 core_version_requirement: ^10 || ^11
-
-regions:
-  navigation: Navigation
-  header: Header
-  content: Content
-  sidebar: Sidebar
-  footer: Footer
 
 libraries:
   - labl/global-styling
 
+regions:
+  navigation: Navigation
+  header: Header
+  highlighted: Highlighted
+  content: Content
+  sidebar: Sidebar
+  footer: Footer
+
 component-libraries:
   labl:
     paths:
-      - design-system/storybook/src
+      - ../emulsify/components
+      - components

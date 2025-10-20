@@ -67,3 +67,14 @@ composer.lock              # You may or may not version this depending on your t
 *.js
 *.map
 
+
+
+# Allow committed Emulsify assets
+!/web/themes/custom/emulsify/
+!/web/themes/custom/emulsify/**
+!/web/themes/custom/emulsify/css/**
+!/web/themes/custom/emulsify/js/**
+!/web/themes/custom/labl/css/
+!/web/themes/custom/labl/css/**
+!/web/themes/custom/labl/design-system/
+!/web/themes/custom/labl/design-system/**

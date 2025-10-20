@@ -1,0 +1,26 @@
+{
+  "name": "labl-design-system",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "develop": "storybook dev -p 6006 -c ./storybook",
+    "build": "storybook build -c ./storybook -o ./dist",
+    "lint": "eslint ./storybook/stories --ext .js,.jsx,.ts,.tsx"
+  },
+  "dependencies": {
+    "@storybook/addon-a11y": "^7.6.17",
+    "@storybook/addon-essentials": "^7.6.17",
+    "@storybook/addon-interactions": "^7.6.17",
+    "@storybook/html": "^7.6.17",
+    "@storybook/testing-library": "^0.2.2",
+    "@emulsify/storybook-addon-twig": "^5.0.0",
+    "twig": "^1.17.0",
+    "twig-drupal-filters": "^3.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-storybook": "^0.8.0",
+    "sass": "^1.69.7"
+  }
+}

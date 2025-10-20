@@ -1,0 +1,37 @@
+{% set attributes = attributes|default(create_attribute()) %}
+<div{{ attributes.addClass('c-page') }}>
+  {% include '@emulsify/01-atoms/skip-link/skip-link.twig' with {
+    href: '#main-content',
+  } %}
+
+  {% if header or navigation %}
+    {% include '@emulsify/03-organisms/site-header/site-header.twig' with {
+      brand: header,
+      navigation: navigation,
+    } %}
+  {% endif %}
+
+  <main id="main-content" class="c-page__main">
+    {% if highlighted %}
+      <div class="c-page__highlighted">{{ highlighted }}</div>
+    {% endif %}
+
+    <div class="c-page__content">
+      {{ content }}
+    </div>
+
+    {% if sidebar_first %}
+      <aside class="c-page__sidebar c-page__sidebar--first">{{ sidebar_first }}</aside>
+    {% endif %}
+
+    {% if sidebar_second %}
+      <aside class="c-page__sidebar c-page__sidebar--second">{{ sidebar_second }}</aside>
+    {% endif %}
+  </main>
+
+  {% if footer %}
+    {% include '@emulsify/03-organisms/site-footer/site-footer.twig' with {
+      secondary_navigation: footer,
+    } %}
+  {% endif %}
+</div>
