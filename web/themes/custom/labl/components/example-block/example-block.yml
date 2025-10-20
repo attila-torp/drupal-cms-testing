@@ -1,0 +1,33 @@
+label: Example Content Block
+category: promotional
+summary: >-
+  Basic marketing block with configurable title, body copy and optional call
+  to action link. The defaults mimic Drupal block field settings so that the
+  component can be wired to real content later.
+fields:
+  title:
+    type: text
+    label: Title
+    default: "Ready for launch"
+  body:
+    type: text_long
+    label: Body
+    default: |
+      <p>
+        This promotional block highlights a single marketing message with
+        supporting copy that can include HTML markup.
+      </p>
+  link:
+    type: link
+    label: Call to action
+    default:
+      title: "Get started"
+      url: "#start"
+  highlights:
+    type: list
+    label: Highlights
+    default:
+      - label: Audience
+        value: Editors
+      - label: Status
+        value: Ready for review

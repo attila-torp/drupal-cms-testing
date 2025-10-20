@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "mix",
     "watch": "mix watch",
-    "build": "mix --production"
+    "build": "mix --production",
+    "prestorybook": "node scripts/link-emulsify-storybook.js",
+    "storybook": "npm run storybook --prefix ../contrib/emulsify"
   },
   "dependencies": {
     "bootstrap": "^5.3.8",
