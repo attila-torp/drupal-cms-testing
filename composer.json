@@ -38,6 +38,7 @@
         "drupal/drupal_cms_starter": "^1.2",
         "drupal/emulsify": "^6.0",
         "drupal/gutenberg": "@stable",
+        "drupal/paragraphs": "^1.19",
         "drupal/recipe_installer_kit": "^1-alpha6@alpha",
         "drupal/webform": "@beta"
     },
