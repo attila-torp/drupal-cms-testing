@@ -18,4 +18,4 @@ libraries:
 component-libraries:
   labl:
     paths:
-      - design-system/storybook/src
+      - components

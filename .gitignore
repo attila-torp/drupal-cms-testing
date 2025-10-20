@@ -66,4 +66,7 @@ composer.lock              # You may or may not version this depending on your t
 *.css
 *.js
 *.map
+# Allow LABL component source files that support Storybook previews.
+!web/themes/custom/labl/components/**/*.js
+!web/themes/custom/labl/scripts/**/*.js
 
