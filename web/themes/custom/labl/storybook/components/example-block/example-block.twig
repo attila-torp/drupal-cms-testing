@@ -1,0 +1,26 @@
+<div class="example-block">
+  {% if title %}
+    <h2 class="example-block__title">{{ title }}</h2>
+  {% endif %}
+
+  {% if body %}
+    <div class="example-block__body">{{ body|raw }}</div>
+  {% endif %}
+
+  {% if link %}
+    <p class="example-block__cta">
+      <a class="example-block__link" href="{{ link.url }}">{{ link.title }}</a>
+    </p>
+  {% endif %}
+
+  {% if highlights %}
+    <dl class="example-block__highlights">
+      {% for highlight in highlights %}
+        <div class="example-block__highlight">
+          <dt class="example-block__highlight-label">{{ highlight.label }}</dt>
+          <dd class="example-block__highlight-value">{{ highlight.value }}</dd>
+        </div>
+      {% endfor %}
+    </dl>
+  {% endif %}
+</div>
