@@ -67,5 +67,6 @@ composer.lock              # You may or may not version this depending on your t
 *.js
 *.map
 # Allow Storybook configuration files committed under the LABL theme.
-!web/themes/custom/labl/storybook/**/*.js
+!web/themes/custom/labl/components/**/*.js
+!web/themes/custom/labl/scripts/**/*.js
 
