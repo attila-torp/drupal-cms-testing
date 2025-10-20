@@ -1,6 +1,6 @@
 {% set navigation_component %}
   {% if page.navigation %}
-    {% include '@emulsify/02-molecules/navigation/primary-nav/primary-nav.twig' with {
+    {% include '@labl/02-molecules/navigation/primary-nav/primary-nav.twig' with {
       content: page.navigation,
       menu_id: 'primary-nav-menu',
       label: 'Main navigation'|t,
@@ -8,7 +8,7 @@
   {% endif %}
 {% endset %}
 
-{% include '@emulsify/layout/page/page.twig' with {
+{% include '@labl/layout/page/page.twig' with {
   navigation: navigation_component,
   header: page.header,
   highlighted: page.highlighted,

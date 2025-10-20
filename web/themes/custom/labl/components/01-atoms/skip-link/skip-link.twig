@@ -1,0 +1,4 @@
+{% set attributes = attributes|default(create_attribute()) %}
+<a{{ attributes.addClass('c-skip-link').setAttribute('href', href|default('#main-content')) }}>
+  {{ text|default('Skip to main content') }}
+</a>
