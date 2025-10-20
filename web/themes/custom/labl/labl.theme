@@ -1,8 +1,10 @@
 <?php
 
 function labl_theme_registry_alter(array &$theme_registry) {
-  \Drupal::service('twig.loader.filesystem')
-    ->addPath(DRUPAL_ROOT . '/themes/custom/labl/design-system/storybook/src', 'storybook');
+  $filesystem = \Drupal::service('twig.loader.filesystem');
+
+  $filesystem->addPath(DRUPAL_ROOT . '/themes/custom/labl/components', 'labl');
+  $filesystem->addPath(DRUPAL_ROOT . '/themes/custom/labl/design-system/storybook/src', 'storybook');
 }
 
 /**
@@ -10,8 +12,8 @@ function labl_theme_registry_alter(array &$theme_registry) {
  */
 function labl_preprocess_page(&$variables) {
   $loader = \Drupal::service('twig.loader.filesystem');
-  $paths = $loader->getPaths('storybook');
-  \Drupal::logger('storybook')->notice('Twig namespace @labl paths: @paths', [
+  $paths = $loader->getPaths('labl');
+  \Drupal::logger('labl')->notice('Twig namespace @labl paths: @paths', [
     '@paths' => implode(', ', $paths),
   ]);
 }
