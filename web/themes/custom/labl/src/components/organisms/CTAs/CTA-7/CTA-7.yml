@@ -1,0 +1,54 @@
+name: CTA-7
+group: Organisms
+status: stable
+props:
+  type: object
+  properties:
+    content:
+      default:
+        componentTheme: 'light'
+        hasBorder: false
+        image: ''
+        imageAlt: ''
+        bgImage: ''
+        heading: 'Short heading here'
+        subHeadingText: 'Short heading here'
+        eyebrow: 'Tagline'
+        text: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>'
+        subscribeForm: false
+        ctas:
+          cta1:
+            label: 'Button'
+            primary: true
+            type: 'button'
+            outline: false
+            buttonHref: '#'
+          cta2:
+            label: 'Button'
+            primary: true
+            type: 'button'
+            outline: true
+            buttonHref: '#'
+      dark:
+        componentTheme: 'dark'
+      bordered:
+        hasBorder: true
+      bg_image:
+        image: ''
+        imageAlt: ''
+        bgImage: '../../../../assets/img/1.jpeg'
+      bg_yellow:
+        bgImage: '../../../../assets/img/brand/acteon-wave-1.png'
+        componentTheme: 'yellow'
+      bg_green:
+        bgImage: '../../../../assets/img/brand/acteon-wave-2.png'
+        componentTheme: 'green'
+      bg_blue:
+        bgImage: '../../../../assets/img/brand/acteon-wave-3.png'
+        componentTheme: 'blue'
+      image:
+        image: '../../../../assets/img/1.jpeg'
+        imageAlt: 'Some alt text for this image'
+      subscribe:
+        subscribeForm: true
+        ctas: false
