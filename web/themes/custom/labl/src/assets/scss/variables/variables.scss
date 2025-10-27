@@ -1,0 +1,89 @@
+// Font import
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+// CSS Variable files exported from Figma files
+@import "utopia";
+@import "vars-primary";
+@import "vars-semantics";
+@import "vars-components";
+
+
+:root, [data-bs-theme="light"] {
+  //  // Theme backgrounds
+  --bs-body-bg: var(--section-background-color);
+  --bs-body-color: var(--theme-typography-color-body);
+
+  --card-seperator: var(--color-default-black);
+
+  --section-background-color: var(--section-background-default-color);
+  --hero-overlay-gradient: linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%);
+  --overlay-gradient: linear-gradient(0deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.50) 100%);
+  --theme-typography-color-body-hover: var(--theme-primary-default);
+  --theme-typography-color-primary-link: var(--theme-primary-default);
+  --rating-fill: black;
+
+  --theme-primary-icon-hover: var(--theme-typography-color-primary-link);
+  --icon-bullets-icon: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScyNCcgaGVpZ2h0PScyNCcgdmlld0JveD0nMCAwIDI0IDI0JyBzdHlsZT0nZmlsbDogcmdiYSgwLCAwLCAwLCAxKTt0cmFuc2Zvcm06IDttc0ZpbHRlcjo7Jz48Y2lyY2xlIGN4PScxMicgY3k9JzEyJyByPSczJz48L2NpcmNsZT48cGF0aCBkPSdNMTMgNC4wNjlWMmgtMnYyLjA2OUE4LjAwOCA4LjAwOCAwIDAgMCA0LjA2OSAxMUgydjJoMi4wNjlBOC4wMDcgOC4wMDcgMCAwIDAgMTEgMTkuOTMxVjIyaDJ2LTIuMDY5QTguMDA3IDguMDA3IDAgMCAwIDE5LjkzMSAxM0gyMnYtMmgtMi4wNjlBOC4wMDggOC4wMDggMCAwIDAgMTMgNC4wNjl6TTEyIDE4Yy0zLjMwOSAwLTYtMi42OTEtNi02czIuNjkxLTYgNi02IDYgMi42OTEgNiA2LTIuNjkxIDYtNiA2eic+PC9wYXRoPjwvc3ZnPg==");
+
+  --accordion-icon: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNSIgdmlld0JveD0iMCAwIDI0IDI1IiBmaWxsPSJub25lIj4KICA8cGF0aCBkPSJNMTkgMTEuNUgxM1Y1LjVIMTFWMTEuNUg1VjEzLjVIMTFWMTkuNUgxM1YxMy41SDE5VjExLjVaIiBmaWxsPSIjNEMxRDk1Ii8+Cjwvc3ZnPg==");
+  --accordion-icon-open: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNSIgdmlld0JveD0iMCAwIDI0IDI1IiBmaWxsPSJub25lIj4KICA8cGF0aCBkPSJNNSAxMS41SDE5VjEzLjVINVYxMS41WiIgZmlsbD0iIzRDMUQ5NSIvPgo8L3N2Zz4=");
+  --accordion-bg: var(--section-background-color);
+  --accordion-active-bg: var(--section-background-light-color);
+
+  --tab-hover-bg: var(--theme-primary-foreground-light);
+
+  --carousel-dots-color: black;
+  --carousel-dots-active-size: 12px;
+  --carousel-icon-color: var(--button-primary-outline-default-icon-color);
+  --carousel-icon-hover-color: var(--bs-white);
+  --carousel-icon-hover-bg-color: var(--theme-primary-icon);
+  --carousel-icon-border-color: var(--theme-primary-icon);
+  --carousel-icon-border-radius: 50px;
+
+  --floating-label-focus: var(--color-default-black);
+  --floating-label: var(--color-stone-100);
+}
+
+[data-bs-theme="dark"] {
+  --section-background-color: var(--section-background-dark-color);
+
+  --card-seperator: var(--color-default-white);
+
+  --theme-typography-color-blockquote: var(--color-gray-300);
+  --theme-typography-color-blockquote-border: var(--color-stone-400);
+  --theme-typography-color-caption: var(--color-stone-500);
+  --theme-typography-color-caption-border-color: var(--theme-ui-border);
+  --theme-typography-color-eyebrow: var(--color-default-white);
+  --theme-typography-color-headline: var(--color-default-white);
+  --theme-typography-color-muted: var(--color-gray-300);
+  --theme-typography-color-body: var(--color-stone-100);
+  --theme-typography-color-body-hover: var(--color-stone-400);
+  --theme-typography-color-primary-link: var(--color-default-white);
+
+  --rating-fill: white;
+
+  --theme-primary-icon: var(--color-stone-400);
+  --theme-primary-icon-hover: var(--color-default-white);
+
+  --icon-bullets-icon: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScyNCcgaGVpZ2h0PScyNCcgdmlld0JveD0nMCAwIDI0IDI0JyBzdHlsZT0nZmlsbDogcmdiYSgyNTUsIDI1NSwgMjU1LCAxKTt0cmFuc2Zvcm06IDttc0ZpbHRlcjo7Jz48Y2lyY2xlIGN4PScxMicgY3k9JzEyJyByPSczJz48L2NpcmNsZT48cGF0aCBkPSdNMTMgNC4wNjlWMmgtMnYyLjA2OUE4LjAwOCA4LjAwOCAwIDAgMCA0LjA2OSAxMUgydjJoMi4wNjlBOC4wMDcgOC4wMDcgMCAwIDAgMTEgMTkuOTMxVjIyaDJ2LTIuMDY5QTguMDA3IDguMDA3IDAgMCAwIDE5LjkzMSAxM0gyMnYtMmgtMi4wNjlBOC4wMDggOC4wMDggMCAwIDAgMTMgNC4wNjl6TTEyIDE4Yy0zLjMwOSAwLTYtMi42OTEtNi02czIuNjkxLTYgNi02IDYgMi42OTEgNiA2LTIuNjkxIDYtNiA2eic+PC9wYXRoPjwvc3ZnPg==");
+  --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27%23FFF%27%3e%3cpath fill-rule=%27evenodd%27 d=%27M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z%27/%3e%3c/svg%3e");
+  --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27%23fff%27%3e%3cpath fill-rule=%27evenodd%27 d=%27M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z%27/%3e%3c/svg%3e");
+  --accordion-icon: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNSIgdmlld0JveD0iMCAwIDI0IDI1IiBmaWxsPSJub25lIj4KICA8cGF0aCBkPSJNMTkgMTEuNUgxM1Y1LjVIMTFWMTEuNUg1VjEzLjVIMTFWMTkuNUgxM1YxMy41SDE5VjExLjVaIiBmaWxsPSIjZmZmIi8+Cjwvc3ZnPg==");
+  --accordion-icon-open: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNSIgdmlld0JveD0iMCAwIDI0IDI1IiBmaWxsPSJub25lIj4KICA8cGF0aCBkPSJNNSAxMS41SDE5VjEzLjVINVYxMS41WiIgZmlsbD0iI2ZmZiIvPgo8L3N2Zz4=");
+  --accordion-bg: var(--section-background-dark-color);
+  --accordion-active-bg: var(--color-slate-600);
+  --tab-hover-bg: var(--color-slate-600);
+
+  --carousel-dots-color: white;
+  --carousel-icon-color: white;
+  --carousel-icon-hover-color: var(--theme-primary-default);
+  --carousel-icon-hover-bg-color: var(--theme-primary-icon-hover);
+  --carousel-icon-border-color: white;
+
+  --hero-overlay-gradient: linear-gradient(0deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.50) 100%);
+  --overlay-gradient: linear-gradient(0deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.30) 100%);
+
+
+  --floating-label-focus: var(--color-stone-100);
+  --floating-label: var(--color-default-black);
+}

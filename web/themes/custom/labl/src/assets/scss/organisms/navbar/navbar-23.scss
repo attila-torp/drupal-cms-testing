@@ -1,0 +1,38 @@
+.navbar.navbar-23 {
+  --bs-navbar-padding-y: 0;
+  --bs-navbar-brand-font-size: var(--theme-typography-scale---step-0);
+  .nav-title {
+    margin-right: var(--spacing-08);
+    padding-block: var(--spacing-05);
+    font-weight: $font-weight-bold;
+    color: var(--theme-typography-color-body);
+  }
+  .navbar-collapse {
+    .navbar-nav {
+      gap: var(--spacing-06)
+    }
+  .nav-item {
+    .nav-link {
+      position: relative;
+      padding: var(--spacing-05) 0;
+        &:after {
+          content: "";
+          width: 100%;
+          height: 3px;
+          background-color: transparent;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          transition: 0.2s linear all;
+        }
+
+
+      &.active, &:hover {
+        &:after {
+          background-color: var(--theme-typography-color-body);
+        }
+      }
+    }
+  }
+  }
+}

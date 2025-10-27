@@ -1,0 +1,65 @@
+.card.team-card-1 {
+  --bs-card-bg: var(--section-background-color);
+
+  position: relative;
+  border: 0 solid var(--theme-ui-border);
+  max-width: 1000px;
+  flex-direction: column;
+  display: flex;
+  margin-bottom: var(--spacing-10);
+
+  a {
+    text-decoration: none;
+    &:has(.card-title) {
+      &:hover {
+        cursor: pointer;
+        .card-title {
+          color: var(--theme-typography-color-primary-link);
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  &.text-center {
+    .avatar {
+      align-self: center;
+    }
+  }
+
+  .card-bg-img {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1/1;
+    margin-bottom: var(--spacing-06);
+  }
+
+  .avatar {
+    width: 80px;
+    height: 80px;
+    margin-bottom: var(--spacing-06);
+  }
+
+  .card-body {
+    padding: 0;
+    .card-title {
+      margin-bottom: var(--spacing-03);
+    }
+
+    .card-subtitle, .card-text {
+      margin-bottom: var(--spacing-06);
+    }
+    .nav-icons {
+      padding-bottom: 0;
+      .nav-item:last-of-type {
+        .icon:before {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+}

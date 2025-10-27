@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_component_theme
+field_name: field_component_theme
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    - { value: 'light', label: 'Light' }
+    - { value: 'dark', label: 'Dark' }
+module: options
+cardinality: 1
+translatable: true

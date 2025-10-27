@@ -1,0 +1,55 @@
+.accordion-item {
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 0.125rem rgba(0, 0, 0, 0.25);
+  --bs-accordion-btn-icon-width: 24px;
+  --bs-accordion-active-color: var(--theme-typography-color-headline);
+  --bs-accordion-bg: var(--accordion-bg);
+  --bs-accordion-btn-bg: var(--accordion-bg);
+  --bs-accordion-active-bg: var(--accordion-active-bg);
+  text-align: left;
+  border: none;
+  button {
+    border-bottom: 1px solid var(--theme-ui-divider);
+  }
+  &.has-border {
+    margin-bottom: var(--spacing-05);
+    .border-wrapper {
+      border: 1px solid var(--theme-ui-border);
+      button {
+        border: none;
+      }
+    }
+    .accordion-button::after {
+      background-image: var(--accordion-icon)
+
+    }
+    .accordion-button:not(.collapsed) {
+      background-color: transparent;
+      //box-shadow: none;
+      &::after {
+        background-image: var(--accordion-icon-open)
+      }
+    }
+
+  }
+  button {
+    color: var(--theme-typography-color-body);
+    font-family: var(--theme-typography-family-body);
+    font-size: 18px;
+    font-weight: $font-weight-bold;
+    line-height: 150%;
+  }
+  &:first-of-type {
+    button {
+      border-top: 1px solid var(--theme-ui-divider);
+    }
+  }
+
+  @if $enable-dark-mode {
+    @include color-mode(dark) {
+      .accordion-button::after {
+        --#{$prefix}accordion-btn-icon: #{escape-svg($accordion-button-icon-dark)};
+        --#{$prefix}accordion-btn-active-icon: #{escape-svg($accordion-button-active-icon-dark)};
+      }
+    }
+  }
+}

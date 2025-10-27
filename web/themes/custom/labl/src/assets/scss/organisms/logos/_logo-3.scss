@@ -1,0 +1,23 @@
+.logos.logos-3 {
+
+  padding: var(--spacing-09) 0;
+  @include media-breakpoint-up(sm) {
+    padding: var(--spacing-12) 0;
+  }
+
+  .section-intro {
+    margin-bottom: var(--spacing-06);
+    @include media-breakpoint-up(md) {
+      margin-bottom: var(--spacing-09);
+    }
+  }
+
+  .logos {
+    .slick-list {
+      overflow: visible; /*important, allows overflow slides to be visible*/
+    }
+    .slick-autoplay-toggle-button {
+      display: none;
+    }
+  }
+}

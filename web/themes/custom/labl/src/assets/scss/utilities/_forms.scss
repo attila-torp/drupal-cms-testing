@@ -1,0 +1,128 @@
+.form-floating > .form-control {
+  padding: var(--spacing-04);
+}
+
+input {
+  border-radius: var(--input-border-radius);
+  border: 1px solid var(--input-border-color);
+  background: var(--input-background-color);
+
+  &.form-control {
+    background: var(--input-background-color);
+  }
+}
+
+.input-group {
+  .input-group-text {
+    background: var(--input-background-color);
+  }
+
+  i {
+    color: var(--theme-primary-icon);
+    font-size: 1.5rem;
+  }
+
+  // Form Validation
+  &:has(.is-valid) {
+    i {
+      color: var(--bs-form-valid-border-color);
+    }
+
+    .input-group-text {
+      border-color: var(--bs-form-valid-border-color);
+    }
+  }
+
+  &:has(.is-invalid) {
+    i {
+      color: var(--bs-form-invalid-border-color);
+    }
+
+    .input-group-text {
+      border-color: var(--bs-form-invalid-border-color);
+    }
+  }
+}
+
+// Custom Checkbox
+.form-check:has([type="checkbox"]) {
+  position: relative;
+
+  svg {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    opacity: 0;
+  }
+
+  .form-check-label {
+    span {
+      float: left;
+      vertical-align: middle;
+      transform: translate3d(0, 0, 0);
+
+      &:first-child {
+        position: relative;
+        width: 18px;
+        height: 18px;
+        border-radius: 4px;
+        transform: scale(1);
+        border: var(--checkbox-border-width) solid var(--checkbox-border-color);
+        transition: all 0.2s ease;
+        box-shadow: 0 1px 1px rgba(0, 16, 75, 0.05);
+        margin-right: var(--spacing-04);
+        margin-top: 3px;
+
+        svg {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          fill: var(--checkbox-background-color);
+          stroke-width: 1px;
+          stroke: var(--checkbox-checked-background-color);
+          transition: all 0.3s ease;
+          transition-delay: 0.1s;
+          transform-origin: center;
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      &:last-child {
+        //padding-left: 8px;
+        //line-height: 18px;
+      }
+    }
+
+    :hover span:first-child {
+      border: var(--checkbox-border-width) solid var(--checkbox-border-color);
+
+    }
+
+    @media screen and (max-width: 640px) {
+      width: 100%;
+      display: inline-block;
+    }
+  }
+
+  .form-check-input {
+    position: absolute;
+    visibility: hidden;
+
+    &:checked + .form-check-label span:first-child {
+      border-color: var(--theme-primary-icon);
+      animation: wave-4 0.4s ease;
+
+      svg {
+        width: 16px;
+        height: 16px;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+@keyframes wave-4 {
+  50% {
+    transform: scale(0.9);
+  }
+}

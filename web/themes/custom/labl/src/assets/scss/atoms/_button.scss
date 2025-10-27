@@ -1,0 +1,127 @@
+.button {
+  &:is(a) {
+    text-decoration: none;
+  }
+
+  color: var(--button-primary-solid-default-foreground-color);
+
+  --theme-primary-icon: var(--button-primary-solid-default-foreground-color);
+  font-family: var(--theme-typography-family-body);
+  font-size: var(--theme-typography-scale---step-0);
+  font-style: normal;
+  font-weight: var(--theme-typography-weight-regular);
+  line-height: 150%;
+  display: inline-flex;
+  padding: var(--spacing-04) var(--spacing-06);
+  justify-content: center;
+  align-items: center;
+  gap: var(--button-gap);
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &.button--small {
+    padding: var(--spacing-03) var(--spacing-05);
+  }
+
+  &.button--primary {
+    border-radius: var(--button-border-radius);
+    border: var(--button-border-width) solid var(--button-primary-solid-default-border-color);
+    background: var(--button-primary-solid-default-background-color);
+
+    &:hover, &:focus {
+      background: var(--button-primary-solid-hover-background-color);
+      color: var(--button-primary-solid-hover-foreground-color);
+    }
+
+    &.button--outline {
+      border-radius: var(--button-border-radius);
+      border: var(--button-border-width) solid var(--button-primary-outline-default-border-color);
+      background: none;
+      color: var(--button-primary-outline-default-foreground-color);
+      --theme-primary-icon: var(--button-primary-outline-default-foreground-color);
+
+      &:hover, &:focus {
+        background: var(--button-primary-outline-hover-background-color);
+        color: var(--button-primary-outline-hover-foreground-color);
+        --theme-primary-icon: var(--button-primary-outline-hover-foreground-color);
+      }
+    }
+  }
+
+  &.button--secondary {
+    border-radius: var(--button-border-radius);
+    border: var(--button-border-width) solid var(--button-secondary-solid-default-border-color);
+    background: var(--button-secondary-solid-default-background-color);
+
+    &:hover, &:focus {
+      background: var(--button-secondary-solid-hover-background-color);
+      color: var(--button-primary-solid-hover-foreground-color);
+    }
+
+    &.button--outline {
+      border-radius: var(--button-border-radius);
+      border: var(--button-border-width) solid var(--button-secondary-outline-default-border-color);
+      background: none;
+      color: var(--button-secondary-outline-default-foreground-color);
+
+      &:hover, &:focus {
+        background: var(--button-secondary-solid-hover-background-color);
+        color: var(--button-primary-outline-hover-foreground-color);
+      }
+    }
+  }
+
+  i.bx {
+    font-size: var(--sizing-md);
+  }
+}
+
+.button-link {
+  font-family: var(--theme-typography-family-body);
+  font-size: var(--theme-typography-scale---step-0);
+  font-style: normal;
+  font-weight: var(--theme-typography-weight-regular);
+  line-height: 150%;
+  color: var(--button-primary-link-default-foreground-color);
+
+  i.bx {
+    font-size: var(--sizing-md);
+    vertical-align: middle;
+  }
+}
+
+.button-carousel {
+  padding: var(--spacing-04);
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--carousel-icon-border-radius);
+  border: 1px solid var(--carousel-icon-border-color);
+  width: 48px;
+  height: 48px;
+  display: flex;
+  background: transparent;
+
+  &:not(:last-of-type) {
+    margin-right: var(--spacing-04);
+  }
+
+  path {
+    fill: var(--carousel-icon-color);
+  }
+
+  &:hover, &:focus {
+    background: var(--carousel-icon-hover-bg-color);
+
+    path {
+      fill: var(--carousel-icon-hover-color);
+    }
+
+  }
+
+  &.slick-disabled {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}

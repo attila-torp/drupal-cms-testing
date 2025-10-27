@@ -1,0 +1,19 @@
+.logo {
+  display: block;
+  img {
+    width:100%;
+    max-width: 140px;
+  }
+  &.has-background {
+    background: var(--color-gray-50);
+    padding: 14px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+a.logo.has-background {
+  &:hover, &:focus {
+    background: var(--color-gray-100);
+  }
+}

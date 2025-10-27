@@ -56,11 +56,9 @@ composer.lock              # You may or may not version this depending on your t
 /recipes/
 /web/profiles/
 /web/sites/default/
-# If you have a config sync directory you don’t want in repo
-/config/sync/
-!config/
-!config/sync/
-!config/sync/*.yml
+# Ignore everything in config/sync except YAML files
+/config/sync/*
+!/config/sync/*.yml
 
 # Built assets (if built in project)
 /dist/
@@ -72,4 +70,3 @@ composer.lock              # You may or may not version this depending on your t
 # Allow Storybook configuration files committed under the LABL theme.
 !web/themes/custom/labl/components/**/*.js
 !web/themes/custom/labl/scripts/**/*.js
-

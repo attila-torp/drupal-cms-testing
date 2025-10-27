@@ -1,0 +1,26 @@
+.list-item {
+  color: var(--theme-typography-color-headline);
+  font-size: var(--step-0);
+  font-weight: $font-weight-bold;
+  line-height: 140%;
+  padding: var(--sizing-sm) 0;
+  border-top: 1px solid var(--theme-ui-divider);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &:last-of-type {
+    border-bottom: 1px solid var(--theme-ui-divider);
+  }
+  .item-label {
+    min-width: 25%;
+  }
+  .item-desc {
+    color: var(--theme-typography-color-body);
+    text-align: right;
+
+    font-style: normal;
+    font-weight: $font-weight-normal;
+    line-height: 150%;
+  }
+}
