@@ -1,0 +1,24 @@
+{%  if cardUrl %}
+    {% set border = true %}
+{% endif %}
+<div class="card testimonial-card-1 {% if border %} border-1 {% endif %}{% if not leftAlign %}centered{% endif %}">
+    <div class="card-body">
+        <div class="logo"><img src="{{ image }}" alt="{{ imageAlt }}"/></div>
+        <blockquote class="h5">
+            "{{ quote }}"
+        </blockquote>
+        <div class="author-info">
+            {% include '../../../atoms/Avatar/Avatar.twig' with {firstname: authorFirstName, lastname: authorLastName, image: authorImage } %}
+            <p class="small"><span
+                        class="fw-semibold">{{ authorFirstName }} {{ authorLastName }}</span><br/>{{ authorInfo }}
+            </p>
+        </div>
+
+        {% if cardUrl %}
+            <a href="#" class="stretched-link d-flex">
+                Read case study <span class="icon bx bx-sm bx-chevron-right"></span>
+            </a>
+        {% endif %}
+    </div>
+
+</div>

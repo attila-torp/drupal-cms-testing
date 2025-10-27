@@ -1,0 +1,50 @@
+<section class="faq faq-13" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        <div class="section-heading row {% if not leftAlign %}justify-content-center {% endif %}">
+            <div class="col-12 {% if not leftAlign %} text-center {% endif %}">
+                {% include '../../../molecules/Content/Content.twig' with {
+                    heading: sectionIntroHeading,
+                    headingSize: 'h2',
+                    eyebrow: sectionIntroEyebrow,
+                    text: sectionIntroText,
+                    ctas: sectionIntroCtas
+                } %}
+            </div>
+        </div>
+        {% if faqItems %}
+        <div class="faqs row row-cols-1 row-cols-md-2 row-cols-lg-3">
+            {% for key, item in faqItems %}
+            <div class="col">
+                <div class="faq-item {% if not leftAlign %}text-center {% endif %}">
+                    <div class="faq-icon">
+                        <i class="bx bx-md bx-{{ item.icon }}"></i>
+                    </div>
+                    <h3 class="faq-header">
+                        {{ item.heading }}
+                    </h3>
+                    <div class="faq-body">
+                        {{ item.content }}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% if sectionFooterHeading %}
+        <div class="row">
+            <div class="col-12 col-lg-7 {% if not leftAlign %} mx-auto text-center {% endif %}">
+                <div class="section-intro {% if centered %} text-center {% endif %}">
+                    {% include '../../../molecules/Content/Content.twig' with {
+                        heading: sectionFooterHeading,
+                        headingSize: 'h4',
+                        text: sectionFooterText,
+                        ctas: sectionFooterCtas
+                    } %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+
+
+</section>

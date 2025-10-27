@@ -1,0 +1,36 @@
+<section class="career career-10" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        {% if sectionIntroHeading %}
+        <div class="row">
+            <div class="col-12">
+                <div class="section-intro {% if centered or multiCol %} text-center {% endif %}">
+                        {% include '../../../molecules/Content/Content.twig' with {
+                            heading: sectionIntroHeading,
+                            headingSize: 'h2',
+                            eyebrow: sectionIntroEyebrow,
+                            text: sectionIntroText
+                        } %}
+                </div>
+            </div>
+        </div>
+
+        {% endif %}
+
+        <div class="row row-cols-1 {% if multiCol %} row-cols-lg-2 multi-col{% else %} row-cols-lg-1{% endif%} cards">
+            {% if centered %}<div class="w-75 mx-auto">{% endif %}
+            {% for card in cards %}
+                <div class="col d-flex ">
+                    {% include '../../../molecules/Cards/Career-Card-1/Career-Card-1.twig' with {
+                        cardDepartment: card.cardDepartment,
+                        cardType: card.cardType,
+                        cardLocation: card.cardLocation,
+                        cardTitle: card.cardTitle,
+                        cardText: card.cardText,
+                        cardUrl: card.cardUrl,
+                        border: border } %}
+                </div>
+            {% endfor %}
+                {% if centered %}</div>{% endif %}
+        </div>
+    </div>
+</section>

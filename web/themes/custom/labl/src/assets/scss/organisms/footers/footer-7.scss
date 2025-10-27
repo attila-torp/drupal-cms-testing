@@ -1,0 +1,105 @@
+footer.footer-7 {
+  padding: var(--spacing-09) 0;
+  @include media-breakpoint-up(sm) {
+    padding: var(--spacing-11) 0;
+  }
+
+  &.has-border {
+    .container {
+      padding: var(--spacing-09);
+      border: 1px solid var(--theme-ui-border);
+    }
+  }
+
+  nav {
+    --bs-nav-link-font-size: var(--step-0);
+    margin-bottom: var(--spacing-09);
+    @include media-breakpoint-up(lg) {
+      margin-bottom: var(--spacing-11);
+    }
+
+    .logo-col {
+      margin-bottom: var(--spacing-07);
+    }
+    .nav-col:not(:last-of-type) {
+      @include media-breakpoint-down(md) {
+        margin-bottom: var(--spacing-08);
+      }
+    }
+    .nav-item {
+      @include media-breakpoint-down(md) {
+        margin-bottom: var(--spacing-06);
+      }
+      &:not(:last-of-type) {
+        @include media-breakpoint-up(md) {
+          margin-right: var(--spacing-07);
+        }
+      }
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+      a {
+        color: var(--theme-typography-color-body);
+        font-size: var(--step-0);
+        font-weight: $font-weight-semibold;
+        line-height: 150%;
+        text-decoration: none;
+      }
+    }
+    .nav-icons {
+      @include media-breakpoint-down(lg) {
+        justify-content: center !important;
+      }
+      .nav-item {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .footer-base {
+    padding-top: var(--spacing-06);
+    padding-bottom: var(--spacing-05);
+    @include media-breakpoint-up(lg) {
+      padding-top: var(--spacing-07);
+      padding-bottom: 0;
+    }
+
+    .text-sm {
+      @include media-breakpoint-down(md) {
+        margin-top: var(--spacing-07);
+      }
+      @include media-breakpoint-up(md) {
+        margin-right: var(--spacing-04);
+        margin-bottom: 0;
+        align-self: center;
+      }
+    }
+    .nav-item {
+      padding: 0;
+      @include media-breakpoint-down(md) {
+        padding-bottom: var(--spacing-05);
+        text-align: center;
+      }
+      &:not(:last-of-type) {
+        .footer-link {
+          @include media-breakpoint-up(md) {
+            margin-right: var(--spacing-04);
+          }
+        }
+      }
+      &:last-of-type {
+          @include media-breakpoint-down(lg) {
+            padding-bottom: 0;
+          }
+        }
+
+      @include media-breakpoint-down(md) {
+        width: 100%;
+      }
+      .footer-link {
+        padding: 0;
+      }
+    }
+
+  }
+}

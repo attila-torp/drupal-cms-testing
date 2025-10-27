@@ -1,0 +1,56 @@
+<section class="layout layout-357" data-bs-theme="{{ componentTheme }}">
+    {% if sectionIntroHeading %}
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="section-intro {% if centered %} text-center {% endif %}">
+                                {% include '../../../molecules/Content/Content.twig' with {
+                                    heading: sectionIntroHeading,
+                                    headingSize: 'h2',
+                                    eyebrow: sectionIntroEyebrow,
+                                    text: sectionIntroText,
+                                    ctas: false
+                                } %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    {% endif %}
+    <div class="layout357-wrapper">
+        {% for feature in features %}
+            <div id="{{ feature.anchor_id }}" class="layout357-anchor"></div>
+            <div class="layout357-content-item content-item-{{ loop.index }}">
+
+                <div class="container">
+                        <a href="#{{ feature.anchor_id }}" class="sticky">
+                            <span class="anchor-number">{{ "%02d"|format(loop.index) }}</span>{{ feature.title }}
+                        </a>
+
+                    <div class="row row-content">
+                        <div class="col-md-6 mb-4 mb-md-0">
+                            {% include '../../../molecules/Content/Content.twig' with {
+                                heading: feature.heading,
+                                headingSize: 'h2',
+                                eyebrow: feature.eyebrow,
+                                text: feature.text,
+                                ctas: feature.ctas } %}
+                        </div>
+                        <div class="col-md-6">
+                            {% if feature.image %}
+                                <div class="media">
+                                    {% include '../../../atoms/Image/Image.twig'  with {
+                                        image: feature.image.src,
+                                        imageAlt: feature.image.alt,
+                                        background: false,
+                                    } %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        {% endfor %}
+    </div>
+
+</section>

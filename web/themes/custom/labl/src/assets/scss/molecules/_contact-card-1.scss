@@ -1,0 +1,73 @@
+.card.contact-card-1 {
+  background: none;
+  position: relative;
+  border: 0 solid var(--theme-ui-border);
+  max-width: 768px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--spacing-08);
+
+  h3 {
+    text-transform: capitalize;
+    margin-bottom: var(--spacing-03);
+  }
+
+  .type {
+    margin-bottom: var(--spacing-04);
+    @include media-breakpoint-up(md) {
+      margin-bottom: var(--spacing-05);
+    }
+
+    .icon {
+      color: var(--theme-primary-icon);
+    }
+  }
+
+  p {
+    margin-bottom: var(--spacing-03);
+  }
+
+  a {
+    color: var(--theme-typography-color-body);
+    font-size: var(--step-0);
+    line-height: 150%;
+    margin-bottom: 0;
+
+    .icon {
+      color: var(--theme-primary-icon);
+      transition: transform 0.3s ease-out;
+    }
+
+    &:has(.icon) {
+      padding-top: var(--spacing-05);
+    }
+
+    &:hover {
+      transform: scale(1.01);
+
+      .icon {
+        transform: translateX(4px);
+      }
+    }
+  }
+
+  .card-body {
+    padding: 0;
+
+    &.text-center {
+      p, a {
+        justify-self: center;
+      }
+    }
+  }
+
+  &.card-large {
+    h3 {
+      margin-bottom: var(--spacing-05);
+    }
+
+    p {
+      margin-bottom: var(--spacing-06);
+    }
+  }
+}

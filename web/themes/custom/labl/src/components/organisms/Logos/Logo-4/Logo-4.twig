@@ -1,0 +1,30 @@
+<section class="logos logos-4" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-5">
+                {% if sectionIntroHeading %}
+                    <div class="section-intro">
+                        {% include '../../../molecules/Content/Content.twig' with {
+                            heading: sectionIntroHeading,
+                            headingSize: 'h2',
+                            eyebrow: sectionIntroEyebrow,
+                            text: sectionIntroText,
+                            ctas: sectionIntroCtas
+                        } %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="col-md-6 col-lg-7">
+                <div class="d-flex flex-wrap logos">
+                    {% for logo in logos %}
+                        {% include '../../../atoms/Logo/Logo.twig' with {
+                            image: logo.image,
+                            imageAlt: logo.imageAlt,
+                            imageUrl: logo.logoUrl,
+                            background: background } %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+</section>

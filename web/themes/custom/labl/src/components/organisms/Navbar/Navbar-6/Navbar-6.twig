@@ -1,0 +1,86 @@
+<nav class="navbar navbar-6 navbar-expand-lg bg-white shadow-sm py-3">
+    <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand fw-bold text-dark" href="/">
+            {{ site_name|default('MySite') }}
+        </a>
+
+        <!-- Mobile toggle -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar content -->
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                {% for item in navItems %}
+                    {% if item.children is defined and item.children|length %}
+                        <!-- Dropdown -->
+                        <li class="nav-item dropdown position-static">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                               aria-expanded="false">
+                                {{ item.label }}
+                            </a>
+                            <div class="dropdown-menu w-100 mt-0 border-0 shadow-lg">
+                                <div class="container">
+                                    <div class="row">
+                                        <!-- Link columns -->
+                                        <div class="col-md-8">
+                                            <div class="row flex-column {% if item.children|length > 3 %}two-col-layout{% endif %}">
+                                                {% for child in item.children %}
+                                                    <div class="">
+                                                        <a href="{{ child.url }}" class="text-decoration-none d-block">
+                                                            <div class="fw-semibold text-dark">{{ child.label }}</div>
+                                                            {% if child.description %}
+                                                                <small class="text-muted d-block">{{ child.description }}</small>
+                                                            {% endif %}
+                                                        </a>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+
+                                        <!-- Featured asset -->
+                                        <div class="col-md-4 d-none d-md-block">
+                                            <div class="p-3">
+                                                <p class="h6">Featured asset</p>
+                                                {% if item.featured_image %}
+                                                    {% include '../../../atoms/Image/Image.twig'  with {
+                                                        image: item.featured_image.src,
+                                                        imageAlt: item.featured_image.alt,
+                                                        background: false,
+                                                    } %}
+                                                {% endif %}
+
+                                                {% include '../../../molecules/Content/Content.twig' with {
+                                                    heading: item.featured_title,
+                                                    headingSize: 'h5',
+                                                    eyebrow: false,
+                                                    text: item.featured_text,
+                                                    ctas: item.featured_ctas,
+                                                    subscribe: false } %}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    {% else %}
+                        <!-- Regular link -->
+                        <li class="nav-item">
+                            <a class="nav-link {% if current_url == item.url %}active{% endif %}" href="{{ item.url }}">
+                                {{ item.label }}
+                            </a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+
+            <div class="d-flex gap-2">
+                    <a href="/contact" class="button button--primary">Contact</a>
+            </div>
+        </div>
+    </div>
+</nav>

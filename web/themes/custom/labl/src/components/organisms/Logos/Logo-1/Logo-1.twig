@@ -1,0 +1,28 @@
+<section class="logos logos-1" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        {% if sectionIntroHeading %}
+            <div class="row">
+                <div class="col-md-10 col-lg-8 {% if centered or background %}mx-auto{% endif %}">
+                    <div class="section-intro {% if centered or background %} text-center {% endif %}">
+                        {% include '../../../molecules/Content/Content.twig' with {
+                            heading: sectionIntroHeading,
+                            headingSize: 'h6',
+                            eyebrow: sectionIntroEyebrow,
+                            text: sectionIntroText
+                        } %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="d-flex flex-wrap logos {% if centered or background %}justify-content-center{% endif %}">
+            {% for logo in logos %}
+                {% include '../../../atoms/Logo/Logo.twig' with {
+                    image: logo.image,
+                    imageAlt: logo.imageAlt,
+                    imageUrl: logo.logoUrl,
+                    background: background } %}
+            {% endfor %}
+        </div>
+    </div>
+</section>

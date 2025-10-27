@@ -1,0 +1,43 @@
+<section class="layout layout-351" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        {% if sectionIntroHeading %}
+            <div class="section-heading row {% if not leftAlign %}justify-content-center {% endif %}">
+                <div class="col-12 col-md-8 col-xl-7 {% if not leftAlign %} text-center {% endif %}">
+                    {% include '../../../molecules/Content/Content.twig' with {
+                        heading: sectionIntroHeading,
+                        headingSize: 'h2',
+                        eyebrow: sectionIntroEyebrow,
+                        text: sectionIntroText,
+                        ctas: sectionIntroCtas
+                    } %}
+                </div>
+            </div>
+        {% endif %}
+        <div class="row">
+            <div class="col-12">
+
+                <div class="horizontal-accordion" id="horizontalAccordion">
+
+                    {% for feature in features %}
+                    <div class="accordion-section active" data-panel>
+                        <button class="accordion-toggle"><span class="tab-number">{{ loop.index }}</span>{{ feature.title}} </button>
+                        <div class="accordion-content">
+                            {% include '../../../molecules/Content/Content.twig' with {
+                                heading: feature.heading,
+                                headingSize: feature.headingSize,
+                                eyebrow: feature.eyebrow,
+                                text: feature.text,
+                                ctas: feature.ctas,
+                                logoTop: feature.logoTop,
+                                logoBottom: feature.logoBottom,
+                            } %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,15 @@
+<div class="accordion-item {% if border %}has-border{% endif %}">
+    <div class="border-wrapper">
+        <h3 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#{{ itemID }}" aria-expanded="false" aria-controls="{{ itemID }}">
+                {{ heading }}
+            </button>
+        </h3>
+        <div id="{{ itemID }}" class="accordion-collapse collapse" data-bs-parent="#{{ accordionID }}">
+            <div class="accordion-body">
+                {{ content }}
+            </div>
+        </div>
+    </div>
+</div>

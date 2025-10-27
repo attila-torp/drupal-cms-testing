@@ -1,0 +1,61 @@
+{% set headingSize = headingSize %}
+
+{%  if not headingSize %}
+    {% set headingSize = 'h2' %}
+{% endif %}
+<div class="content">
+
+    <!-- Logo Top -->
+    {% if logoTop %}
+            <div class="content-logo logo-top">
+                {% include '../../atoms/Image/Image.twig'  with {
+                    image: logoTop.src,
+                    imageAlt: logoTop.alt,
+                    background: false,
+                } %}
+            </div>
+    {% endif %}
+
+    <div class="content-text">
+        {% if contentIcon %}<i class="bx {{contentIcon}}"></i>{% endif %}
+        {% if eyebrow %}<p class="eyebrow">{{ eyebrow }}</p>{% endif %}
+        {% if heading %}<h2 class="{{ headingSize }}">{{ heading }}</h2>{% endif %}
+        {% if text %}<div class="wysiwyg-content {% if iconBullets %}icon-bullets{% endif %}">{{ text }}</div>{% endif %}
+
+        {% if twoColText not null %}
+            <div class="two-col-layout">
+                {% for col in twoColText %}
+                <div class="col">
+                    <div class="wysiwyg-content">{{ col }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+    <!-- CTA Group -->
+    {% if ctas %}
+        <div class="content-ctas">
+            {% if ctas %}
+                {% include '../CTA-Group/CTA-Group.twig' with {ctas: ctas } %}
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <!-- Logo Bottom -->
+    {% if logoBottom %}
+            <div class="content-logo logo-bottom">
+                {% include '../../atoms/Image/Image.twig'  with {
+                    image: logoBottom.src,
+                    imageAlt: logoBottom.alt,
+                    background: false,
+                } %}
+            </div>
+    {% endif %}
+
+    <!--Forms -->
+    {% if subscribe %}
+        <div class="content-form">
+            {% include '../../molecules/Form-Subscribe/Form-Subscribe.twig' %}
+        </div>
+    {% endif %}
+</div>

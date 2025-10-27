@@ -1,0 +1,20 @@
+<label for="{{ inputId }}">{{ label }}</label>
+<div class="input-group">
+    {% if preInputText %}
+        <span class="input-group-text">{{ preInputText }}</span>
+    {% endif %}
+    {% if preInputIcon %}
+        <span class="input-group-text"><i class="bx {{ preInputIcon }}"></i></span>
+    {% endif %}
+
+    <input type="{{ type }}" class="form-control {% if preInputIcon %}border-start-0{% endif %} {% if postInputIcon %}border-end-0{% endif %}" id="{{ inputId }}"
+           placeholder="{{ placeholder }}" {% if disabled %} disabled {% endif %}>
+
+    {% if postInputIcon %}
+        <span class="input-group-text"><i class="bx {{ postInputIcon }}"></i></span>
+    {% endif %}
+
+</div>
+<div class="invalid-feedback">
+    {{ invalidText }}
+</div>

@@ -1,0 +1,50 @@
+<section class="gallery gallery-20" data-bs-theme="{{ componentTheme }}">
+    {% if sectionIntroHeading %}
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-intro {% if centered %} text-center {% endif %}">
+                        {% include '../../../molecules/Content/Content.twig' with {
+                            heading: sectionIntroHeading,
+                            haadingSize: 'h2',
+                            eyebrow: sectionIntroEyebrow,
+                            text: sectionIntroText,
+                            ctas: false
+                        } %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {% if galleryItems %}
+        <div class="container overflow-visible g-0 g-md-4">
+            <div class="gallery20-carousel"
+                 data-slick='{"slidesToShow": 4, "initialSlide": 2}'
+                 data-slick-1200='{"slidesToShow": 2, "initialSlide": 1}'
+                 data-slick-300='{"slidesToShow": 1, "initialSlide": 0}'
+            >
+                {% for item in galleryItems %}
+
+                    {% if item.image %}
+                        <div>
+                            <div class="gallery-image">
+                                {% include '../../../atoms/Image/Image.twig'  with {
+                                    image: item.image.src,
+                                    imageAlt: item.image.alt,
+                                    background: false,
+                                } %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                {% endfor %}
+            </div>
+
+            <div class="row">
+                <div class="slider-controls"></div>
+            </div>
+        </div>
+
+    {% endif %}
+
+</section>

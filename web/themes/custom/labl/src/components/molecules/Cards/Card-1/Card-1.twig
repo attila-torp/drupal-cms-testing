@@ -1,0 +1,65 @@
+
+    <div class="card card-1 {% if hasBorder %}has-border {% endif %} {% if horizontal %} horizontal {% else %} h-100 {% endif %} {% if not leftAlign %}mx-auto text-center {% endif %}">
+        {% if horizontal and image %}
+        <div class="row no-gutters">
+            <div class="col-md-4 col-xl-6">
+                {% endif %}
+
+                {% if image and horizontal %}
+                    <div class="card-bg-img horizontal">
+                        {% include '../../../atoms/Image/Image.twig'  with {
+                            image: image,
+                            background: true
+                        } %}
+                    </div>
+                {% else %}
+                    <div class="card-bg-img">
+                        {% include '../../../atoms/Image/Image.twig'  with {
+                            image: image,
+                            background: true,
+                            ratio: '16x9'
+                        } %}
+                    </div>
+                {% endif %}
+
+                {% if horizontal and image %}
+            </div>
+            {% endif %}
+
+            {% if horizontal and image %}
+            <div class="col-md-8 col-xl-6">
+                {% endif %}
+                {% if cardIcon and cardIconInline %}
+                <div class="d-flex gap-4">
+                    <i class="bx bx-md {{ cardIcon }}"></i>
+                    <div class="card-inline-wrapper">
+                        {% endif %}
+
+                        <div class="card-body {% if not leftAlign %}mx-auto text-center {% endif %}">
+                            {% if cardIcon and not cardIconInline %}<i class="bx bx-md {{ cardIcon }}"></i>{% endif %}
+                            {% if cardEyebrow %}<p class="eyebrow">{{ cardEyebrow }}</p>{% endif %}
+                            {% if cardUrl not ctas %}<a href="{{ cardUrl }}" class="stretched-link">{% endif %}
+                                <h3 class="card-title {{ cardHeadingSize }}">{{ cardHeading }}</h3>
+                                {% if cardUrl not ctas %}</a>{% endif %}
+                            <p class="card-subtitle text-md">{{ cardSubHeading }}</p>
+                            <div class="card-text">{{ cardText }}</div>
+                        </div>
+                        {% if ctas %}
+                            <div class="card-footer">
+                                <!-- CTA Group -->
+                                <div class="content-ctas">
+                                    {% include '../../../molecules/CTA-Group/CTA-Group.twig' with {ctas: ctas } %}
+                                </div>
+                            </div>
+                        {% endif %}
+
+                        {% if cardIcon and cardIconInline %}
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if horizontal and image %}
+            </div>
+        </div>
+        {% endif %}
+    </div>

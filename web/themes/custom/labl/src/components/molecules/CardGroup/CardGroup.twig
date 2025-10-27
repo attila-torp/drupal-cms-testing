@@ -1,0 +1,5 @@
+<div class="card-group">
+    {% for card in cards %}
+        {% include '../../molecules/Cards/Blog-Card-1/Blog-Card-1.twig' with {cardHeading: 'heading', cardtext: 'text here' } %}
+    {% endfor %}
+</div>

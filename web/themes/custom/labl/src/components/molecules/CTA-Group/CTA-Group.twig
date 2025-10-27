@@ -1,0 +1,5 @@
+<div class="cta-group">
+    {% for cta in ctas %}
+        {% include '../../atoms/Button/Button.twig' with {label: cta.label, primary: cta.primary, type: cta.type, outline: cta.outline, icon: cta.icon, buttonHref: cta.buttonHref, linkButton: true } %}
+    {% endfor %}
+</div>

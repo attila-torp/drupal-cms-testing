@@ -1,0 +1,58 @@
+<section class="team team-10" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        <div class="section-heading row {% if not leftAlign %}justify-content-center {% endif %}">
+            <div class="col-12 col-md-8 col-xl-7 {% if not leftAlign %} text-center {% endif %}">
+                {% include '../../../molecules/Content/Content.twig' with {
+                    heading: sectionIntroHeading,
+                    headingSize: 'h2',
+                    eyebrow: sectionIntroEyebrow,
+                    text: sectionIntroText,
+                    ctas: sectionIntroCtas
+                } %}
+            </div>
+        </div>
+    </div>
+    {% if team %}
+        <div class="container-fluid">
+            <div class="container">
+                <div class="row">
+                    <div id="{{ carouselId }}" class="team-group carousel">
+                        {% for item in team %}
+                            <div class="col-xs-12 col-sm-6 col-md-4">
+                                {% include '../../../molecules/Cards/Team-Card-1/Team-Card-1.twig' with {
+                                    cardUrl: item.cardUrl,
+                                    cardHeading: item.heading,
+                                    cardSubHeading: item.subHeading,
+                                    cardText: item.content,
+                                    image: item.image,
+                                    avatar: avatar,
+                                    cardIcons: item.icons
+                                } %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="slider-controls">
+                        <div class="slider-arrows"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {% if sectionFooterHeading %}
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-7 {% if not leftAlign %} mx-auto text-center {% endif %}">
+                    <div class="section-intro {% if centered %} text-center {% endif %}">
+                        {% include '../../../molecules/Content/Content.twig' with {
+                            heading: sectionFooterHeading,
+                            headingSize: 'h4',
+                            text: sectionFooterText,
+                            ctas: sectionFooterCtas
+                        } %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+</section>

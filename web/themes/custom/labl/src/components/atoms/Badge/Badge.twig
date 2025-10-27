@@ -1,0 +1,26 @@
+
+{% set badgeClasses = '' %} 
+
+{% set badgeClasses = 'badge ' %} 
+    {% if primary %}
+        {% set badgeClasses = badgeClasses ~ 'badge--primary '  %}
+    {% else %}
+    {% if theme %}
+        {% set badgeClasses = badgeClasses ~ 'badge--' ~ theme ~ ' ' %}
+    {% else %}
+        {% set badgeClasses = badgeClasses ~ 'badge--secondary ' %}
+    {% endif %}
+    {% endif %}
+    {% if outline %}
+        {% set badgeClasses = badgeClasses ~ 'badge--outline ' %}
+    {% endif %}
+    {% if pill %}
+        {% set badgeClasses = badgeClasses ~ 'rounded-pill ' %}
+    {% endif %}
+    {% if size and size != 'medium' %}
+        {% set badgeClasses = badgeClasses ~ 'badge--' ~ size ~ ' ' %}
+    {% endif %}
+
+<span class="{{ badgeClasses }}">
+    {{ label }}
+</span>

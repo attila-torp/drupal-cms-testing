@@ -1,0 +1,72 @@
+<section class="long-form-content long-form-content-17" data-bs-theme="{{ componentTheme }}">
+    <div class="container d-flex flex-column">
+        {% if sectionIntroHeading %}
+            <div class="row {% if mediaTop %}order-lg-1 {% endif %}">
+                <div class="col-lg-5">
+                    <div class="section-intro">
+                        {% include '../../../molecules/Content/Content.twig' with {
+                            heading: sectionIntroHeading,
+                            headingSize: 'h3',
+                        } %}
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    {% include '../../../molecules/Content/Content.twig' with {
+                        eyebrow: sectionIntroEyebrow,
+                        text: sectionIntroText,
+                        ctas: ctas
+                    } %}
+                    {% if list %}
+                        {% include '../../../molecules/List/List.twig'  with {
+                            listItems: list,
+                        } %}
+                    {% endif %}
+                </div>
+            </div>
+
+        {% endif %}
+        {% if image or video %}
+        <div class="row {% if mediaTop %}order-lg-0 {% endif %}">
+
+            <div class="col-12">
+                <div class="media">
+                    {% if video %}
+                        {% include '../../../atoms/Image/Image.twig'  with {
+                            image: image,
+                            imageAlt: 'some alt text',
+                            video: video,
+                            toggle: 'modal',
+                            target: 'myModal',
+                            background: true,
+                            ratio: '16x9'
+                        } %}
+                    {% else %}
+                        {% include '../../../atoms/Image/Image.twig'  with {
+                            image: image,
+                            background: false
+                        } %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    {% if video %}
+        <div class="modal" tabindex="-1" id="myModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        {% include '../../../atoms/CloseButton/CloseButton.twig' %}
+                    </div>
+                    <div class="modal-body">
+                        {% include '../../../atoms/Video/Video.twig'  with {
+                            image: image,
+                            imageAlt: 'some alt text',
+                            video: video,
+                        } %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</section>

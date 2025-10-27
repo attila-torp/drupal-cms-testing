@@ -1,0 +1,46 @@
+<section class="hero-header hero-header-1" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        <div class="hero-content-wrapper row {% if contentBorder %} has-border {% endif %}">
+            <div class="col-lg-6 order-1 mb-5 mb-md-0 position-relative {% if mediaLeft %} media-left {% endif %}">
+                {% include '../../../molecules/Hero-Content/Hero-Content.twig' with {
+                    heroHeading: heroHeading,
+                    heroEyebrow: false,
+                    heroText: heroText,
+                    heroCtas: ctas,
+                    heroSubscribe: subscribeForm,} %}
+
+            </div>
+
+            <div class="col-lg-6 g-md-0 order-2 {% if mediaLeft %} order-lg-0 pe-3 {% endif %}">
+                {% include '../../../atoms/Image/Image.twig'  with {
+                    image: image,
+                    imageAlt: 'some alt text',
+                    video: video,
+                    toggle: 'modal',
+                    target: 'myModal',
+                    background: true,
+                    ratio: '1x1'
+                } %}
+            </div>
+        </div>
+    </div>
+
+    {% if video %}
+        <div class="modal" tabindex="-1" id="myModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        {% include '../../../atoms/CloseButton/CloseButton.twig'%}
+                    </div>
+                    <div class="modal-body">
+                        {% include '../../../atoms/Video/Video.twig'  with {
+                            image: image,
+                            imageAlt: 'some alt text',
+                            video: video,
+                        } %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</section>

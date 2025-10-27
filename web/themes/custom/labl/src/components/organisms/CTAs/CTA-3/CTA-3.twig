@@ -1,0 +1,37 @@
+<div class="ctas cta-3 {% if hasBorder %}has-border{% endif %} {% if not bgImage %}bg-solid {% endif %}" data-bs-theme="{{ componentTheme }}">
+    {% if hasBorder %}<div class="border-wrapper">{% endif %}
+    {% if bgImage %}
+        {% include '../../../atoms/Image/Image.twig'  with {
+            image: bgImage,
+            background: true
+        } %}
+        <div class="overlay"></div>
+    {% endif %}
+    <div class="container">
+        <div class="cta-content row">
+            <div class="{% if contentCentered %} offset-md-3 offset-lg-2 col-md-6 col-lg-8 text-center {% else %} col-lg-7 {% endif %}">
+                {% include '../../../molecules/Content/Content.twig' with {
+                    heading: heading,
+                    headingSize: 'h2',
+                    eyebrow: eyebrow,
+                    text: text,
+                    ctas: ctas,
+                    subscribe: subscribeForm } %}
+            </div>
+        </div>
+        {% if image %}
+            <div class="row">
+                <div class="col-12">
+                    <div class="media">
+                        {% include '../../../atoms/Image/Image.twig'  with {
+                            image: image,
+                            imageAlt: imageAlt,
+                            background: false
+                        } %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <div>
+            {% if hasBorder %}</div> {% endif %}
+            <div>

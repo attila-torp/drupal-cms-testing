@@ -1,0 +1,46 @@
+// grid breakpoints.
+
+$grid-gutter-width: 1.5rem !default;
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1300px,
+  xxl: 1440px,
+  xxxl: 1680px,
+  xxxxl: 1920px
+);
+
+$container-max-widths: (
+  xs: 538px,
+  sm: 540px,
+  md: 738px,
+  lg: 960px,
+  xl: 1176px,
+  xxl: 1312px,
+  xxxl: 1552px,
+  xxxxl: 1792px
+);
+
+// Font Weights
+$font-weight-lighter:         lighter;
+$font-weight-light:           300;
+$font-weight-normal:          400;
+$font-weight-medium:          500;
+$font-weight-semibold:        600;
+$font-weight-bold:            700;
+$font-weight-bolder:          bolder;
+
+// Breadcrumbs
+
+$breadcrumb-divider: quote("/");
+
+// Accordion
+$accordion-border-radius: 0;
+$accordion-inner-border-radius: 0;
+$accordion-icon-color-dark: #FFF;
+$accordion-button-icon:         url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 25' fill='none' stroke='#{$accordion-icon-color}' stroke-linecap='round' stroke-linejoin='round'><path d='M16.293 8.79297L12 13.086L7.70697 8.79297L6.29297 10.207L12 15.914L17.707 10.207L16.293 8.79297Z' fill='#{$accordion-icon-color}'/></svg>");
+$accordion-button-active-icon:         url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 25' fill='none' stroke='#{$accordion-icon-color}' stroke-linecap='round' stroke-linejoin='round'><path d='M16.293 8.79297L12 13.086L7.70697 8.79297L6.29297 10.207L12 15.914L17.707 10.207L16.293 8.79297Z' fill='#4C1D95'/></svg>");
+$accordion-button-icon-dark:         url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 25' fill='none' stroke='#{$accordion-icon-color-dark}' stroke-linecap='round' stroke-linejoin='round'><path d='M16.293 8.79297L12 13.086L7.70697 8.79297L6.29297 10.207L12 15.914L17.707 10.207L16.293 8.79297Z' fill='#{$accordion-icon-color-dark}'/></svg>");
+$accordion-button-active-icon-dark:         url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 25' fill='none' stroke='#{$accordion-icon-color-dark}' stroke-linecap='round' stroke-linejoin='round'><path d='M16.293 8.79297L12 13.086L7.70697 8.79297L6.29297 10.207L12 15.914L17.707 10.207L16.293 8.79297Z' fill='#{$accordion-icon-color-dark}'/></svg>");

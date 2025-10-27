@@ -1,0 +1,28 @@
+{% set colTotal = accordionItems|length / 2 %}
+{% set colNum = 1 %}
+{% if accordionItems %}
+    <div class="accordion {% if multiCol %}row {% endif %}" id="{{ accordionID }}">
+        {% if multiCol %}  <div class="col d-flex flex-column">{% endif %}
+
+            {% for key, item in accordionItems %}
+
+            {% if multiCol %}
+            {% if loop.index > colTotal|round and colNum < 2 %}
+        </div>
+        <div class="col d-flex flex-column">
+            {% set colNum = 2 %}
+            {% endif %}
+            {% endif %}
+
+            {% include '../../atoms/AccordionItem/AccordionItem.twig'  with {
+                accordionID: accordionID,
+                itemID: key,
+                heading: item.heading,
+                content: item.content,
+                border: border
+            } %}
+
+            {% endfor %}
+            {% if multiCol %}</div>{% endif %}
+    </div>
+{% endif %}

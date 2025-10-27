@@ -1,0 +1,16 @@
+.navbar.navbar-6 {
+
+  overflow: visible !important;
+
+.navbar-collapse,
+.container-fluid {
+  overflow: visible !important;
+}
+
+/* Make dropdown full-width, positioned manually */
+.nav-item.dropdown.position-static .dropdown-menu {
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+}

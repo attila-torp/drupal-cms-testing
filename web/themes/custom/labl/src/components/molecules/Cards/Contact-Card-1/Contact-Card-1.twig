@@ -1,0 +1,59 @@
+{% set icon = 'envelope' %}
+{% set hSize = 'h6' %}
+{% set iconSize = 'sm' %}
+
+{% if cardLarge %}
+    {% set hSize = 'h4' %}
+    {% set iconSize = 'md' %}
+{% endif %}
+{% if cardType == 'phone' %}
+    {% set icon = 'phone' %}
+{% endif %}
+{% if cardType == 'address' %}
+    {% set icon = 'map' %}
+{% endif %}
+{% if cardType == 'chat' %}
+    {% set icon = 'message-detail' %}
+{% endif %}
+
+<div class="card contact-card-1 {% if cardLarge %}card-large{% endif %}">
+    <div class="card-body type-{{ cardType }} {% if centered %} justify-content-center text-center{% endif %}">
+        <div class="type"><span class="icon bx bx-{{ iconSize }} bx-{{ icon }}"></span></div>
+        <div class="card-info-wrapper">
+            <h3 class="{{ hSize }}">{{ cardTitle }}</h3>
+            <p>{{ cardText }}</p>
+            {% if cardUrl %}
+                {% if cardType == 'email' %}
+                    <a href="mailto:{{ cardUrl }}" class="d-flex">
+                        {{ cardUrlText }}
+                    </a>
+                {% endif %}
+
+                {% if cardType == 'phone' %}
+                    <a href="tel:{{ cardUrl }}" class="d-flex">
+                        {{ cardUrlText }}
+                    </a>
+                {% endif %}
+
+                {% if cardType == 'chat' %}
+                    <a href="#" class=" d-flex">
+                        {{ cardUrlText }}
+                    </a>
+                {% endif %}
+
+                {% if cardType == 'address' %}
+                    {% if cardLarge %}
+                        <a href="#" class=" d-flex">
+                            {{ cardUrlText }}
+                        </a>
+                    {% else %}
+                        <a href="#" class=" d-flex text-decoration-none">
+                            Get Directions <span class="icon bx bx-sm bx-chevron-right"></span>
+                        </a>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+
+</div>

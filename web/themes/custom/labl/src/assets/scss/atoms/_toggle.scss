@@ -1,0 +1,60 @@
+/* The switch - the box around the toggle */
+.toggle-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: var(--sizing-md);
+  margin-right: var(--spacing-03);
+}
+
+/* Hide default HTML checkbox */
+.toggle-wrapper input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The toggle */
+.toggle {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--toggle-background-off-color);
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.toggle:before {
+  position: absolute;
+  content: "";
+  width: var(--sizing-sm);
+  height: var(--sizing-sm);
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .2s;
+}
+
+input:checked + .toggle {
+  background-color: var(--toggle-background-on-color);
+}
+
+input:focus + .toggle {
+  box-shadow: 0 0 1px var(--color-brand-primary);
+}
+
+input:checked + .toggle:before {
+  transform: translateX(var(--sizing-sm));
+}
+
+/* Rounded toggles */
+.toggle.round {
+  border-radius: 50px;
+}
+
+.toggle.round:before {
+  border-radius: 50%;
+}

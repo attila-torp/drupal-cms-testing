@@ -1,0 +1,13 @@
+<div class="card contact-card-3 ">
+    <div class="card-body">
+        <div class="card-info-wrapper">
+            <h3 class="h5">{{ cardTitle }}</h3>
+            <p>{{ cardText }}</p>
+            {% if cardUrl %}
+{#                <a href="#" class="stretched-link d-flex">#}
+                    <span class="cta">{{ cardUrlText }}</span>
+{#                </a>#}
+            {% endif %}
+        </div>
+    </div>
+</div>

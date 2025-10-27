@@ -1,0 +1,42 @@
+<footer class="footer-4" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        <nav class="row">
+            <div class="col-lg-3 logo-col">
+                <a href="/" class="d-flex logo align-items-center link-body-emphasis text-decoration-none justify-content-center justify-content-lg-start">
+                    <i class="bx bxl-dev-to bx-md"></i>
+                </a>
+
+
+            </div>
+            <div class="nav-col col-lg-6 text-center justify-content-center d-flex align-items-lg-center">
+                <ul class="nav flex-column flex-lg-row">
+                    <li class="nav-item"><a href="#" class="footer-link">Home</a></li>
+                    <li class="nav-item"><a href="#" class="footer-link">Features</a>
+                    </li>
+                    <li class="nav-item"><a href="#" class="footer-link">Pricing</a>
+                    </li>
+                    <li class="nav-item"><a href="#" class="footer-link">FAQs</a></li>
+                    <li class="nav-item"><a href="#" class="footer-link">About</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3  d-flex align-items-lg-center justify-content-center justify-content-lg-end">
+                {% include '../../../molecules/Icons-Group/Icons-Group.twig' with {
+                    alignGroup: 'end', icons: iconsNav, column: false, iconOnly: true} %}
+            </div>
+
+        </nav>
+
+        <div class="row footer-base border-light-subtle border-top d-flex">
+            <div class="col-12 text-center d-flex align-content-center justify-content-center flex-column flex-lg-row">
+                <ul class="nav order-0 order-lg-1">
+                    <li class="nav-item"><a href="#" class="footer-link">Privacy Policy</a></li>
+                    <li class="nav-item"><a href="#" class="footer-link">Terms of Service</a></li>
+                    <li class="nav-item"><a href="#" class="footer-link">Cookies Settings</a></li>
+                </ul>
+                <p class="text-sm order-1 order-lg-0">© 2024 Torpedo. All rights reserved.</p>
+
+            </div>
+        </div>
+    </div>
+</footer>

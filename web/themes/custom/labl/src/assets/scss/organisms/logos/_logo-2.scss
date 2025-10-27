@@ -1,0 +1,37 @@
+.logos.logos-2 {
+
+  padding: var(--spacing-09) 0;
+  @include media-breakpoint-up(sm) {
+    padding: var(--spacing-12) 0;
+  }
+
+  .section-intro {
+    margin-bottom: var(--spacing-06);
+    @include media-breakpoint-up(md) {
+      margin-bottom: var(--spacing-09);
+    }
+  }
+
+  .logos {
+    @include media-breakpoint-down(md) {
+      justify-content: center;
+    }
+
+    column-gap: var(--spacing-03);
+    &:not(:has(.has-background)) {
+      column-gap: var(--spacing-09);
+    }
+
+   .logo {
+     margin-bottom: var(--spacing-06);
+     &.has-background {
+       margin-bottom: var(--spacing-03);
+
+       max-width: calc(50% - var(--spacing-03));
+       @include media-breakpoint-up(md) {
+         max-width: calc(33.33% - (.75* var(--spacing-03)));
+       }
+     }
+   }
+  }
+}

@@ -1,0 +1,41 @@
+import { Meta, Title } from '@storybook/addon-docs';
+
+<Meta title="Docs/Component Themes" />
+
+# Component Themes
+
+We set the theme on a Component by applying a `data-bs-theme` attribute to the containing element, this usually being the `<section>` tag.
+e.g.
+```
+<section class="testimonial" data-bs-theme="dark" >
+  ... component code here ...
+</section>
+```
+
+For the purposes of this default Design System we have 2 themes set up, light and dark, but it has been known for sites to have up to 8 different theme options,
+which is why using the CSS variable approach to theming is the simplest and quickest way to add additional themes quickly.
+
+By using CSS variable/Token for the values of styles it means we can dynamically change these values based on the theme set on the component, without requiring any additional classes or logic.
+
+## Exporting Themed Tokens
+The CSS2Variables plugin will group the CSS Variables in the correct groups for the light and dark themes as set in Figma by the designers.
+
+You will however need to change the attribute from `[data-theme="Light"]` to `[data-bs-theme="light"]`
+
+Making it lowercase and adding in the -bs namespace the the attribute.
+It is also important to add `:root,`before the light theme declarations so this becomes the default theme used if no theme attribute is found on the component.
+e.g.
+```
+:root, [data-bs-theme="light"] {
+  /* color */
+  --badge-default-solid-default-background-color: var(--theme-secondary-default);
+  --badge-default-solid-default-border-color: var(--theme-secondary-default);
+  ...
+}
+[data-bs-theme="dark"] {
+  --badge-primary-solid-default-background-color: var(--color-violet-100);
+  --badge-primary-solid-default-border-color: var(--color-violet-100);
+  --badge-primary-solid-default-foreground-color: var(--color-violet-800);
+  ...
+}
+```

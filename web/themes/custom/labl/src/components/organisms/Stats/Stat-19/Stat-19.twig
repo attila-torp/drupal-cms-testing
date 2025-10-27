@@ -1,0 +1,52 @@
+<section class="stat stat-19" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        {% if sectionIntroHeading %}
+            <div class="row">
+                <div class="col-md-6 offset-md-3 text-center">
+                    <div class="section-intro {% if centered %} text-center {% endif %}">
+                        {% include '../../../molecules/Content/Content.twig' with {
+                            heading: sectionIntroHeading,
+                            haadingSize: 'h2',
+                            eyebrow: sectionIntroEyebrow,
+                            text: sectionIntroText,
+                            ctas: ctas
+                        } %}
+                    </div>
+                </div>
+            </div>
+
+        {% endif %}
+<div class="row">
+
+    <div class="{% if sidebar %}col-md-8{% else %} col-md-6{% endif %}">
+        {%if image %}
+            {% include '../../../atoms/Image/Image.twig'  with {
+                image: image,
+                imageAlt: imageAlt
+            } %}
+        {% endif %}
+    </div>
+
+    <div class="{% if sidebar %}col-md-4{% else %} col-md-6{% endif %}">
+        {% if cards %}
+            <div class="row row-cols-1 cards">
+                {% for card in cards %}
+                    <div class="col d-flex {% if centered %} justify-content-center{% endif %}">
+                        {% include '../../../molecules/Cards/Stat-Card-1/Stat-Card-1.twig' with {
+                            border: cardBorder,
+                            borderLeft: borderLeftCard,
+                            cardCentered: cardCentered,
+                            cardStat: card.cardStat,
+                            cardHeading: card.cardHeading,
+                            cardText: card.cardText,
+                            statLarge: cardStatLarge } %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+
+</div>
+
+    </div>
+</section>

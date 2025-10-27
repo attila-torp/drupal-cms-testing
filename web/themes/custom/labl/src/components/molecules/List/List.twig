@@ -1,0 +1,10 @@
+{% if listItems %}
+    <ul class="list w-100 d-flex flex-wrap p-0">
+        {% for item in listItems %}
+            {% include '../../atoms/ListItem/ListItem.twig'  with {
+                itemLabel: item.label,
+                itemDesc: item.desc
+            } %}
+        {% endfor %}
+    </ul>
+{% endif %}

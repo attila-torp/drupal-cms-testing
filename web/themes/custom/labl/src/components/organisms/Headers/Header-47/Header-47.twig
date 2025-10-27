@@ -1,0 +1,41 @@
+<div class="header header-47 {% if not video and not image %}bg-solid {% endif %}" data-bs-theme="{{ componentTheme }}">
+    {% if video %}
+        <div class="background-video">
+            {% include '../../../atoms/Video/Video.twig'  with {
+                image: image,
+                imageAlt: 'some alt text',
+                video: video,
+                autoplay: true
+            } %}
+        </div>
+    {% elseif image %}
+        {% include '../../../atoms/Image/Image.twig'  with {
+            image: image,
+            background: true
+        } %}
+    {% endif %}
+    {% if video or image %}
+        <div class="hero-overlay"></div>
+    {% endif %}
+    <div class="container">
+        <div class="hero-content row">
+
+            <div class="col-lg-6 order-1">
+                {% include '../../../molecules/Hero-Content/Hero-Content.twig' with {
+                    heroEyebrow: eyebrow,
+                    heroHeading: heading,
+                } %}
+
+            </div>
+
+            <div class="col-lg-6 order-2">
+                  {% include '../../../molecules/Hero-Content/Hero-Content.twig' with {
+                        heroText: text,
+                        heroCtas: ctas,
+                        heroSubscribe: subscribeForm } %}
+
+            </div>
+
+        </div>
+    </div>
+<div>

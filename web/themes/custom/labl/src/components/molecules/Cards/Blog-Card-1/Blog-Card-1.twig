@@ -1,0 +1,34 @@
+<div class="card-container">
+<div class="card blog-card-1 {% if border %} border-1{% endif %} {% if featured %} featured {% endif %}">
+{#    <div class="card-img card-img-top">#}
+{#        {% include '../../../atoms/Image/Image.twig'  with {#}
+{#            image: image,#}
+{#            imageAlt: 'some alt text',#}
+{#            video: video,#}
+{#            toggle: 'modal',#}
+{#            target: 'myModal',#}
+{#        } %}#}
+{#    </div>#}
+    <div style="background-image:url('{{ image }}')"
+            alt="alt here"
+            class="card-bg-img"></div>
+
+        <div class="card-body">
+            {% include '../../../atoms/Badge/Badge.twig' with {label: cardCategory, primary: true, size: 'tiny' } %}
+            {% if cardUrl %}
+            <a href="#" class="stretched-link">
+                {% endif %}
+                <h3 class="card-title h5">{{ cardHeading }}</h3>
+                {% if cardUrl %}
+            </a>
+            {% endif %}
+            <p class="card-text">{{ cardText }}</p>
+            <div class="author-info d-flex align-items-center">
+                {% include '../../../atoms/Avatar/Avatar.twig' with {firstname: 'John', lastname: 'Smith', image: false } %}
+                <p class="small"><span class="fw-semibold">John Smith</span><br/>11 Jan 2022 &bull; 5 min read</p>
+            </div>
+
+            {#        {% include '../../../atoms/Button/Button.twig' with {label: 'Read more', primary: true, type: 'link', stretchedLink: true } %} #}
+        </div>
+    </div>
+</div>

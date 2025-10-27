@@ -1,0 +1,119 @@
+{% set cardCols = cards|length %}
+{% if cardCols > 3 %}
+    {% set cardCols = 3 %}
+{% endif %}
+<section class="testimonial testimonial-13" data-bs-theme="{{ componentTheme }}">
+    {% if cards|length > 1 %}
+        <div class="container">
+            <div class="row">
+            <div class="testimonial13-carousel">
+                {% for card in cards %}
+                    <div>
+                        <div class="testimonial-item">
+                            <div class="col col-sm-6 g-md-0 order-md-2 d-flex align-items-center  ">
+                                {% include '../../../molecules/Cards/Testimonial-Card-2/Testimonial-Card-2.twig' with {
+                                    rating: card.rating,
+                                    image: card.image,
+                                    quote: card.quote,
+                                    authorFirstName: card.authorFirstName,
+                                    authorLastName: card.authorLastName,
+                                    authorInfo: card.authorInfo,
+                                    authorImage: card.authorImage,
+                                    cardUrl: card.cardUrl,
+                                    border: border,
+                                    leftAlign: true } %}
+                            </div>
+                            <div class="col col-sm-5 col-lg-6 g-md-0 order-1">
+                            {% include '../../../atoms/Image/Image.twig'  with {
+                                image: card.sectionImage.src,
+                                imageAlt: card.sectionImage.alt,
+                                toggle: 'modal',
+                                target: 'myModal',
+                                background: true,
+                                ratio: '1x1'
+                            } %}
+                        </div>
+
+                            {% if card.sectionVideo %}
+                                <div class="modal modal-xl" tabindex="-1" id="myModal">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header border-0">
+                                                {% include '../../../atoms/CloseButton/CloseButton.twig'%}
+                                            </div>
+                                            <div class="modal-body">
+                                                {% include '../../../atoms/Video/Video.twig'  with {
+                                                    image: card.sectionImage.src,
+                                                    imageAlt: card.sectionImage.alt,
+                                                    video: card.sectionVideo,
+                                                } %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                    </div>
+                    </div>
+                {% endfor %}
+            </div>
+            </div>
+
+            <div class="row">
+                <div class="slider-controls">
+                    <div class="slider-dots"></div>
+                    <div class="slider-buttons"></div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="container">
+            <div class="row">
+                {% for card in cards %}
+                    <div class="col-sm-6 g-md-0 order-sm-2 d-flex align-items-center ">
+                        {% include '../../../molecules/Cards/Testimonial-Card-2/Testimonial-Card-2.twig' with {
+                            rating: card.rating,
+                            image: card.image,
+                            quote: card.quote,
+                            authorFirstName: card.authorFirstName,
+                            authorLastName: card.authorLastName,
+                            authorInfo: card.authorInfo,
+                            authorImage: card.authorImage,
+                            cardUrl: card.cardUrl,
+                            border: border,
+                            leftAlign: true } %}
+                    </div>
+                    <div class="col-sm-5 col-lg-6 g-md-0 order-1">
+                        {% include '../../../atoms/Image/Image.twig'  with {
+                            image: card.sectionImage.src,
+                            imageAlt: card.sectionImage.alt,
+                            video: card.sectionVideo,
+                            toggle: 'modal',
+                            target: 'myModal',
+                            background: true,
+                            ratio: '1x1'
+                        } %}
+                    </div>
+
+                    {% if card.sectionVideo %}
+                        <div class="modal modal-xl" tabindex="-1" id="myModal">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header border-0">
+                                        {% include '../../../atoms/CloseButton/CloseButton.twig'%}
+                                    </div>
+                                    <div class="modal-body">
+                                        {% include '../../../atoms/Video/Video.twig'  with {
+                                            image: card.sectionImage.src,
+                                            imageAlt: card.sectionImage.alt,
+                                            video: card.sectionVideo,
+                                        } %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+</section>

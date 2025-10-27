@@ -1,0 +1,47 @@
+<section class="contact contact-5" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="section-intro">
+                    {% if sectionIntroHeading %}
+                        {% include '../../../molecules/Content/Content.twig' with {
+                            heading: sectionIntroHeading,
+                            haadingSize: 'h2',
+                            eyebrow: sectionIntroEyebrow,
+                            text: sectionIntroText
+                        } %}
+                    {% endif %}
+                </div>
+                <div class="row cards d-flex flex-column minimal-cards">
+                    {% for card in cards %}
+                        <div class="col d-flex ">
+                            {% include '../../../molecules/Cards/Contact-Card-1/Contact-Card-1.twig' with {
+                                cardType: card.cardType,
+                                cardTitle: card.cardTitle,
+                                cardText: card.cardText,
+                                cardUrlText: card.cardUrlText,
+                                cardUrl: card.cardUrl, } %}
+                        </div>
+                    {% endfor %}
+                </div>
+                {% if image %}
+                <div class="row">
+
+                    {% include '../../../atoms/Image/Image.twig'  with {
+                        image: image.src,
+                        imageAlt: image.alt,
+                        background: false
+                    } %}
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="col-md-6">
+                {# Form code here #}
+                <form class="placholder-form">
+                    <p>Form here</p>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

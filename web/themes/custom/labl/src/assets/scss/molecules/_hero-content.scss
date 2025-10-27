@@ -1,0 +1,104 @@
+.hero-content {
+  z-index: 1;
+  position: relative;
+p {
+  margin-bottom: var(--spacing-03);
+  @include media-breakpoint-up(md) {
+    margin-bottom: var(--spacing-06);
+  }
+  text-wrap: balance;
+  &.eyebrow {
+    font-weight: $font-weight-semibold;
+    color: var(--theme-typography-color-eyebrow);
+    margin-bottom: var(--spacing-04);
+    @include media-breakpoint-up(md) {
+      margin-bottom: var(--spacing-05);
+
+    }
+  }
+}
+  h1 {
+    margin-bottom: var(--sizing-sm);
+    @include media-breakpoint-up(md) {
+      margin-bottom: var(--spacing-06);
+    }
+    text-wrap: balance;
+  }
+  .cta-group {
+    .button {
+      margin-right: 0.5rem;
+      @include media-breakpoint-down(md) {
+        display: block;
+        width: 100%;
+        margin-bottom: var(--spacing-05);
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .button-link {
+      @include media-breakpoint-down(md) {
+        text-align: center;
+        display: block;
+        margin-bottom: var(--spacing-05);
+      }
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+.hero-content-ctas {
+  &+ .hero-content-form {
+    margin-top: var(--spacing-05);
+  }
+}
+  .hero-content-form {
+    @include media-breakpoint-up(md) {
+      width: 80%;
+    }
+  }
+
+  form {
+    .form-floating {
+      @include media-breakpoint-up(md) {
+        margin-right: var(--spacing-09);
+        flex-grow: 1;
+      }
+    }
+
+    .form-control {
+      width: 100%;
+      margin-bottom: var(--spacing-05);
+      @include media-breakpoint-up(md) {
+        //width: 365px;
+        margin-bottom: 0;
+        display: flex;
+        flex-grow: 1;
+      }
+    }
+
+    button {
+      @include media-breakpoint-down(md) {
+        width: 100%;
+      }
+    }
+
+    margin-bottom: var(--spacing-05);
+  }
+  .text-center {
+    .hero-content-form {
+      display: flex;
+      flex-direction: column;
+      justify-self: center;
+      form {
+        @include media-breakpoint-up(md) {
+          width: 80%;
+        }
+        align-self: center;
+      }
+
+    }
+  }
+}

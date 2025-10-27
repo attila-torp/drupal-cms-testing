@@ -1,0 +1,59 @@
+<div class="layout layout-422 {% if not video and not image %}bg-solid {% endif %}"
+     data-bs-theme="{{ componentTheme }}">
+    {% if video %}
+        <div class="background-video">
+            {% include '../../../atoms/Video/Video.twig'  with {
+                image: image,
+                imageAlt: 'some alt text',
+                video: video,
+                autoplay: true
+            } %}
+        </div>
+    {% elseif image %}
+        {% include '../../../atoms/Image/Image.twig'  with {
+            image: image,
+            background: true
+        } %}
+    {% endif %}
+    {% if video or image %}
+        <div class="hero-overlay"></div>
+    {% endif %}
+    <div class="container">
+        {% if sectionIntroHeading or sectionIntroText or sectionIntroCtas %}
+            <div class="section-heading row {% if not leftAlign %}justify-content-center {% endif %}">
+                    <div class="col-12 col-md-8 col-xl-7 {% if not leftAlign %} text-center {% endif %}">
+                        {% include '../../../molecules/Content/Content.twig' with {
+                            heading: sectionIntroHeading,
+                            headingSize: 'h2',
+                            eyebrow: sectionIntroEyebrow,
+                            text: sectionIntroText,
+                            ctas: sectionIntroCtas
+                        } %}
+                    </div>
+            </div>
+        {% endif %}
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-{{ cardCols }} justify-content-center">
+            {% for card in cards %}
+                <div class="col">
+                    {% include '../../../molecules/Cards/Card-2/Card-2.twig' with {cardEyebrow: card.cardEyebrow, cardHeadingSize: cardHeadingSize, cardHeading: card.cardHeading, cardText: card.cardText, image: card.image, ctas: card.ctas } %}
+                </div>
+            {% endfor %}
+        </div>
+
+
+        {% if sectionFooterHeading or sectionFooterText or sectionFooterCtas %}
+            <div class="section-heading row {% if not leftAlign %}justify-content-center {% endif %}">
+                <div class="col-12 col-md-8 col-xl-7 {% if not leftAlign %} text-center {% endif %}">
+                    {% include '../../../molecules/Content/Content.twig' with {
+                        heading: sectionFooterHeading,
+                        headingSize: 'h2',
+                        eyebrow: sectionFooterEyebrow,
+                        text: sectionFooterText,
+                        ctas: sectionFooterCtas
+                    } %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>

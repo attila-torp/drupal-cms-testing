@@ -1,0 +1,69 @@
+.ctas.cta-3 {
+  display: flex;
+  padding: var(--spacing-10) 0;
+  @include media-breakpoint-up(sm) {
+    padding: var(--section-padding-vertical) 0;
+  }
+  align-items: center;
+  position: relative;
+
+  background: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  &.bg-solid {
+    background-color: var(--section-background-color);
+
+    .content {
+      p.eyebrow {
+        color: var(--theme-typography-color-eyebrow);
+      }
+    }
+  }
+
+  .overlay {
+    background: var(--overlay-gradient);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+  }
+
+  .cta-content + .row {
+    margin-top: var(--spacing-09);
+    @include media-breakpoint-up(lg) {
+      margin-top: var(--spacing-11);
+    }
+  }
+
+  &.has-border {
+    margin: var(--spacing-09) var(--spacing-06);
+    padding: 0;
+    @include media-breakpoint-up(sm) {
+      margin: var(--section-padding-vertical) var(--spacing-10) ;
+    }
+
+    .border-wrapper {
+      padding: var(--spacing-07);
+      @include media-breakpoint-up(lg) {
+        padding: var(--spacing-10);
+      }
+      border: 1px solid var(--theme-ui-border);
+      width: 100%;
+
+    }
+
+    .footer-base {
+      &.border-top {
+        border-top: none !important;
+      }
+
+      padding: 0;
+      @include media-breakpoint-up(lg) {
+        padding: 0;
+      }
+    }
+  }
+}

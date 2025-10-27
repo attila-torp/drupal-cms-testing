@@ -1,0 +1,49 @@
+<section class="hero-header hero-header-23" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        {% if heading or text %}
+        <div class="hero-content row">
+            <div class="g-0 g-md-4 {% if contentCentered %} offset-md-3 offset-lg-2 col-md-6 col-lg-8 text-center {% else %} col-lg-7 {% endif %}">
+                {% include '../../../molecules/Hero-Content/Hero-Content.twig' with {
+                    heroHeading: heading,
+                    heroEyebrow: eyebrow,
+                    heroText: text,
+                    heroCtas: ctas,
+                    heroSubscribe: subscribeForm,
+                    heroSearch: searchForm,
+                } %}
+            </div>
+        </div>
+        {% endif %}
+        {% if video or image %}
+        <div class="row media-row">
+            {% include '../../../atoms/Image/Image.twig'  with {
+                image: image,
+                imageAlt: 'some alt text',
+                video: video,
+                toggle: 'modal',
+                target: 'myModal',
+                background: true,
+                ratio: '16x9'
+            } %}
+        </div>
+        {% endif %}
+    </div>
+    {% if video %}
+        <div class="modal" tabindex="-1" id="myModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        {% include '../../../atoms/CloseButton/CloseButton.twig'%}
+                    </div>
+                    <div class="modal-body">
+                        {% include '../../../atoms/Video/Video.twig'  with {
+                            image: image,
+                            imageAlt: 'some alt text',
+                            video: video,
+                        } %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</section>

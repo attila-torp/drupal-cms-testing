@@ -1,0 +1,17 @@
+<nav class="navbar navbar-23 navbar-expand-md" aria-label="Anchor link navbar example"
+     data-bs-theme="{{ componentTheme }}">
+    <div class="container-fluid">
+        <span class="nav-title">Jump to</span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04"
+                aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation"><span
+                    class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarsExample04">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+
+                {% for link in anchorLinks %}
+                    <li class="nav-item"><a class="nav-link {% if link.current %}active{% endif %}" href="{{ link.linkId }}" aria-current="{% if link.current %}true{% else %}false{% endif %}">{{ link.linkText }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</nav>

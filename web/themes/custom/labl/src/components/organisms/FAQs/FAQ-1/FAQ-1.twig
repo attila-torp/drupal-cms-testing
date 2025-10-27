@@ -1,0 +1,75 @@
+<section class="faq faq-1" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        <div class="section-heading row {% if not leftAlign %}justify-content-center {% endif %}">
+            <div class="col-12 col-md-8 col-xl-7 {% if not leftAlign %} text-center {% endif %}">
+                {% include '../../../molecules/Content/Content.twig' with {
+                    heading: sectionIntroHeading,
+                    headingSize: 'h2',
+                    eyebrow: sectionIntroEyebrow,
+                    text: sectionIntroText,
+                    ctas: sectionIntroCtas
+                } %}
+            </div>
+        </div>
+        {% if faqItems %}
+            <div class="row">
+                <div class="col-12 {% if not leftAlign %}{% if not multiCol %}col-md-8 col-xl-7 {% endif %}mx-auto text-center {% endif %}">
+                    {% if accordion %}
+                        {% include '../../../molecules/Accordion/Accordion.twig' with {
+                            accordionID: 'faqExample',
+                            accordionItems: faqItems,
+                            border: border,
+                            multiCol: multiCol
+                        } %}
+                    {% else %}
+                        <div class="faqs {% if multiCol %}row{% endif %}">
+                            {% set colTotal = faqItems|length / 2 %}
+                            {% set colNum = 1 %}
+
+                            {% if multiCol %}
+                            <div class="col d-flex flex-column">
+                                {% endif %}
+
+                                {% for key, item in faqItems %}
+
+                                {% if multiCol %}
+                                {% if loop.index > colTotal|round and colNum < 2 %}
+                            </div>
+                            <div class="col d-flex flex-column">
+                                {% set colNum = 2 %}
+                                {% endif %}
+                                {% endif %}
+                                <div class="faq-item {% if border %}has-border{% endif %}">
+                                    <h3 class="faq-header">
+                                        {{ item.heading }}
+                                    </h3>
+                                    <div class="faq-body">
+                                        {{ item.content }}
+                                    </div>
+                                </div>
+
+                                {% endfor %}
+
+                                {% if multiCol %}</div>{% endif %}
+                        </div>
+                    {% endif %}
+
+                </div>
+            </div>
+        {% endif %}
+        {% if sectionFooterHeading %}
+            <div class="row">
+                <div class="col-12 col-lg-7 {% if not leftAlign %} mx-auto text-center {% endif %}">
+                    <div class="section-intro {% if centered %} text-center {% endif %}">
+                        {% include '../../../molecules/Content/Content.twig' with {
+                            heading: sectionFooterHeading,
+                            headingSize: 'h4',
+                            text: sectionFooterText,
+                            ctas: sectionFooterCtas
+                        } %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</section>

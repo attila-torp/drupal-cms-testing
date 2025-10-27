@@ -1,0 +1,42 @@
+<footer class="footer-8 {% if hasBorder %}has-border {% endif %}" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        <nav class="row">
+            <div class="col-lg-6 col-xl-8 logo-col flex-column">
+                <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none">
+                    <i class="bx bxl-dev-to bx-md"></i>
+                </a>
+                <ul class="nav">
+                    <li class="nav-item"><a href="#" class="footer-link">Home</a></li>
+                    <li class="nav-item"><a href="#" class="footer-link">Features</a>
+                    </li>
+                    <li class="nav-item"><a href="#" class="footer-link">Pricing</a>
+                    </li>
+                    <li class="nav-item"><a href="#" class="footer-link">FAQs</a></li>
+                    <li class="nav-item"><a href="#" class="footer-link">About</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-6 col-xl-4">
+                <h4 class="h6">Subscribe to our newsletter</h5>
+                <div class="footer-form">
+                    {% include '../../../molecules/Form-Subscribe/Form-Subscribe.twig' %}
+                </div>
+            </div>
+        </nav>
+        <div class="row footer-base border-light-subtle border-top d-flex g-0">
+            <div class="col-md-8 d-flex flex-wrap flex-md-nowrap">
+
+                <ul class="nav">
+                    <li class="nav-item"><a href="#" class="footer-link">Privacy Policy</a></li>
+                    <li class="nav-item"><a href="#" class="footer-link">Terms of Service</a>
+                    </li>
+                    <li class="nav-item"><a href="#" class="footer-link">Cookies Settings</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-4 d-flex justify-content-md-end">
+                <p class="text-sm">© 2024 Torpedo. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+</footer>

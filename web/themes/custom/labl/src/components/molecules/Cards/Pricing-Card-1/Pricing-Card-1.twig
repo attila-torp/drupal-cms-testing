@@ -1,0 +1,36 @@
+<div class="card-container">
+    <div class="card pricing-card-1 ">
+        <div class="card-body">
+            <div class="card-content {% if not cardIcon %}justify-content-center text-center{% endif %}">
+                {% if cardHeading %}
+                    <h3 class="card-title h6">{{ cardHeading }}</h3>
+                {% endif %}
+                {% if cardPrice %}
+                    <p class="card-price h1">{{ cardPrice }}
+                        {% if cardText %}
+                            <span class="card-text">{{ cardText }}</span>
+                        {% endif %}
+                    </p>
+                {% endif %}
+            </div>
+            {% if cardFeatures %}
+                <hr/>
+                <div class="card-features">
+                    <p>Includes:</p>
+                    <ul>
+                        {% for feature in cardFeatures %}
+                            <li><i class="bx bx-check"></i> {{ feature }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+        </div>
+        <div class="card-footer">
+
+            {% include '../../../atoms/Button/Button.twig' with {label: cardCtaText, primary: true, type: 'button', url: cardCtaUrl } %}
+
+        </div>
+
+    </div>
+</div>

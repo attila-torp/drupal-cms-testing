@@ -1,0 +1,59 @@
+<section class="hero-header hero-header-9" data-bs-theme="{{ componentTheme }}">
+    <div class="hero-media">
+        {% if video and not modalVideo %}
+            <div class="background-video">
+                {% include '../../../atoms/Video/Video.twig'  with {
+                    image: image,
+                    imageAlt: 'some alt text',
+                    video: video,
+                    autoplay: true
+                } %}
+            </div>
+        {% else %}
+            {% include '../../../atoms/Image/Image.twig'  with {
+                image: image,
+                imageAlt: 'some alt text',
+                video: video,
+                toggle: 'modal',
+                target: 'myModal',
+                background: true,
+            } %}
+        {% endif %}
+    </div>
+    <div class="container">
+        <div class="hero-content-wrapper row">
+            <div class="col-lg-6 order-1">
+                {% include '../../../molecules/Hero-Content/Hero-Content.twig' with {
+                    heroHeading: 'Medium length hero headline goes here'} %}
+
+            </div>
+
+            <div class="col-lg-6 order-2">
+                {% include '../../../molecules/Hero-Content/Hero-Content.twig' with {
+                    heroEyebrow: false,
+                    heroText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.',
+                    heroCtas: ctas,
+                    heroSubscribe: subscribeForm,} %}
+            </div>
+        </div>
+    </div>
+
+    {% if modalVideo %}
+        <div class="modal" tabindex="-1" id="myModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        {% include '../../../atoms/CloseButton/CloseButton.twig'%}
+                    </div>
+                    <div class="modal-body">
+                        {% include '../../../atoms/Video/Video.twig'  with {
+                            image: image,
+                            imageAlt: 'some alt text',
+                            video: video,
+                        } %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</section>

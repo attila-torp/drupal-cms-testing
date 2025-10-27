@@ -1,0 +1,22 @@
+{% set align = 'justify-content-md-start' %}
+{% if alignGroup is not empty %}
+    {% set align = 'justify-content-md-' ~ alignGroup %}
+{% endif %}
+
+
+
+{% if icons %}
+    <ul class="nav nav-icons {{ align }} {% if column %} flex-column {% endif %}">
+        {% for icon in icons %}
+            <li class="nav-item">
+                <a href="{{ icon.iconHref }}" class="footer-link icon bx {{ icon.name }}">
+                    {% if iconOnly %}
+                    <span class="sr-only">{{ icon.altText }}</span>
+                    {% else %}
+                        {{ icon.altText }}
+                    {% endif %}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}

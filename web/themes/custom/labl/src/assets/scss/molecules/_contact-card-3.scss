@@ -1,0 +1,46 @@
+.card.contact-card-3 {
+  background: none;
+  position: relative;
+  border: 0 solid var(--theme-ui-border);
+  max-width: 768px;
+  display: flex;
+  flex-direction: column;
+  padding-left: var(--spacing-07);
+  border-radius: 0;
+  border-left: 2px solid transparent;
+  transition: border 0.2s ease-in-out;
+
+  h3 {
+    text-transform: capitalize;
+    margin-bottom: var(--spacing-03);
+  }
+
+
+  p {
+    margin-bottom: 0;
+  }
+
+  a, .cta {
+    color: var(--theme-typography-color-body);
+    font-size: var(--step-0);
+    font-weight: $font-weight-semibold;
+    line-height: 150%;
+    margin-bottom: 0;
+    padding-top: var(--spacing-06);
+    text-decoration: none;
+
+  }
+  .cta {
+    display: block;
+  }
+
+  .card-body {
+    padding: 0;
+
+    &.text-center {
+      p, a, .cta {
+        justify-self: center;
+      }
+    }
+  }
+}

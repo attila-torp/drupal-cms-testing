@@ -1,0 +1,154 @@
+// Font import in variables/variables.scss as referred to by CSS variables 
+
+body {
+  font-family: var(--theme-typography-family-body);
+  font-size: var(--theme-typography-scale---step-0);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  color: var(--theme-typography-color-body);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--theme-typography-family-heading);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
+  color: var(--theme-typography-color-headline);
+  margin-bottom: var(--spacing-05)
+}
+
+.h1 {
+  font-size: var(--theme-typography-scale---step-5);
+}
+
+.h2 {
+  font-size: var(--theme-typography-scale---step-4);
+}
+
+.h3 {
+  font-size: var(--theme-typography-scale---step-3);
+}
+
+.h4 {
+  font-size: var(--theme-typography-scale---step-2);
+  line-height: 130%;
+}
+
+.h5 {
+  font-size: var(--theme-typography-scale---step-1);
+  line-height: 140%;
+}
+
+.h6 {
+  font-size: var(--theme-typography-scale---step-0);
+  line-height: 140%;
+}
+
+p {
+  font-family: var(--theme-typography-family-body);
+  font-size: var(--theme-typography-scale---step-0);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  color: var(--theme-typography-color-body);
+
+  &.text-md {
+    font-size: 1.125rem;
+  }
+
+  &.text-sm {
+    font-size: var(--theme-typography-scale---step--1);
+  }
+
+  &.text-xs {
+    font-size: var(--theme-typography-scale---step--1);
+  }
+}
+
+.eyebrow {
+  font-weight: $font-weight-semibold;
+  margin-bottom: var(--spacing-04);
+  color: var(--theme-typography-color-eyebrow);
+  margin-bottom: var(--spacing-03);
+}
+
+.text-muted {
+  color: var(--theme-typography-color-muted) !important;
+
+}
+
+a {
+  color: var(--theme-typography-color-body);
+  font-family: var(--theme-typography-family-body);
+  font-size: var(--step--1);
+  font-weight: $font-weight-normal;
+  line-height: 150%;
+  text-decoration-line: underline;
+
+  &:hover, &:focus {
+    color: var(--theme-typography-color-body-hover);
+  }
+}
+
+ol, ul {
+  font-family: var(--theme-typography-family-body);
+  font-size: var(--theme-typography-scale---step-0);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+
+  li {
+    color: var(--theme-typography-color-body);
+  }
+
+  .icon-bullets & {
+    li {
+      list-style-type: none;
+      position: relative;
+
+      &::before {
+        content: '';
+        width: 1rem;
+        height: 1rem;
+        background-size: contain;
+        background-repeat: no-repeat;
+        position: absolute;
+        left: -1.5rem;
+        top: calc((100% - 1rem) / 2);
+        background-image: var(--icon-bullets-icon);
+      }
+    }
+  }
+}
+
+blockquote {
+  color: var(--theme-typography-color-blockquote);
+  font-size: var(--step-1);
+  font-style: italic;
+  font-weight: $font-weight-normal;
+  line-height: 140%;
+  border-left: 2px solid var(--theme-typography-color-blockquote-border);
+  padding-left: var(--sizing-sm);
+  margin-block: var(--spacing-07);
+}
+
+.figure-caption {
+  border-left: 2px solid var(--theme-typography-color-blockquote-border);
+  padding-left: var(--sizing-sm);
+  margin-block: var(--spacing-03);
+}
+
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important; /* 2 */
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}

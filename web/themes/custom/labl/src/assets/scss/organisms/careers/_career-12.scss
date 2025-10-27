@@ -1,0 +1,22 @@
+.career.career-12 {
+  padding: var(--spacing-09) 0;
+  @include media-breakpoint-up(sm) {
+    padding: var(--spacing-12) 0;
+  }
+  .section-intro {
+    margin-bottom: var(--spacing-06);
+  }
+  .cards {
+    .card.career-card-1 {
+      border-top: solid 1px var(--card-seperator);
+      width: 100%;
+    }
+    .col:last-of-type {
+      .card.career-card-1:not(.has-border) {
+        margin-bottom: 0;
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+    }
+  }
+}

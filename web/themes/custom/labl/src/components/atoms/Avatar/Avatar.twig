@@ -1,0 +1,10 @@
+<div class="avatar">
+    {% if image %}
+        <img src="{{ image }}" alt="{{ firstname }} {{ lastname }}" class="avatar-img">
+    {% else %}
+        <span class="avatar-name">
+                <p class="initial">{{ firstname }}</p>
+                <p class="initial">{{ lastname }}</p>
+        </span>
+    {% endif %}
+</div>

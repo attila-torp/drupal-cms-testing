@@ -1,0 +1,13 @@
+<div class="card-container">
+    <div class="card stat-card-1 {% if border and not borderLeft %} border-1 {% elseif borderLeft %} border-left{% endif %}">
+        <div class="card-body {% if cardCentered %}justify-content-center text-center{% endif %}">
+            <div class="card-stat {% if statLarge %}stat-large{% endif %}">{{ cardStat }}</div>
+            {% if cardHeading %}
+            <h3 class="card-title h5">{{ cardHeading }}</h3>
+            {% endif %}
+            {% if cardText %}
+            <p class="card-text">{{ cardText }}</p>
+            {% endif %}
+        </div>
+    </div>
+</div>

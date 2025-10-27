@@ -1,0 +1,41 @@
+<section class="event-item-header event-item-header-7" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        {% if heading or text %}
+            <div class="hero-content row">
+                <div class="{% if contentCentered %} offset-md-3 offset-lg-2 col-md-6 col-lg-8 text-center {% else %} col-lg-7 text-center text-md-start {% endif %}">
+                    <div class="hero-content-text">
+                        {% if eyebrow %}<p class="eyebrow">{{ eyebrow }}</p>{% endif %}
+                        <h1>{{ heading }}</h1>
+                        {% if text %}
+                            <div class="wysiwyg-content">{{ text }}</div>{% endif %}
+                    </div>
+
+
+                    <div class="event-details-wrapper {% if contentCentered %}justify-content-center {% endif %}">
+                        <div class="event-details">
+                            <span class="date"><i class="bx bx-sm bx-calendar-alt"></i> {{ date }}</span>
+                            <span class="location"><i class="bx bx-sm bx-map"></i> {{ location }}</span>
+                            <span class="speaker"><i class="bx bx-sm bx-user"></i> {{ speaker }}</span>
+                        </div>
+                    </div>
+
+                    <!-- CTA Group -->
+                    {% if ctas %}
+                        <div class="hero-content-ctas">
+                            {% include '../../../molecules/CTA-Group/CTA-Group.twig' with {ctas: ctas } %}
+                        </div>
+                    {% endif %}
+
+                </div>
+            </div>
+        {% endif %}
+        {% if image %}
+            <div class="row media-row">
+                {% include '../../../atoms/Image/Image.twig'  with {
+                    image: image.src,
+                    imageAlt: image.alt,
+                } %}
+            </div>
+        {% endif %}
+    </div>
+</section>

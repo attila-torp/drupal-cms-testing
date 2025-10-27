@@ -1,0 +1,39 @@
+{% set cardCols = cards|length %}
+{% set cardColsMd = 2 %}
+{%  if cardCols > 4 %}
+    {% set cardCols = 4 %}
+{% endif %}
+<section class="contact contact-17" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        {% if sectionIntroHeading %}
+        <div class="row">
+            <div class="col-12">
+                <div class="section-intro {% if centered %} text-center {% endif %}">
+                        {% include '../../../molecules/Content/Content.twig' with {
+                            heading: sectionIntroHeading,
+                            headingSize: 'h2',
+                            eyebrow: sectionIntroEyebrow,
+                            text: sectionIntroText
+                        } %}
+                </div>
+            </div>
+        </div>
+
+        {% endif %}
+
+        <div class="row row-cols-1 row-cols-md-{{ cardColsMd }} row-cols-lg-{{ cardCols }} cards">
+            {% for card in cards %}
+                <div class="col d-flex {% if centered %} justify-content-center{% endif %}">
+                    {% include '../../../molecules/Cards/Contact-Card-1/Contact-Card-1.twig' with {
+                        cardCentered: true,
+                        cardLarge: true,
+                        cardType: card.cardType,
+                        cardTitle: card.cardTitle,
+                        cardText: card.cardText,
+                        cardUrlText: card.cardUrlText,
+                        cardUrl: card.cardUrl, } %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

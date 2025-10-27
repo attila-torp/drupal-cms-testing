@@ -1,0 +1,33 @@
+<div class="card-container">
+    <div class="card event-card-5">
+
+        <div class="row">
+            <div class="col-md-2">
+                <h3 class="card-title h4">{{ eventInfo.date }}</h3>
+            </div>
+            <div class="col-md-5">
+                <h3 class="card-title h4">{{ cardHeading }}</h3>
+                <p class="event-detail"><span class="eyebrow">Time</span> <br/>{{ eventInfo.time }}</p>
+                <p class="event-detail"><span class="eyebrow">Location</span> <br/>{{ eventInfo.location }}</p>
+                <p class="event-detail"><span class="eyebrow">Speaker</span> <br/>{{ eventInfo.speaker }}</p>
+                <p class="event-detail"><span class="eyebrow">Details</span> <br/>{{ eventInfo.details }}</p>
+                <p>
+                    {% include '../../../atoms/Button/Button.twig' with {label: 'View event', buttonHref: cardUrl, primary: true, type: 'link', outline: false, icon: 'bx-chevron-right', linkButton: false } %}
+                </p>
+
+
+            </div>
+            <div class="col-md-5">
+                <div class="card-bg-img">
+                    {% include '../../../atoms/Image/Image.twig'  with {
+                        image: image.src,
+                        background: true,
+                        ratio: '1x1'
+                    } %}
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

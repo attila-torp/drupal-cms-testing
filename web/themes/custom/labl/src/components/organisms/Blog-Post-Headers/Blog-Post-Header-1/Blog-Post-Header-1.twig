@@ -1,0 +1,37 @@
+<section class="blog-post-header blog-post-header-1" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        {% if heading or text %}
+            <div class="hero-content row">
+                <div class="col-lg-7 ">
+                    {% include '../../../atoms/Breadcrumbs/Breadcrumbs.twig' with {
+                    } %}
+                    <h1>{{ heading }}</h1>
+
+                </div>
+            </div>
+            <div class="blog-details-wrapper">
+                <div class="hero-details">
+                    {% include '../../../atoms/Avatar/Avatar.twig' with {firstname: authorFirstName, lastname: authorLastName, image: avatar } %}
+                    <div class="hero-details-name">
+                        <span class="fw-bold">{{ authorFirstName }} {{ authorLastName }}</span>
+                        <span class="date-time">{{ publishedDate }} <span class="separator">&bull;</span> {{ readTime }}</span>
+                    </div>
+                </div>
+
+                <div class="hero-socials">
+                {% include '../../../molecules/Icons-Group/Icons-Group.twig' with {
+                    alignGroup: 'end', icons: iconsNav, iconOnly: true } %}
+                </div>
+
+            </div>
+        {% endif %}
+        {% if image %}
+            <div class="row media-row">
+                {% include '../../../atoms/Image/Image.twig'  with {
+                    image: image.src,
+                    imageAlt: image.alt,
+                } %}
+            </div>
+        {% endif %}
+    </div>
+</section>

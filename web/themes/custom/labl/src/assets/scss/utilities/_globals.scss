@@ -1,0 +1,31 @@
+html {
+  scroll-behavior: smooth;
+}
+
+section, nav, footer {
+  background: var(--section-background-color);
+  overflow: hidden;
+}
+
+img.img-fluid {
+  width: 100%;
+}
+
+i.bx {
+  color: var(--theme-primary-icon);
+}
+
+.cols-2 {
+  columns: 2;
+}
+
+.two-col-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 2rem;                      /* Space between columns */
+  align-items: start;            /* Optional: aligns columns at the top */
+}
+
+.sbdocs-content {
+  max-width: 1440px !important;
+}

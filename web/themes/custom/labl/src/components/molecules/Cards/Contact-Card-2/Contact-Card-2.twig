@@ -1,0 +1,30 @@
+<div class="card contact-card-2">
+    <div class="card-header">
+        {%if image %}
+            {% include '../../../atoms/Image/Image.twig'  with {
+                image: image,
+                imageAlt: imageAlt,
+                background: true
+            } %}
+        {% endif %}
+
+        {% if googleMapLat and googleMapLng %}
+            {% include '../../../atoms/GoogleMap/GoogleMap.twig' with {
+                gmLat: googleMapLat,
+                gmLng: googleMapLng,
+                gmZoom: googleMapZoom,
+                gmapID: googleMapID
+            } %}
+        {% endif %}
+    </div>
+    <div class="card-body {% if centered %}justify-content-center text-center{% endif %}">
+            <h3 class="h4">{{ cardTitle }}</h3>
+            <p>{{ cardText }}</p>
+            {% if cardUrl %}
+                    <a href="#" class=" d-flex text-decoration-none">
+                        {{ cardUrlText }} <span class="icon bx bx-sm bx-chevron-right"></span>
+                    </a>
+            {% endif %}
+    </div>
+
+</div>

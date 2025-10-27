@@ -1,0 +1,58 @@
+<footer class="footer-1 {% if hasBorder %}has-border {% endif %}" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        <nav class="row g-0 g-md-4">
+            <div class="col-lg-5">
+                <a href="/" class="d-flex align-items-center link-body-emphasis text-decoration-none logo ">
+                    <i class="bx bxl-dev-to bx-md"></i>
+                </a>
+                <p>Monthly digest of what's new and exciting from us.</p>
+                <div class="footer-form">
+                    {% include '../../../molecules/Form-Subscribe/Form-Subscribe.twig' %}
+                </div>
+            </div>
+            <div class="nav-col col-md-6 col-lg-2 offset-lg-1">
+                <h5>Column One</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a href="#" class="footer-link">Home</a></li>
+                    <li class="nav-item"><a href="#" class="footer-link">Features</a>
+                    </li>
+                    <li class="nav-item"><a href="#" class="footer-link">Pricing</a>
+                    </li>
+                    <li class="nav-item"><a href="#" class="footer-link">FAQs</a></li>
+                    <li class="nav-item"><a href="#" class="footer-link">About</a></li>
+                </ul>
+            </div>
+            <div class="nav-col col-md-6 col-lg-2">
+                <h5>Column Two</h5>
+                <ul class="nav flex-column">
+                    <li class="nav-item"><a href="#" class="footer-link">Home</a></li>
+                    <li class="nav-item"><a href="#" class="footer-link">Features</a>
+                    </li>
+                    <li class="nav-item"><a href="#" class="footer-link">Pricing</a>
+                    </li>
+                    <li class="nav-item"><a href="#" class="footer-link">FAQs</a></li>
+                    <li class="nav-item"><a href="#" class="footer-link">About</a></li>
+                </ul>
+            </div>
+            <div class="nav-col col-md-6 col-lg-2">
+                <h5>Follow Us</h5>
+                {% include '../../../molecules/Icons-Group/Icons-Group.twig' with {
+                    alignGroup: 'start', icons: iconsNav, column: true, iconOnly: false} %}
+            </div>
+
+        </nav>
+        <div class="row footer-base border-light-subtle border-top d-flex">
+            <div class="col-lg-8 order-lg-1">
+                <ul class="nav order-0 order-md-1 justify-content-md-end">
+                    <li class="nav-item"><a href="#" class="footer-link">Privacy Policy</a></li>
+                    <li class="nav-item"><a href="#" class="footer-link">Terms of Service</a></li>
+                    <li class="nav-item"><a href="#" class="footer-link">Cookies Settings</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 d-flex flex-wrap flex-lg-nowrap order-lg-0">
+                <p class="text-sm order-1 order-lg-0">© 2024 Torpedo. All rights reserved.</p>
+
+            </div>
+        </div>
+    </div>
+</footer>

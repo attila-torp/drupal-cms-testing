@@ -1,0 +1,59 @@
+//@import "../../../assets/scss/styles.scss";
+
+.badge {
+  &:is(a) {
+    text-decoration: none;
+  }
+  color: var(--badge-primary-solid-default-foreground-color);
+  font-family: var(--theme-typography-family-body);
+  font-size: var(--theme-typography-scale---step-0);
+  font-style: normal;
+  font-weight: var(--theme-typography-weight-medium);
+  line-height: 150%;
+  display: flex;
+  border-radius: var(--badge-border-radius);
+  padding: var(--spacing-02) var(--spacing-04);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: fit-content;
+  height: max-content;
+
+  &.badge--tiny {
+    font-size: var(--theme-typography-scale---step--2);
+    padding: var(--spacing-02) var(--spacing-03);
+
+  }
+  &.badge--small {
+    font-size: var(--theme-typography-scale---step--1);
+    padding: var(--spacing-02) var(--spacing-03);
+  }
+
+  &.badge--primary {
+    border: $border-width solid var(--badge-primary-solid-default-border-color);
+    background: var(--badge-primary-solid-default-background-color);
+    &.badge--outline {
+      border: $border-width solid var(--badge-primary-outline-default-border-color);
+      color: var(--badge-primary-outline-default-foreground-color);
+
+    }
+  }
+  &.badge--secondary {
+    border: $border-width solid var(--badge-secondary-outline-default-border-color);
+    background: var(--badge-secondary-solid-default-background-color);
+    color: var(--badge-secondary-solid-default-foreground-color);
+    &.badge--outline {
+      border: $border-width solid var(--badge-secondary-outline-default-border-color);
+      color: var(--badge-secondary-outline-default-foreground-color);
+    }
+  }
+  &.badge--light {
+    border: $border-width solid var(--badge-default-solid-hover-background-color);
+    background: var(--badge-default-solid-hover-background-color);
+    color: var(--color-default-black);
+  }
+  &.badge--outline {
+    border-radius: var(--border-radius-sm);
+    background: none;
+  }
+}

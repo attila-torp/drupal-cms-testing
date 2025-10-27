@@ -1,0 +1,41 @@
+<section class="faq faq-3" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 section-heading">
+                {% include '../../../molecules/Content/Content.twig' with {
+                    heading: sectionIntroHeading,
+                    headingSize: 'h2',
+                    eyebrow: sectionIntroEyebrow,
+                    text: sectionIntroText,
+                    ctas: sectionIntroCtas
+                } %}
+            </div>
+            <div class="col-md-7">
+                {% if faqItems %}
+                    {% if accordion %}
+                        {% include '../../../molecules/Accordion/Accordion.twig' with {
+                            accordionID: 'faqExample',
+                            accordionItems: faqItems,
+                            border: border,
+                            multiCol: multiCol
+                        } %}
+                    {% else %}
+                        <div class="faqs">
+                            {% for key, item in faqItems %}
+                                <div class="faq-item {% if border %}has-border{% endif %}">
+                                    <h3 class="faq-header">
+                                        {{ item.heading }}
+                                    </h3>
+                                    <div class="faq-body">
+                                        {{ item.content }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+</section>

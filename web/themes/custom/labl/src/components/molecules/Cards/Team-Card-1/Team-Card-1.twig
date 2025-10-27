@@ -1,0 +1,28 @@
+<div class="card-container">
+    <div class="card team-card-1 {% if not leftAlign %}mx-auto text-center {% endif %}">
+        {% if avatar %}
+        {% include '../../../atoms/Avatar/Avatar.twig' with {firstname: authorFirstName, lastname: authorLastName, image: image } %}
+        {% else %}
+        <div class="card-bg-img">
+            {% include '../../../atoms/Image/Image.twig'  with {
+                image: image,
+                background: true,
+                ratio: '1x1'
+            } %}
+        </div>
+
+        {% endif %}
+        <div class="card-body {% if not leftAlign %}mx-auto text-center {% endif %}">
+                {% if cardUrl %}<a href="{{ cardUrl }}" class="stretched-link">{% endif %}
+                <h3 class="card-title h5">{{ cardHeading }}</h3>
+                {% if cardUrl %}</a>{% endif %}
+            <p class="card-subtitle text-md">{{ cardSubHeading }}</p>
+            <div class="card-text">{{ cardText }}</div>
+            <div class="social {% if not leftAlign %}d-flex justify-content-center {% endif %}">
+                {% if leftAlign %}{%  set iconsAlign = 'start' %}{% else %}{%  set iconsAlign = 'center' %}{% endif %}
+                {% include '../../../molecules/Icons-Group/Icons-Group.twig' with {
+                    alignGroup: iconsAlign, icons: cardIcons, column: false, iconOnly: true} %}
+            </div>
+        </div>
+    </div>
+</div>

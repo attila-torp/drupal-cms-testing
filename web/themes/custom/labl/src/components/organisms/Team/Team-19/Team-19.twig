@@ -1,0 +1,35 @@
+<section class="team team-19" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        <div class="row">
+            <div class="section-heading col-12 col-md-4">
+                {% include '../../../molecules/Content/Content.twig' with {
+                    heading: sectionIntroHeading,
+                    headingSize: 'h2',
+                    eyebrow: sectionIntroEyebrow,
+                    text: sectionIntroText,
+                    ctas: sectionIntroCtas
+                } %}
+            </div>
+        {% if team %}
+
+            <div class="col-12 col-md-8">
+            <div class="team row row-cols-1 row-cols-md-2 ">
+                {% for item in team %}
+                    <div class="col">
+                {% include '../../../molecules/Cards/Team-Card-1/Team-Card-1.twig' with {
+                    cardUrl: item.cardUrl,
+                    cardHeading: item.heading,
+                    cardSubHeading: item.subHeading,
+                    cardText: item.content,
+                    image: item.image,
+                    avatar: avatar,
+                    cardIcons: item.icons
+                } %}
+                    </div>
+             {% endfor %}
+            </div>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+</section>

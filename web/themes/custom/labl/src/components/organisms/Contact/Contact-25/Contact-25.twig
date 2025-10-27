@@ -1,0 +1,41 @@
+
+<section class="contact contact-17" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        {% if sectionIntroHeading %}
+        <div class="row">
+            <div class="col-12">
+                <div class="section-intro {% if centered %} text-center {% endif %}">
+                        {% include '../../../molecules/Content/Content.twig' with {
+                            heading: sectionIntroHeading,
+                            haadingSize: 'h2',
+                            eyebrow: sectionIntroEyebrow,
+                            text: sectionIntroText
+                        } %}
+                </div>
+            </div>
+        </div>
+
+        {% endif %}
+
+        <div class="row row-cols-1 row-cols-md-2 cards">
+            {% for card in cards %}
+                <div class="col d-flex {% if centered %} justify-content-center{% endif %}">
+                    {% include '../../../molecules/Cards/Contact-Card-2/Contact-Card-2.twig' with {
+                        centered: centered,
+                        image: card.image,
+                        imageAlt: card.imageAlt,
+                        googleMapLat: card.googleMapLat,
+                        googleMapLng: card.googleMapLng,
+                        googleMapZoom: card.googleMapZoom,
+                        googleMapID: card.googleMapID,
+                        cardTitle: card.cardTitle,
+                        cardText: card.cardText,
+                        cardUrlText: card.cardUrlText,
+                        cardUrl: card.cardUrl, } %}
+
+
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

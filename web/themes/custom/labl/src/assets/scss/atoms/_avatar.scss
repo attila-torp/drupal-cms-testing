@@ -1,0 +1,33 @@
+.avatar {
+  vertical-align: middle;
+  width: 56px;
+  min-width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--theme-primary-default);
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+  }
+
+  .avatar-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 56px;
+    .initial {
+      display: inline-block;
+      font-size: 0px;
+      color: var(--color-default-white);
+      margin: 0;
+
+      &:first-letter {
+        font-size: var(--step-2);
+        line-height: 100%;
+      }
+    }
+  }
+}

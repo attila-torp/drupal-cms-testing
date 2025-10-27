@@ -1,0 +1,138 @@
+{%  set detailsAlign = 'start' %}
+{% if postDetailsCenter %} {% set detailsAlign = 'center' %}{% endif %}
+
+<section class="long-form-content long-form-content-29" data-bs-theme="{{ componentTheme }}">
+    <div class="container d-flex flex-column">
+        {% if sectionIntroHeading %}
+            <div class="row {% if mediaTop %}order-lg-1 {% endif %}">
+                <div class="col-md-12 col-lg-10 mx-auto">
+                    <div class="section-intro">
+                        {% include '../../../molecules/Content/Content.twig' with {
+                            heading: sectionIntroHeading,
+                            headingSize: 'h3',
+                            eyebrow: sectionIntroEyebrow,
+                            text: sectionIntroText,
+                            ctas: ctas
+                        } %}
+                    </div>
+                </div>
+            </div>
+
+        {% endif %}
+        {% if image or video %}
+            <div class="row{% if mediaTop %}order-lg-0 {% endif %}">
+
+                <div class="col-md-12 col-lg-10 mx-auto">
+                    <div class="media">
+                        {% if video %}
+                            {% include '../../../atoms/Image/Image.twig'  with {
+                                image: image,
+                                imageAlt: 'some alt text',
+                                video: video,
+                                toggle: 'modal',
+                                target: 'myModal',
+                                background: true,
+                                ratio: '16x9',
+                                caption: imageCaption
+                            } %}
+                        {% else %}
+                            {% include '../../../atoms/Image/Image.twig'  with {
+                                image: image,
+                                background: false,
+                                caption: imageCaption
+                            } %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {#        Hardcoded content for styling purposes #}
+        <div class="col-md-12 col-lg-10 mx-auto">
+            <div class="wysiwyg-content">
+                <p><strong>Dolor enim eu tortor urna sed duis nulla. Aliquam vestibulum, nulla odio nisl vitae. In
+                        aliquet pellentesque aenean hac vestibulum turpis mi bibendum diam. Tempor integer aliquam in
+                        vitae malesuada fringilla.</strong></p>
+                <p>Elit nisi in eleifend sed nisi. Pulvinar at orci, proin imperdiet commodo consectetur convallis
+                    risus. Sed condimentum enim dignissim adipiscing faucibus consequat, urna. Viverra purus et erat
+                    auctor aliquam. Risus, volutpat vulputate posuere purus sit congue convallis aliquet. Arcu id augue
+                    ut feugiat donec porttitor neque. Mauris, neque ultricies eu vestibulum, bibendum quam lorem id.
+                    Dolor lacus, eget nunc lectus in tellus, pharetra, porttitor.</p>
+                <blockquote>
+                    "Ipsum sit mattis nulla quam nulla. Gravida id gravida ac enim mauris id. Non pellentesque congue
+                    eget consectetur turpis. Sapien, dictum molestie sem tempor. Diam elit, orci, tincidunt aenean
+                    tempus."
+                </blockquote>
+
+                <p>Tristique odio senectus nam posuere ornare leo metus, ultricies. Blandit duis ultricies vulputate
+                    morbi feugiat cras placerat elit. Aliquam tellus lorem sed ac. Montes, sed mattis pellentesque
+                    suscipit accumsan. Cursus viverra aenean magna risus elementum faucibus molestie pellentesque. Arcu
+                    ultricies sed mauris vestibulum.</p>
+
+                <h4>Conclusion</h4>
+                <p>Morbi sed imperdiet in ipsum, adipiscing elit dui lectus. Tellus id scelerisque est ultricies
+                    ultricies. Duis est sit sed leo nisl, blandit elit sagittis. Quisque tristique consequat quam sed.
+                    Nisl at scelerisque amet nulla purus habitasse.</p>
+
+                <p>Nunc sed faucibus bibendum feugiat sed interdum. Ipsum egestas condimentum mi massa. In tincidunt
+                    pharetra consectetur sed duis facilisis metus. Etiam egestas in nec sed et. Quis lobortis at sit
+                    dictum eget nibh tortor commodo cursus.</p>
+
+                <p>Odio felis sagittis, morbi feugiat tortor vitae feugiat fusce aliquet. Nam elementum urna nisi
+                    aliquet erat dolor enim. Ornare id morbi eget ipsum. Aliquam senectus neque ut id eget consectetur
+                    dictum. Donec posuere pharetra odio consequat scelerisque et, nunc tortor. Nulla adipiscing erat a
+                    erat. Condimentum lorem posuere gravida enim posuere cursus diam.</p>
+            </div>
+        </div>
+
+        <div class="row content-details {% if postDetailsCenter %} text-center {% endif %}">
+
+            <div class="col col-md-12 col-lg-10 mx-auto d-flex flex-wrap {% if postDetailsCenter %} flex-column align-content-center justify-content-center {% else %} justify-content-between {% endif %}">
+                <div class="share">
+                    <p class="fw-semibold">Share this post</p>
+                    {% include '../../../molecules/Icons-Group/Icons-Group.twig' with {
+                        alignGroup: detailsAlign, icons: iconsNav, iconOnly: true } %}
+                </div>
+                <div class="tags flex-wrap {% if postDetailsCenter %} align-content-center {% else %} align-content-md-end {% endif %}">
+                    {% for tag in tags %}
+                        <a href="{{ tag.linkHref }}">
+                            {% include '../../../atoms/Badge/Badge.twig' with {
+                                label: tag.label, primary: true, size: 'small' } %}
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="row author-details">
+            <div class="col col-md-12 col-lg-10 mx-auto d-flex flex-wrap  {% if postDetailsCenter %} justify-content-center text-center {% endif %}">
+
+                <div class="author-info d-flex {% if postDetailsCenter %} flex-column {% endif %}">
+                    {% include '../../../atoms/Avatar/Avatar.twig' with {firstname: authorFirstName, lastname: authorLastName, image: authorImage } %}
+                    <p class="small"><span
+                                class="fw-semibold">{{ authorFirstName }} {{ authorLastName }}</span><br/>{{ authorInfo }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    {% if video %}
+        <div class="modal" tabindex="-1" id="myModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        {% include '../../../atoms/CloseButton/CloseButton.twig' %}
+                    </div>
+                    <div class="modal-body">
+                        {% include '../../../atoms/Video/Video.twig'  with {
+                            image: image,
+                            imageAlt: 'some alt text',
+                            video: video,
+                        } %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</section>

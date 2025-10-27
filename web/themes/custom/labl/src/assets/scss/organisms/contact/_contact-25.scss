@@ -1,0 +1,19 @@
+.contact.contact-25 {
+  padding: var(--spacing-09) 0;
+  @include media-breakpoint-up(sm) {
+    padding: var(--spacing-12) 0;
+  }
+  .section-intro {
+    margin-bottom: var(--spacing-09);
+    @include media-breakpoint-up(md) {
+      margin-bottom: var(--spacing-11);
+    }
+  }
+  .cards {
+    .col:last-of-type {
+      .card.contact-card-1 {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

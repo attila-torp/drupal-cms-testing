@@ -1,0 +1,22 @@
+{% if youtubeID %}
+    <iframe width="560" height="315"
+            src="https://www.youtube.com/embed/{{ youtubeID }}"
+            allow="accelerometer; {% if autoplay %}autoplay; {% endif%} clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+    </iframe>
+{% elseif vimeoID %}
+    <iframe src="https://player.vimeo.com/video/{{ vimeoID }}?player_id=0&app_id=58479&muted=0&controls=1&portrait=0&byline=0"></iframe>
+{% else %}
+    <video {% if autoplay %}  width="320" height="240" aria-hidden="true" muted autoplay loop {% else %} controls{% endif %}
+            {% if image %}
+            poster="{{ image }}"
+            {% endif %}
+    >
+        <source src="{{ video }}" type="video/mp4">
+
+        {% for caption in captions %}
+        <track src="{{ caption.src }}" kind="captions" srclang="{{ caption.srcLang }}" label="{{ caption.label }}">
+       {% endfor %}
+        Your browser does not support the video tag.
+    </video>
+{% endif %}

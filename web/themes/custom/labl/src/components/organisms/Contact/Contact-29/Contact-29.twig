@@ -1,0 +1,61 @@
+<section class="contact contact-29" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-intro">
+                    {% if sectionIntroHeading %}
+                        {% include '../../../molecules/Content/Content.twig' with {
+                            heading: sectionIntroHeading,
+                            haadingSize: 'h2',
+                            eyebrow: sectionIntroEyebrow,
+                            text: sectionIntroText
+                        } %}
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="row cards d-flex flex-column">
+                    <ul class="nav d-block" id="pills-tab" role="tablist">
+                        {% for card in cards %}
+                            <div class="col d-flex nav-item" role="presentation">
+                                <button class="nav-link {% if loop.index == 1 %}active{% endif %}" id="tabs-{{ loop.index }}-tab" data-bs-toggle="tab" data-bs-target="#tabs-{{ loop.index }}" type="button" role="tab" aria-controls="tabs-{{ loop.index }}" aria-selected="{% if loop.index == 1 %}true{% else %}false{% endif %}">
+                                {% include '../../../molecules/Cards/Contact-Card-3/Contact-Card-3.twig' with {
+                                    cardTitle: card.cardTitle,
+                                    cardText: card.cardText,
+                                    cardUrlText: card.cardUrlText,
+                                    cardUrl: card.cardUrl, } %}
+                            </button>
+                            </div>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-7 offset-lg-1">
+                <div class="tab-content" id="pills-tabContent">
+                    {% for card in cards %}
+                    <div class="tab-pane fade {% if loop.index == 1 %}show active{% endif %}" id="tabs-{{ loop.index }}" role="tabpanel"
+                         aria-labelledby="tabs-{{ loop.index }}-tab" tabindex="0">
+                        {% if card.image %}
+                            {% include '../../../atoms/Image/Image.twig'  with {
+                                image: card.image,
+                                imageAlt: card.imageAlt
+                            } %}
+                        {% endif %}
+
+                        {% if googleMap %}
+                            {% include '../../../atoms/GoogleMap/GoogleMap.twig' with {
+                                gmLat: card.googleMapLat,
+                                gmLng: card.googleMapLng,
+                                gmZoom: card.googleMapZoom,
+                                gmapID: card.googleMapID
+                            } %}
+                        {% endif %}
+                    </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

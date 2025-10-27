@@ -1,0 +1,95 @@
+.testimonial.testimonial-13 {
+  padding: var(--spacing-10) 0;
+  @include media-breakpoint-up(sm) {
+    padding: var(--spacing-12) 0;
+  }
+
+  .card {
+    margin-bottom: var(--spacing-09);
+    @include media-breakpoint-up(md) {
+      margin-bottom: 0;
+      padding-left: var(--spacing-06);
+    }
+    @include media-breakpoint-up(xl) {
+      padding-left: var(--spacing-11);
+    }
+    blockquote {
+      text-wrap: balance;
+    }
+  }
+  .testimonial-item {
+    display: flex;
+    @include media-breakpoint-down(md) {
+      display: block;
+    }
+    align-content: center;
+    .bg-wrapper {
+      max-width: 400px;
+      margin: 0 auto;
+
+      @include media-breakpoint-up(lg) {
+        min-height: 400px;
+        max-width: 640px;
+      }
+    }
+    col {
+      @include media-breakpoint-down(ld) {
+        width: 100%;
+        display: block;
+        flex-wrap: wrap;
+      }
+    }
+  }
+
+  .slider-controls {
+    display: flex;
+    justify-content: space-between;
+    @include media-breakpoint-down(md) {
+    }
+    .slider-dots {
+      @include media-breakpoint-up(md) {
+        min-width: 200px;
+      }
+      align-items: center;
+      display: flex;
+      .slick-dots {
+        width: auto;
+        position: relative;
+        margin: 0;
+        text-align: left;
+        bottom: unset;
+        height: 14px;
+        li.slick-active {
+          .slick-dot-icon {
+            &:before {
+              font-size: var(--carousel-dots-active-size);
+              margin: 0;
+            }
+          }
+        }
+
+        @include media-breakpoint-down(md) {
+          margin-top: var(--sizing-sm);
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+    .slider-buttons {
+      min-width: 120px;
+      text-align: right;
+      .button-carousel {
+        display: inline-block;
+      }
+    }
+  }
+
+  .modal {
+    --bs-modal-width: fit-content;
+    video {
+      margin: 0 auto;
+      display: block;
+      max-width: 1000px;
+    }
+  }
+}

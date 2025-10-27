@@ -1,0 +1,13 @@
+{% if imageUrl %}
+    <a href="{{ imageUrl}}" class="logo {% if background %}has-background{% endif %}">
+    {% else %}
+    <div class="logo {% if background %}has-background{% endif %}">
+{% endif %}
+
+        <img src="{{ image }}" alt="{{ imageAlt }}" class="logo-img">
+
+{% if imageUrl %}
+    </a>
+  {% else %}
+    </div>
+{% endif %}

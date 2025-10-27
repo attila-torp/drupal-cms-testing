@@ -1,0 +1,52 @@
+.layout.layout-365 {
+  display: flex;
+  padding: var(--spacing-10) 0;
+  @include media-breakpoint-up(sm) {
+    padding: var(--section-padding-vertical) 0;
+  }
+  align-items: center;
+  position: relative;
+
+  background: no-repeat;
+  background-size: cover;
+  background-position: center;
+
+  &.bg-solid {
+    background-color: var(--section-background-color);
+
+    .hero-content {
+      p.eyebrow {
+        color: var(--theme-typography-color-eyebrow);
+      }
+    }
+  }
+
+
+  .card.card-1 {
+    margin-bottom: var(--spacing-10);
+    @include media-breakpoint-up(md) {
+      margin-bottom: 0;
+    }
+
+    &.horizontal {
+      margin-bottom: var(--spacing-06);
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .col-featured {
+    margin-bottom: var(--spacing-06);
+    @include media-breakpoint-up(lg) {
+      margin-bottom: 0;
+    }
+  }
+
+  .section-heading {
+    margin-bottom: var(--spacing-09);
+    @include media-breakpoint-up(md) {
+      margin-bottom: var(--spacing-11);
+    }
+  }
+}

@@ -1,0 +1,4 @@
+<label for="{{ inputId }}" class="form-label">{{ label }}</label>
+<input type="range" class="form-range" id="{{ inputId }}" min="{{ min }}" max="{{ max }}"
+       {% if step > 0 %}step="{{ step }}{% endif %}"
+>

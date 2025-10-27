@@ -1,0 +1,36 @@
+{% if video and target %} <!-- Video in a modal -->
+<div class="modal-video-trigger position-relative">
+    {% endif %}
+    {% if background %}
+        {% if ratio %}
+            <div class="bg-wrapper aspect-{{ ratio }} position-relative">
+        {% endif %}
+        <div class="background-image" style="background-image:url({{ image }})"></div>
+
+        {% if ratio %}
+            </div>
+        {% endif %}
+    {% else %}
+        {% if caption %}
+            <figure class="figure">
+        {% endif %}
+        <img src="{{ image }}" class="d-block img-fluid" alt="{{ imageAlt }}" width="700"
+             height="500" loading="lazy"/>
+
+        {% if caption %}
+            <figcaption class="figure-caption">{{ caption }}</figcaption>
+            </figure>
+        {% endif %}
+
+    {% endif %}
+    {% if video and target %}
+    <button type="button" class="btn-play" aria-label="Play Video"
+            {% if toggle and target %}data-bs-toggle="{{ toggle }}" data-bs-target="#{{ target }}" {% endif %}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="54" height="54" viewBox="0 0 54 54" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M0.333008 26.9987C0.333008 12.2711 12.2721 0.332031 26.9997 0.332031C34.0721 0.332031 40.8549 3.14155 45.8559 8.14249C50.8568 13.1435 53.6663 19.9263 53.6663 26.9987C53.6663 41.7263 41.7273 53.6654 26.9997 53.6654C12.2721 53.6654 0.333008 41.7263 0.333008 26.9987ZM22.1198 38.4121L37.6664 28.7054C38.2482 28.3328 38.6001 27.6896 38.6001 26.9987C38.6001 26.3079 38.2482 25.6646 37.6664 25.2921L22.0664 15.5854C21.452 15.198 20.6758 15.1742 20.0388 15.5231C19.4018 15.8721 19.004 16.539 18.9998 17.2654V36.7321C18.9912 37.4761 19.3963 38.1634 20.0514 38.5161C20.7065 38.8689 21.5033 38.8288 22.1198 38.4121Z"
+                  fill="white"/>
+        </svg>
+    </button>
+</div>
+{% endif %}

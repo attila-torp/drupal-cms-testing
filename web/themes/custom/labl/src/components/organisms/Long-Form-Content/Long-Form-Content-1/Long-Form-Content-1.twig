@@ -1,0 +1,59 @@
+<section class="long-form-content long-form-content-1" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        {% if sectionIntroHeading %}
+            <div class="row">
+                <div class="col-md-6 {% if mediaLeft %} order-lg-1 {% endif %} {% if verticallyCentered %}align-content-center{% endif %}">
+                    <div class="section-intro {% if centered %} text-center {% endif %}">
+                        {% include '../../../molecules/Content/Content.twig' with {
+                            heading: sectionIntroHeading,
+                            headingSize: 'h3',
+                            eyebrow: sectionIntroEyebrow,
+                            text: sectionIntroText,
+                            ctas: ctas
+                        } %}
+                    </div>
+                </div>
+                <div class="col-md-6 {% if mediaLeft %} order-lg-0 {% endif %}">
+                    <div class="media">
+                    {% if video %}
+                        {% include '../../../atoms/Image/Image.twig'  with {
+                            image: image,
+                            imageAlt: 'some alt text',
+                            video: video,
+                            toggle: 'modal',
+                            target: 'myModal',
+                            background: true,
+                        } %}
+                    {% else %}
+                        {% include '../../../atoms/Image/Image.twig'  with {
+                            image: image,
+                            background: true,
+                            ratio: '1x1'
+                        } %}
+                    {% endif %}
+                </div>
+                </div>
+            </div>
+
+        {% endif %}
+
+    </div>
+    {% if video %}
+        <div class="modal" tabindex="-1" id="myModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        {% include '../../../atoms/CloseButton/CloseButton.twig'%}
+                    </div>
+                    <div class="modal-body">
+                        {% include '../../../atoms/Video/Video.twig'  with {
+                            image: image,
+                            imageAlt: 'some alt text',
+                            video: video,
+                        } %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</section>

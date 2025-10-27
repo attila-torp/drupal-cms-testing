@@ -1,0 +1,169 @@
+{% set detailsAlign = 'start' %}
+{% if postDetailsCenter %} {% set detailsAlign = 'center' %}{% endif %}
+
+<section class="long-form-content long-form-content-32" data-bs-theme="{{ componentTheme }}">
+    <div class="container d-flex flex-column">
+
+        <div class="row">
+
+            <article class="col-md-12 col-lg-7 col-xxl-8">
+
+                {% if sectionIntroHeading %}
+                    <div class="section-intro">
+                        {% include '../../../molecules/Content/Content.twig' with {
+                            heading: sectionIntroHeading,
+                            headingSize: 'h3',
+                            eyebrow: sectionIntroEyebrow,
+                            text: sectionIntroText,
+                            ctas: ctas
+                        } %}
+                    </div>
+
+                {% endif %}
+                {% if image or video %}
+                    <div class="media">
+                        {% if video %}
+                            {% include '../../../atoms/Image/Image.twig'  with {
+                                image: image,
+                                imageAlt: 'some alt text',
+                                video: video,
+                                toggle: 'modal',
+                                target: 'myModal',
+                                background: true,
+                                ratio: '16x9',
+                                caption: imageCaption
+                            } %}
+                        {% else %}
+                            {% include '../../../atoms/Image/Image.twig'  with {
+                                image: image,
+                                background: false,
+                                caption: imageCaption
+                            } %}
+                        {% endif %}
+                    </div>
+                {% endif %}
+                {#        Hardcoded content for styling purposes #}
+                <div class="wysiwyg-content">
+                    <p><strong>Dolor enim eu tortor urna sed duis nulla. Aliquam vestibulum, nulla odio nisl vitae.
+                            In
+                            aliquet pellentesque aenean hac vestibulum turpis mi bibendum diam. Tempor integer
+                            aliquam in
+                            vitae malesuada fringilla.</strong></p>
+                    <p>Elit nisi in eleifend sed nisi. Pulvinar at orci, proin imperdiet commodo consectetur
+                        convallis
+                        risus. Sed condimentum enim dignissim adipiscing faucibus consequat, urna. Viverra purus et
+                        erat
+                        auctor aliquam. Risus, volutpat vulputate posuere purus sit congue convallis aliquet. Arcu
+                        id augue
+                        ut feugiat donec porttitor neque. Mauris, neque ultricies eu vestibulum, bibendum quam lorem
+                        id.
+                        Dolor lacus, eget nunc lectus in tellus, pharetra, porttitor.</p>
+                    <blockquote>
+                        "Ipsum sit mattis nulla quam nulla. Gravida id gravida ac enim mauris id. Non pellentesque
+                        congue
+                        eget consectetur turpis. Sapien, dictum molestie sem tempor. Diam elit, orci, tincidunt
+                        aenean
+                        tempus."
+                    </blockquote>
+
+                    <p>Tristique odio senectus nam posuere ornare leo metus, ultricies. Blandit duis ultricies
+                        vulputate
+                        morbi feugiat cras placerat elit. Aliquam tellus lorem sed ac. Montes, sed mattis
+                        pellentesque
+                        suscipit accumsan. Cursus viverra aenean magna risus elementum faucibus molestie
+                        pellentesque. Arcu
+                        ultricies sed mauris vestibulum.</p>
+
+                    <h4>Conclusion</h4>
+                    <p>Morbi sed imperdiet in ipsum, adipiscing elit dui lectus. Tellus id scelerisque est ultricies
+                        ultricies. Duis est sit sed leo nisl, blandit elit sagittis. Quisque tristique consequat
+                        quam sed.
+                        Nisl at scelerisque amet nulla purus habitasse.</p>
+
+                    <p>Nunc sed faucibus bibendum feugiat sed interdum. Ipsum egestas condimentum mi massa. In
+                        tincidunt
+                        pharetra consectetur sed duis facilisis metus. Etiam egestas in nec sed et. Quis lobortis at
+                        sit
+                        dictum eget nibh tortor commodo cursus.</p>
+
+                    <p>Odio felis sagittis, morbi feugiat tortor vitae feugiat fusce aliquet. Nam elementum urna
+                        nisi
+                        aliquet erat dolor enim. Ornare id morbi eget ipsum. Aliquam senectus neque ut id eget
+                        consectetur
+                        dictum. Donec posuere pharetra odio consequat scelerisque et, nunc tortor. Nulla adipiscing
+                        erat a
+                        erat. Condimentum lorem posuere gravida enim posuere cursus diam.</p>
+                </div>
+            </article>
+
+            <aside class="col-md-12 col-lg-4 col-xxl-3 offset-lg-1">
+
+                {% if jobDetails %}
+                    <div class="sidebar-section job-details">
+                        <p class="fw-semibold">Details</p>
+                        <span class="d-flex align-items-center job-detail"><i class="bx bx-map bx-sm"></i> {{ jobDetails.location }}</span>
+                        <span class="d-flex align-items-center job-detail"><i class="bx bx-flag bx-sm"></i> {{ jobDetails.country }}</span>
+                        <span class="d-flex align-items-center job-detail"><i class="bx bx-briefcase bx-sm"></i> {{ jobDetails.operatingCo }}</span>
+                        <span class="d-flex align-items-center job-detail"><i class="bx bx-time-five bx-sm"></i> Closing date {{ jobDetails.closingDate }}</span>
+                        <p>
+                            {% include '../../../atoms/Button/Button.twig' with {label: 'Apply now', buttonHref: jobDetails.applyUrl, primary: true, type: 'button', outline: false, icon: 'bx-link-external', linkButton: true } %}
+                        </p>
+                        <p>
+                            {% include '../../../atoms/Button/Button.twig' with {label: 'Nominate someone', buttonHref: jobDetails.nominateUrl, primary: true, type: 'button', outline: true, icon:'bx-link-external', linkButton: true } %}
+                        </p>
+                    </div>
+
+                {% endif %}
+                {% if authors %}
+                    <div class="sidebar-section author-details">
+                        <p class="fw-semibold">Contributors</p>
+                        {% for author in authors %}
+                            <div class="author-info d-flex ">
+                                {% include '../../../atoms/Avatar/Avatar.twig' with {firstname: author.firstName, lastname: author.lastName, image: author.image } %}
+                                <p class="small">
+                                    <span class="fw-semibold">{{ author.firstName }} {{ author.lastName }}</span><br/>{{ author.info }}
+                                </p>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                {% endif %}
+                {% if sidebarSubscribe %}
+                    <div class="sidebar-section content-form">
+                        <p class="fw-semibold">Subscribe</p>
+                        {% include '../../../molecules/Form-Subscribe/Form-Subscribe.twig' %}
+                    </div>
+                {% endif %}
+
+                {% if iconsNav %}
+                    <div class="sidebar-section share">
+                        <p class="fw-semibold">Share this post</p>
+                        {% include '../../../molecules/Icons-Group/Icons-Group.twig' with {
+                            alignGroup: detailsAlign, icons: iconsNav, iconOnly: true } %}
+                    </div>
+                {% endif %}
+
+            </aside>
+        </div>
+    </div>
+
+
+    {% if video %}
+        <div class="modal" tabindex="-1" id="myModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        {% include '../../../atoms/CloseButton/CloseButton.twig' %}
+                    </div>
+                    <div class="modal-body">
+                        {% include '../../../atoms/Video/Video.twig'  with {
+                            image: image,
+                            imageAlt: 'some alt text',
+                            video: video,
+                        } %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</section>

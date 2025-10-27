@@ -1,0 +1,100 @@
+import { Meta, Title } from '@storybook/addon-docs';
+
+import figmaPlugin from "./assets/figma-plugin.png";
+
+<Meta title="Docs/Tokens/Working With Tokens" />
+
+# Working with Tokens
+
+The core foundation of the Design System is a Figma file of layout designs created using 'Variables', or 'Design Tokens'.  
+
+The main benefit of this being that it removes the need for developers to redefine design fundamentals every time they pick up a new design, it also removes chance for error in the build implementation process.
+Design variables get exported as CSS variables from Figma and copied into the relevant SCSS files in the code.  
+
+As the CSS Variables have been used for all the component layouts it means any design updates 
+to the variables for any component get implemented immediately, without the need to update each component individually, or edit any global styles.
+
+Design tokens also allows for the implementation of multiple themes without the need for updating individual component styles every time.  
+<br/>
+
+## Design Tokens - Figma
+<div className="row">
+<div className="col-6"><p>To export the variables use the Figma plugin 'variables2css'. Export each of the 3 collections and copy them to their relevent .scss file in `src/assets/scss/variables/`.</p><ul><li>Primatives -> `_var-primary.scss`</li><li>Semantics -> `_var-semantics.scss`</li><li>Components -> `_var-components.scss`</li></ul>
+<p>To export the variables in the correct format use:</p><ul><li>CSS</li><li>Hex</li><li>Rem</li></ul>
+<p>In some cases you can include the Themes, but ensure you are doing this for the light/dark themes, not Mobile/Desktop.</p>
+<p>Please ensure the format you have exported looks the same as the existing CSS Variables in the .scss files before overwriting, if they are in the wrong format they will not work.</p>
+<p>For further info on the variable types see the confluence doc on [Design Variable Breakdown](https://torpedogroup.atlassian.net/wiki/spaces/UX/pages/744456193/Design+variable+breakdown)</p></div>
+<div className="col-6">
+<img src={figmaPlugin}
+        alt="css 2 variable plugin for Figma "
+      />
+      </div>
+      </div>
+
+## Typography Tokens - Utopia
+
+We use a scalable font system, set by the designers in [Utopia](https://utopia.fyi/type/calculator/?c=320,16,1.2,1240,16,1.25,5,2,&s=0.75%7C0.5%7C0.25,1.5%7C2%7C3%7C4%7C6,s-l&g=s,l,xl,12) - you should find a link in Figma for the projects specific scale.
+From the link you can copy the CSS variables and override the ones for this default system in `src/assets/scss/variables/_utopia.scss`
+```
+:root {
+  --step--2: clamp(0.64rem, 0.7134rem + -0.0947vi, 0.6944rem);
+  --step--1: clamp(0.8rem, 0.8449rem + -0.058vi, 0.8333rem);
+  --step-0: clamp(1rem, 1rem + 0vi, 1rem);
+  --step-1: clamp(1.2rem, 1.1826rem + 0.087vi, 1.25rem);
+  --step-2: clamp(1.44rem, 1.3974rem + 0.213vi, 1.5625rem);
+  --step-3: clamp(1.728rem, 1.6497rem + 0.3915vi, 1.9531rem);
+  --step-4: clamp(2.0736rem, 1.9457rem + 0.6397vi, 2.4414rem);
+  --step-5: clamp(2.4883rem, 2.2923rem + 0.9799vi, 3.0518rem);
+}
+```
+### Swap out hardcoded values for Utopia/Bootstrap vars
+When exporting tokens from Figma it exports the tokens for typography scale and font weight with hardcoded values for these steps.
+
+Therefore it is important to go into the `_vars-semantics.scss` token file and replace the hardcoded values with tokens.
+
+#### Typography Scale
+Replace the typography scale token values with the corresponding Utopia token variable, like so:
+
+```
+  --theme-typography-scale---step--2: 0.6943749785423279rem;
+  --theme-typography-scale---step--1: 0.8331249952316284rem;
+  --theme-typography-scale---step-0: 1rem;
+  --theme-typography-scale---step-1: 1.2000000476837158rem;
+  --theme-typography-scale---step-2: 1.440000057220459rem;
+  --theme-typography-scale---step-3: 1.728124976158142rem;
+  --theme-typography-scale---step-4: 2.0737500190734863rem;
+  --theme-typography-scale---step-5: 2.4881250858306885rem;
+
+becomes
+
+    --theme-typography-scale---step--2: var(--step--2);
+    --theme-typography-scale---step--1: var(--step--1);
+    --theme-typography-scale---step-0: var(--step-0);
+    --theme-typography-scale---step-1: var(--step-1);
+    --theme-typography-scale---step-2: var(--step-2);
+    --theme-typography-scale---step-3: var(--step-3);
+    --theme-typography-scale---step-4: var(--step-4);
+    --theme-typography-scale---step-5: var(--step-5);
+```
+
+#### Font Weights
+Under the scale tokens are the tokens for the font weights, here we want to replace the text values with the corresponding number values for the font weight, or better still use the Bootstrap SCSS variables to save redefining these in 2 places.
+
+If the font weight values don't match up with standard Bootstrap usage, overwrite the values for these in the `bs-overrides.scss` file
+```
+    --theme-typography-weight-bold: Bold;
+    --theme-typography-weight-extra-bold: Extra Bold;
+    --theme-typography-weight-light: Light;
+    --theme-typography-weight-medium: Medium;
+    --theme-typography-weight-regular: Regular;
+    --theme-typography-weight-semi-bold: Semi Bold;
+
+becomes
+
+    --theme-typography-weight-bold: #{$font-weight-bold};
+    --theme-typography-weight-extra-bold: #{$font-weight-bolder};
+    --theme-typography-weight-light: #{$font-weight-light};
+    --theme-typography-weight-medium: #{$font-weight-medium};
+    --theme-typography-weight-regular: #{$font-weight-normal};
+    --theme-typography-weight-semi-bold: #{$font-weight-semibold};
+```

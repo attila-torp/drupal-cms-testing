@@ -1,0 +1,64 @@
+<section class="career career-24" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        {% if sectionIntroHeading %}
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-intro text-center">
+                        {% include '../../../molecules/Content/Content.twig' with {
+                            heading: sectionIntroHeading,
+                            headingSize: 'h2',
+                            eyebrow: sectionIntroEyebrow,
+                            text: sectionIntroText
+                        } %}
+                    </div>
+                </div>
+            </div>
+
+        {% endif %}
+
+        {% for group in groups %}
+            <div class="row group {% if multiCol %}has-divider{% endif %}">
+                {% if multiCol %}
+                    <div class="col-md-5">
+                        {% include '../../../molecules/Content/Content.twig' with {
+                            heading: group.groupHeading,
+                            headingSize: 'h4',
+                            text: group.groupText
+                        } %}
+                    </div>
+                    <div class="col-md-7">
+                        {% for card in group.cards %}
+                            {% include '../../../molecules/Cards/Career-Card-1/Career-Card-1.twig' with {
+                                cardDepartment: card.cardDepartment,
+                                cardType: card.cardType,
+                                cardLocation: card.cardLocation,
+                                cardTitle: card.cardTitle,
+                                cardText: card.cardText,
+                                cardUrl: card.cardUrl,
+                                border: true } %}
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="col-lg-10 col-xl-8 mx-auto">
+                        {% include '../../../molecules/Content/Content.twig' with {
+                            heading: group.groupHeading,
+                            headingSize: 'h4',
+                            text: group.groupText
+                        } %}
+                        {% for card in group.cards %}
+                            {% include '../../../molecules/Cards/Career-Card-1/Career-Card-1.twig' with {
+                                cardDepartment: card.cardDepartment,
+                                cardType: card.cardType,
+                                cardLocation: card.cardLocation,
+                                cardTitle: card.cardTitle,
+                                cardText: card.cardText,
+                                cardUrl: card.cardUrl,
+                                border: true } %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+
+    </div>
+</section>

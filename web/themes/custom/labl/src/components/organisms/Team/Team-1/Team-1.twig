@@ -1,0 +1,46 @@
+<section class="team team-1" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        <div class="section-heading row {% if not leftAlign %}justify-content-center {% endif %}">
+            <div class="col-12 col-md-8 col-xl-7 {% if not leftAlign %} text-center {% endif %}">
+                {% include '../../../molecules/Content/Content.twig' with {
+                    heading: sectionIntroHeading,
+                    headingSize: 'h2',
+                    eyebrow: sectionIntroEyebrow,
+                    text: sectionIntroText,
+                    ctas: sectionIntroCtas
+                } %}
+            </div>
+        </div>
+        {% if team %}
+            <div class="team row row-cols-1 row-cols-md-2 row-cols-lg-{{ columns }}">
+                {% for item in team %}
+                    <div class="col">
+                {% include '../../../molecules/Cards/Team-Card-1/Team-Card-1.twig' with {
+                    cardUrl: item.cardUrl,
+                    cardHeading: item.heading,
+                    cardSubHeading: item.subHeading,
+                    cardText: item.content,
+                    image: item.image,
+                    avatar: avatar,
+                    cardIcons: item.icons
+                } %}
+                    </div>
+             {% endfor %}
+            </div>
+        {% endif %}
+        {% if sectionFooterHeading %}
+            <div class="row">
+                <div class="col-12 col-lg-7 {% if not leftAlign %} mx-auto text-center {% endif %}">
+                    <div class="section-intro {% if centered %} text-center {% endif %}">
+                        {% include '../../../molecules/Content/Content.twig' with {
+                            heading: sectionFooterHeading,
+                            headingSize: 'h4',
+                            text: sectionFooterText,
+                            ctas: sectionFooterCtas
+                        } %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</section>

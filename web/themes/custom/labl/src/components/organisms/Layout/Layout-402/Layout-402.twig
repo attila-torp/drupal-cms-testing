@@ -1,0 +1,76 @@
+<section class="layout layout-402" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+
+        <ul class="nav nav-underline" id="myTab" role="tablist">
+            {% for tab in tabs %}
+            <li class="nav-item" role="presentation">
+                <button class="nav-link {% if loop.first %}active{% endif %}" id="{{ tab.id }}" data-bs-toggle="tab" data-bs-target="#{{ tab.id}}-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">{{ tab.title }}</button>
+            </li>
+            {% endfor %}
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+            {% for tab in tabs %}
+            <div class="tab-pane fade {% if loop.first %}show active{% endif %}" id="{{ tab.id}}-pane" role="tabpanel" aria-labelledby="{{ tab.id }}" tabindex="0">
+{#                50/50 Layout - Layout 1 #}
+                <div class="content-wrapper row">
+                    <div class="col-lg-6 order-1 mb-5 mb-md-0 position-relative {% if tab.mediaLeft %} media-left {% endif %}">
+                        {% include '../../../molecules/Content/Content.twig' with {
+                            heading: tab.heading,
+                            headingSize: tab.headingSize,
+                            eyebrow: tab.eyebrow,
+                            text: tab.text,
+                            ctas: tab.ctas,
+                            logoTop: tab.logoTop,
+                            logoBottom: tab.logoBottom,
+                        } %}
+
+                    </div>
+                    <div class="col-lg-6 g-md-0 order-2 {% if tab.mediaLeft %} order-lg-0 pe-3 {% endif %}">
+                        {% include '../../../atoms/Image/Image.twig'  with {
+                            image: tab.image,
+                            imageAlt: 'some alt text',
+                            video: tab.video,
+                            toggle: 'modal',
+                            target: 'myModal',
+                            background: true,
+                            ratio: '1x1'
+                        } %}
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+
+    {% for tab in tabs %}
+    {% if tab.video %}
+        <div class="modal" tabindex="-1" id="myModal">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        {% include '../../../atoms/CloseButton/CloseButton.twig'%}
+                    </div>
+                    <div class="modal-body">
+                        {% include '../../../atoms/Video/Video.twig'  with {
+                            image: tab.image,
+                            imageAlt: 'some alt text',
+                            video: tab.video,
+                        } %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    {% endfor %}
+
+</section>

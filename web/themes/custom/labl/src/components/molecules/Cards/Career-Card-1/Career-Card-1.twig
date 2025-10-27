@@ -1,0 +1,24 @@
+<div class="card career-card-1 {% if border %}has-border{% endif %}">
+    <div class="card-body">
+
+        <div class="d-flex  {% if border %}justify-content-between{% endif %}">
+            <h3 class="h5">{{ cardTitle }}</h3>
+            {% if cardDepartment %}
+                {% include '../../../atoms/Badge/Badge.twig' with {label: cardDepartment, primary: false, theme: 'light', size: 'tiny' } %}
+            {% endif %}
+        </div>
+        <p class="card-text">{{ cardText }}</p>
+        <div class="card-info-wrapper d-flex">
+                <p class="info d-flex"><span class="icon bx bx-sm bx-map"></span>
+                {{ cardLocation }}</p>
+                <p class="info d-flex"><span class="icon bx bx-sm bx-time-five"></span>
+                {{ cardType }}</p>
+        </div>
+<div class="card-footer">
+            {% if cardUrl %}
+                {% include '../../../atoms/Button/Button.twig' with {label: 'Apply now', primary: false, type: 'button', outline: true, href: cardUrl, size: 'small' } %}
+            {% endif %}
+        </div>
+    </div>
+
+</div>

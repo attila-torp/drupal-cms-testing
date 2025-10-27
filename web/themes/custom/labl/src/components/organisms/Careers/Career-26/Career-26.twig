@@ -1,0 +1,47 @@
+<section class="career career-26" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        {% if sectionIntroHeading %}
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-intro text-center">
+                        {% include '../../../molecules/Content/Content.twig' with {
+                            heading: sectionIntroHeading,
+                            headingSize: 'h2',
+                            eyebrow: sectionIntroEyebrow,
+                            text: sectionIntroText
+                        } %}
+                    </div>
+                </div>
+            </div>
+
+        {% endif %}
+
+        <div class="row">
+            <div class="col-md-6 cards">
+                {% for card in cards %}
+                    <div class="col d-flex ">
+                        {% include '../../../molecules/Cards/Career-Card-1/Career-Card-1.twig' with {
+                            cardDepartment: card.cardDepartment,
+                            cardType: card.cardType,
+                            cardLocation: card.cardLocation,
+                            cardTitle: card.cardTitle,
+                            cardText: card.cardText,
+                            cardUrl: card.cardUrl,
+                            border: border } %}
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="col-md-6">
+                {% if image %}
+                    {% include '../../../atoms/Image/Image.twig'  with {
+                        image: image,
+                        imageAlt: imageAlt,
+                        background: true,
+                        ratio: '1x1',
+                    } %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>

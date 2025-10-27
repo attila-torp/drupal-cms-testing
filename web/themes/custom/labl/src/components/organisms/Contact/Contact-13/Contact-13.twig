@@ -1,0 +1,50 @@
+<section class="contact contact-13" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        <div class="row">
+            <div class="{% if sidebar %}col-12{% else %} col-md-7{% endif %}">
+                <div class="section-intro">
+                    {% if sectionIntroHeading %}
+                        {% include '../../../molecules/Content/Content.twig' with {
+                            heading: sectionIntroHeading,
+                            haadingSize: 'h2',
+                            eyebrow: sectionIntroEyebrow,
+                            text: sectionIntroText
+                        } %}
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="{% if sidebar %}col-md-4{% else %} col-md-5{% endif %}">
+                <div class="row cards d-flex flex-column {% if not sidebar %} minimal-cards {% endif %}">
+                    {% for card in cards %}
+                        <div class="col d-flex ">
+                            {% include '../../../molecules/Cards/Contact-Card-1/Contact-Card-1.twig' with {
+                                cardType: card.cardType,
+                                cardTitle: card.cardTitle,
+                                cardText: card.cardText,
+                                cardUrlText: card.cardUrlText,
+                                cardUrl: card.cardUrl, } %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="{% if sidebar %}col-md-8{% else %} col-12{% endif %}">
+                {%if image %}
+                {% include '../../../atoms/Image/Image.twig'  with {
+                    image: image,
+                    imageAlt: imageAlt
+                } %}
+                {% endif %}
+
+                {% if googleMapLat and googleMapLng %}
+                {% include '../../../atoms/GoogleMap/GoogleMap.twig' with {
+                    gmLat: googleMapLat,
+                    gmLng: googleMapLng,
+                    gmZoom: googleMapZoom,
+                    gmapID: googleMapID
+                } %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>

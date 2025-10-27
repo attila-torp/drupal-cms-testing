@@ -1,0 +1,101 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs';
+
+<Meta title="Docs/Tokens/Themes" />
+# Theme Tokens
+
+The theme tokens are set by the designers in Figma and the CSS variables are then exported by the developer.
+
+Tokens: `variables/_vars-semantics.scss` 
+
+<ColorPalette>
+
+   <ColorItem
+    title="Typography"
+    subtitle="--theme-typography-color-"
+    colors={{  body: '#4B5563', headline: '#374151', eyebrow: '#7C3AED', muted: '#6B7280'}}
+  />
+
+  <ColorItem
+    colors={{ blockquote: '#4B5563', blockquoteBorder: '#A8A29E', caption: '#78716C', captionBorderColor: '#D6D3D1',  }}
+  />
+  
+  <ColorItem 
+    title="Primary" 
+    subtitle="--color-brand-primary" 
+    colors={{ violet600: '#7c3aed' }} 
+  />
+  <ColorItem
+    title="Theme Primary"
+    subtitle="--theme-primary-"
+    colors={{  foregroundLight: '#F5F3FF', tint: '#8B5CF6', default: '#7C3AED' }}
+  />
+  <ColorItem
+    colors={{  foregroundDark: '#7C3AED', shade: '#5B21B6', icon: '#4C1D95',  }}
+  />
+  <ColorItem 
+    title="Secondary" 
+    subtitle="--color-brand-secondary" 
+    colors={{ green500: '#22c55e' }}  
+  />
+
+  <ColorItem
+    title="Theme Secondary"
+    subtitle="--theme-secondary-"
+    colors={{  foregroundLight: '#F0FDF4', tint: '#4ADE80', default: '#22C55E',  }}
+  />
+  <ColorItem
+    colors={{  foregroundDark: '#22C55E', shade: '#15803D', icon: '#22C55E',  }}
+  />
+
+
+  <ColorItem
+    title="Theme Success"
+    subtitle="--theme-success-"
+    colors={{  foregroundLight: '#F0FDF4', tint: '#4ADE80', default: '#22C55E',  }}
+  />
+  <ColorItem
+    colors={{  foregroundDark: '#22C55E', shade: '#15803D', icon: '#22C55E',  }}
+  />
+
+    <ColorItem
+    title="Theme Danger"
+    subtitle="--theme-danger-"
+    colors={{  foregroundLight: '#FEF2F2', tint: '#F87171', default: '#EF4444',  }}
+  />
+  <ColorItem
+    colors={{  foregroundDark: '#B91C1C', shade: '#B91C1C', icon: '#EF4444',  }}
+  />
+
+    <ColorItem
+    title="Theme Info"
+    subtitle="--theme-info-"
+    colors={{  foregroundLight: '#EFF6FF', tint: '#60A5FA', default: '#3B82F6',  }}
+  />
+  <ColorItem
+    colors={{  foregroundDark: '#1D4ED8', shade: '#1D4ED8', icon: '#3B82F6',  }}
+  />
+
+    <ColorItem
+    title="Theme Warning"
+    subtitle="--theme-warning-"
+    colors={{  foregroundLight: '#FFF7ED', tint: '#FB923C', default: '#F97316',  }}
+  />
+  <ColorItem
+    colors={{  foregroundDark: '#C2410C', shade: '#C2410C', icon: '#F97316',  }}
+  />
+
+    <ColorItem
+    title="Theme Default"
+    subtitle="--theme-default-"
+    colors={{  foregroundLight: '#FAFAF9', tint: '#E7E5E4', default: '#D6D3D1',  }}
+  />
+  <ColorItem
+    colors={{  foregroundDark: '#44403C', shade: '#A8A29E', icon: '#44403C',  }}
+  />
+
+
+
+
+
+
+</ColorPalette>

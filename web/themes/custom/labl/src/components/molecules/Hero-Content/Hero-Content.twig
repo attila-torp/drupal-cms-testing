@@ -1,0 +1,30 @@
+<div class="hero-content">
+    <div class="hero-content-text">
+        {% if heroEyebrow %}<p class="eyebrow">{{ heroEyebrow }}</p>{% endif %}
+        {% if heroHeading %}<h1>{{ heroHeading }}</h1>{% endif %}
+        {% if heroText %}<div class="wysiwyg-content">{{ heroText }}</div>{% endif %}
+    </div>
+    <!-- CTA Group -->
+    {% if heroCtas %}
+        <div class="hero-content-ctas">
+            {% if heroCtas %}
+                {% include '../CTA-Group/CTA-Group.twig' with {ctas: heroCtas } %}
+            {% endif %}
+        </div>
+    {% endif %}
+
+    <!-- Hero Forms -->
+    {% if heroSubscribe %}
+        <div class="hero-content-form">
+             {% include '../../molecules/Form-Subscribe/Form-Subscribe.twig' %}
+        </div>
+    {% endif %}
+    {% if heroSearch %}
+        <div class="hero-content-form">
+            <form class="hero-content-subscribe col-12 col-lg-auto d-md-flex">
+                {% include '../../atoms/InputFloatingLabel/InputFloatingLabel.twig' with {label: 'Search', type: 'search' } %}
+                {% include '../../atoms/Button/Button.twig' with {label: 'Submit', primary: true, type: 'submit', outline: false } %}
+            </form>
+        </div>
+    {% endif %}
+</div>

@@ -1,0 +1,44 @@
+{% set buttonClasses = '' %}
+
+{% if type == 'link' and not linkButton %}
+    {% set buttonClasses = 'button-link ' %}
+{% else %}
+    {% set buttonClasses = 'button ' %}
+    {% if outline %}
+        {% set buttonClasses = buttonClasses ~ 'button--outline ' %}
+    {% endif %}
+
+    {% if size and size == 'small' %}
+        {% set buttonClasses = buttonClasses ~ 'button--small ' %}
+    {% endif %}
+{% endif %}
+
+{% if primary %}
+    {% set buttonClasses = buttonClasses ~ 'button--primary '  %}
+{% else %}
+    {% set buttonClasses = buttonClasses ~ 'button--secondary ' %}
+{% endif %}
+
+ {% if stretchedLink %}
+     {% set buttonClasses = buttonClasses ~ 'stretched-link ' %}
+ {% endif %}
+
+
+{% if type == 'link' and linkButton %}
+    <a href="{{ buttonHref }}" role="button" class="{{ buttonClasses }}" {% if toggle and target %}data-bs-toggle="{{ toggle }}" data-bs-target="#{{ target }}" {% endif %}>
+
+    {% elseif type == 'link' and not linkButton %}
+    <a href="{{ buttonHref }}" role="button" class="{{ buttonClasses }}" {% if toggle and target %}data-bs-toggle="{{ toggle }}" data-bs-target="#{{ target }}" {% endif %}>
+
+{% else %}
+    <button type="{{ type }}" class="{{ buttonClasses }}">
+{% endif %}
+
+    {% if icon and iconBefore %}<i class="bx {{icon}}"></i>{% endif %}
+    {{ label }}{% if icon and not iconBefore %}<i class="bx {{icon}}"></i>{% endif %}
+
+{% if type == 'link' %}
+    </a>
+{% else %}
+    </button>
+{% endif %}

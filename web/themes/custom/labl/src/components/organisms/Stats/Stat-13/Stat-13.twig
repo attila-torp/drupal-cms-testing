@@ -1,0 +1,73 @@
+{% set cardCols = 1 %}
+{% set contentColWidth = 6 %}
+{% set cardsColWidth = 6 %}
+{% if cards|length > 2 %}
+    {% set cardCols = 2 %}
+    {% set contentColWidth = 4 %}
+    {% set cardsColWidth = 8 %}
+{% endif %}
+<section class="stat stat-13" data-bs-theme="{{ componentTheme }}">
+    <div class="section-media">
+        {% if video %}
+            <div class="background-video">
+                {% include '../../../atoms/Video/Video.twig'  with {
+                    image: image,
+                    imageAlt: 'some alt text',
+                    video: video,
+                    autoplay: true
+                } %}
+            </div>
+            <div class="overlay"></div>
+        {% elseif image %}
+            {% include '../../../atoms/Image/Image.twig'  with {
+                image: image,
+                imageAlt: 'some alt text',
+                video: video,
+                toggle: 'modal',
+                target: 'myModal',
+                background: true,
+            } %}
+            <div class="overlay"></div>
+        {% endif %}
+    </div>
+    <div class="container">
+        {% if sectionIntroHeading or sectionIntroText %}
+            <div class="row">
+                <div class="col-lg-{{ contentColWidth }} d-flex align-items-center">
+                    <div class="section-intro {% if centered %} text-center {% endif %}">
+                        {% include '../../../molecules/Content/Content.twig' with {
+                            heading: sectionIntroHeading,
+                            headingSize: 'h2',
+                            eyebrow: sectionIntroEyebrow,
+                            text: sectionIntroText,
+                            ctas: ctas,
+                            logoTop: sectionIntroLogoTop,
+                            logoBottom: sectionIntroLogoBottom
+                        } %}
+                    </div>
+                </div>
+                <div class="col-lg-{{ cardsColWidth }}">
+
+                    {% if cards %}
+                        <div class="row row-cols-1 row-cols-lg-{{ cardCols }} cards">
+                            {% for card in cards %}
+                                <div class="col d-flex {% if centered %} justify-content-center{% endif %}">
+                                    {% include '../../../molecules/Cards/Stat-Card-1/Stat-Card-1.twig' with {
+                                        border: true,
+                                        borderLeft: borderLeftCard,
+                                        cardCentered: cardCentered,
+                                        cardStat: card.cardStat,
+                                        cardHeading: card.cardHeading,
+                                        cardText: card.cardText,
+                                        statLarge: cardStatLarge } %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+        {% endif %}
+
+    </div>
+</section>

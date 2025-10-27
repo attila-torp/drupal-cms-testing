@@ -1,0 +1,40 @@
+{% set cardCols = cards|length %}
+{% set cardColsMd = 2 %}
+{%  if cardCols > 4 %}
+    {% set cardCols = 4 %}
+{% endif %}
+<section class="pricing pricing-1" data-bs-theme="{{ componentTheme }}">
+    <div class="container">
+        {% if sectionIntroHeading %}
+        <div class="row">
+            <div class="col-12">
+                <div class="section-intro text-center">
+                        {% include '../../../molecules/Content/Content.twig' with {
+                            heading: sectionIntroHeading,
+                            headingSize: 'h2',
+                            eyebrow: sectionIntroEyebrow,
+                            text: sectionIntroText
+                        } %}
+                </div>
+            </div>
+        </div>
+
+        {% endif %}
+
+        <div class="row row-cols-1 row-cols-md-{{ cardColsMd }} row-cols-lg-{{ cardCols }} cards">
+            {% for card in cards %}
+                <div class="col d-flex {% if centered %} justify-content-center{% endif %}">
+                    {% include '../../../molecules/Cards/Pricing-Card-1/Pricing-Card-1.twig' with {
+                        cardHeading: card.cardHeading,
+                        cardPrice: card.cardPrice,
+                        cardText: card.cardText,
+                        cardCtaUrl: card.cardCtaUrl,
+                        cardCtaText: card.cardCtaText,
+                        cardFeatures : card.cardFeatures
+                    }
+                    %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
