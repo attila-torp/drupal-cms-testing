@@ -5,7 +5,7 @@ const path = require('path');
 
 const themeRoot = path.resolve(__dirname, '..');
 const emulsifyRoot = path.resolve(themeRoot, '../contrib/emulsify');
-const sourceComponents = path.join(themeRoot, 'components');
+const sourceComponents = path.join(themeRoot, 'src', 'components');
 const targetDirectory = path.join(emulsifyRoot, 'components', '_project');
 const linkLocation = path.join(targetDirectory, 'labl');
 

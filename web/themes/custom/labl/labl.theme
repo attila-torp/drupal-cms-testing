@@ -7,7 +7,7 @@ declare(strict_types=1);
  */
 function labl_theme_registry_alter(array &$theme_registry): void {
   $loader = \Drupal::service('twig.loader.filesystem');
-  $components_path = DRUPAL_ROOT . '/themes/custom/labl/components';
+  $components_path = DRUPAL_ROOT . '/themes/custom/labl/src/components';
 
   $existing_paths = $loader->getPaths('labl');
   if (!in_array($components_path, $existing_paths, TRUE)) {
