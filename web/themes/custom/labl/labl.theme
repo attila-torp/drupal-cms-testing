@@ -69,3 +69,142 @@ function labl_preprocess_paragraph__example_block(array &$variables): void {
   unset($variables['content']['field_example_block_link']);
   unset($variables['content']['field_example_block_highlights']);
 }
+
+/**
+ * Prepares variables for the CTA 7 paragraph template.
+ */
+function labl_preprocess_paragraph__cta_7(array &$variables): void {
+  $paragraph = $variables['paragraph'];
+
+  $cta_7 = [
+    'componentTheme' => 'light',
+    'hasBorder' => FALSE,
+    'bgImage' => NULL,
+    'heading' => '',
+    'subHeadingText' => NULL,
+    'eyebrow' => '',
+    'text' => NULL,
+    'subscribeForm' => FALSE,
+    'image' => NULL,
+    'imageAlt' => '',
+  ];
+
+  if (!$paragraph->get('field_component_theme')->isEmpty()) {
+    $cta_7['componentTheme'] = $paragraph->get('field_component_theme')->value;
+  }
+
+  if (!$paragraph->get('field_cta_has_border')->isEmpty()) {
+    $cta_7['hasBorder'] = (bool) $paragraph->get('field_cta_has_border')->value;
+  }
+
+  if (!$paragraph->get('field_cta_background')->isEmpty()) {
+    $background_item = $paragraph->get('field_cta_background')->first();
+    if ($background_item && $background_item->entity instanceof \Drupal\file\FileInterface) {
+      $cta_7['bgImage'] = labl_generate_image_url($background_item->entity);
+    }
+  }
+
+  if (!$paragraph->get('field_cta_heading')->isEmpty()) {
+    $cta_7['heading'] = $paragraph->get('field_cta_heading')->value;
+  }
+
+  if (!$paragraph->get('field_cta_eyebrow')->isEmpty()) {
+    $cta_7['eyebrow'] = $paragraph->get('field_cta_eyebrow')->value;
+  }
+
+  if (!$paragraph->get('field_cta_subscribe')->isEmpty()) {
+    $cta_7['subscribeForm'] = (bool) $paragraph->get('field_cta_subscribe')->value;
+  }
+
+  if (!$paragraph->get('field_cta_media')->isEmpty()) {
+    $media_item = $paragraph->get('field_cta_media')->first();
+    if ($media_item && $media_item->entity instanceof \Drupal\file\FileInterface) {
+      $cta_7['image'] = labl_generate_image_url($media_item->entity);
+      $cta_7['imageAlt'] = $media_item->getValue()['alt'] ?? '';
+    }
+  }
+
+  if (isset($variables['content']['field_cta_subheading'])) {
+    $cta_7['subHeadingText'] = $variables['content']['field_cta_subheading'];
+    unset($variables['content']['field_cta_subheading']);
+  }
+
+  if (isset($variables['content']['field_cta_text'])) {
+    $cta_7['text'] = $variables['content']['field_cta_text'];
+    unset($variables['content']['field_cta_text']);
+  }
+
+  if ($paragraph->hasField('field_cta_ctas')) {
+    $buttons = labl_build_cta_buttons($paragraph->get('field_cta_ctas')->referencedEntities());
+    if ($buttons) {
+      $cta_7['ctas'] = $buttons;
+    }
+  }
+
+  unset($variables['content']['field_component_theme']);
+  unset($variables['content']['field_cta_has_border']);
+  unset($variables['content']['field_cta_background']);
+  unset($variables['content']['field_cta_eyebrow']);
+  unset($variables['content']['field_cta_heading']);
+  unset($variables['content']['field_cta_subscribe']);
+  unset($variables['content']['field_cta_media']);
+  unset($variables['content']['field_cta_ctas']);
+
+  $variables['cta_7'] = $cta_7;
+}
+
+/**
+ * Builds CTA button data from referenced CTA button paragraphs.
+ *
+ * @param \Drupal\paragraphs\ParagraphInterface[] $cta_paragraphs
+ *   Referenced CTA button paragraphs.
+ *
+ * @return array
+ *   Renderable CTA button data.
+ */
+function labl_build_cta_buttons(array $cta_paragraphs): array {
+  $buttons = [];
+
+  foreach ($cta_paragraphs as $cta_paragraph) {
+    if (!$cta_paragraph instanceof \Drupal\paragraphs\ParagraphInterface) {
+      continue;
+    }
+
+    $label = $cta_paragraph->get('field_cta_label')->value ?? '';
+    $button_href = '';
+
+    if (!$cta_paragraph->get('field_cta_link')->isEmpty()) {
+      $link_item = $cta_paragraph->get('field_cta_link')->first();
+      if ($link_item && $link_item->getUrl() instanceof \Drupal\Core\Url) {
+        $button_href = $link_item->getUrl()->toString();
+      }
+    }
+
+    if ($label === '' && $button_href === '') {
+      continue;
+    }
+
+    $buttons[] = [
+      'label' => $label,
+      'buttonHref' => $button_href,
+      'type' => $cta_paragraph->get('field_cta_type')->value ?? 'button',
+      'primary' => !$cta_paragraph->get('field_cta_primary')->isEmpty() && (bool) $cta_paragraph->get('field_cta_primary')->value,
+      'outline' => !$cta_paragraph->get('field_cta_outline')->isEmpty() && (bool) $cta_paragraph->get('field_cta_outline')->value,
+    ];
+  }
+
+  return $buttons;
+}
+
+/**
+ * Generates a relative URL for a file entity.
+ */
+function labl_generate_image_url(?\Drupal\file\FileInterface $file): ?string {
+  if (!$file) {
+    return NULL;
+  }
+
+  $url = \Drupal::service('file_url_generator')->generateString($file->getFileUri());
+
+  return file_url_transform_relative($url);
+}

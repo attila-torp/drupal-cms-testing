@@ -1,0 +1,25 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cta_button.field_cta_label
+    - field.field.paragraph.cta_button.field_cta_link
+    - field.field.paragraph.cta_button.field_cta_outline
+    - field.field.paragraph.cta_button.field_cta_primary
+    - field.field.paragraph.cta_button.field_cta_type
+    - paragraphs.paragraphs_type.cta_button
+  module:
+    - link
+    - options
+    - paragraphs
+id: paragraph.cta_button.default
+targetEntityType: paragraph
+bundle: cta_button
+mode: default
+content: { }
+hidden:
+  field_cta_label: true
+  field_cta_link: true
+  field_cta_outline: true
+  field_cta_primary: true
+  field_cta_type: true

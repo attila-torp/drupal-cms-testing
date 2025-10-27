@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cta_ctas
+    - paragraphs.paragraphs_type.cta_7
+    - paragraphs.paragraphs_type.cta_button
+  module:
+    - entity_reference_revisions
+id: paragraph.cta_7.field_cta_ctas
+field_name: field_cta_ctas
+entity_type: paragraph
+bundle: cta_7
+label: 'CTA buttons'
+description: 'Buttons displayed within the CTA component.'
+required: false
+translatable: true
+default_value: { }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      cta_button: cta_button
+    target_bundles_drag_drop:
+      cta_button:
+        enabled: true
+        weight: 0
+field_type: entity_reference_revisions

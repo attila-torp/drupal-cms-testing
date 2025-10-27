@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cta_label
+    - paragraphs.paragraphs_type.cta_button
+id: paragraph.cta_button.field_cta_label
+field_name: field_cta_label
+entity_type: paragraph
+bundle: cta_button
+label: Label
+description: 'Text shown on the CTA button.'
+required: true
+translatable: true
+default_value: { }
+default_value_callback: ''
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+field_type: string

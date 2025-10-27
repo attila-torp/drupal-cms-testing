@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cta_subheading
+    - paragraphs.paragraphs_type.cta_7
+  module:
+    - text
+id: paragraph.cta_7.field_cta_subheading
+field_name: field_cta_subheading
+entity_type: paragraph
+bundle: cta_7
+label: 'Supporting text'
+description: 'Rich text content displayed under the heading in the left column.'
+required: false
+translatable: true
+default_value: { }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_long

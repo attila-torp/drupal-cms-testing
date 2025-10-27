@@ -1,0 +1,54 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cta_button.field_cta_label
+    - field.field.paragraph.cta_button.field_cta_link
+    - field.field.paragraph.cta_button.field_cta_outline
+    - field.field.paragraph.cta_button.field_cta_primary
+    - field.field.paragraph.cta_button.field_cta_type
+    - paragraphs.paragraphs_type.cta_button
+  module:
+    - link
+    - options
+    - paragraphs
+id: paragraph.cta_button.default
+targetEntityType: paragraph
+bundle: cta_button
+mode: default
+content:
+  field_cta_label:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: { }
+  field_cta_link:
+    type: link_default
+    weight: 1
+    region: content
+    settings: { }
+    third_party_settings: { }
+  field_cta_type:
+    type: options_select
+    weight: 2
+    region: content
+    settings: { }
+    third_party_settings: { }
+  field_cta_primary:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: { }
+  field_cta_outline:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: { }
+hidden: { }

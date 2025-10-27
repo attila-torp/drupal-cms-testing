@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cta_has_border
+    - paragraphs.paragraphs_type.cta_7
+  module:
+    - options
+id: paragraph.cta_7.field_cta_has_border
+field_name: field_cta_has_border
+entity_type: paragraph
+bundle: cta_7
+label: 'Add border'
+description: 'Wrap the component with the optional border treatment.'
+required: false
+translatable: true
+default_value: { }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cta_type
+    - paragraphs.paragraphs_type.cta_button
+  module:
+    - options
+id: paragraph.cta_button.field_cta_type
+field_name: field_cta_type
+entity_type: paragraph
+bundle: cta_button
+label: 'Interaction type'
+description: 'Determines whether the CTA renders as a button or link.'
+required: true
+translatable: true
+default_value:
+  - { value: 'button' }
+default_value_callback: ''
+settings: { }
+field_type: list_string

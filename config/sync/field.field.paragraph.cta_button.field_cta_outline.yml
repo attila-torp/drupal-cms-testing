@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cta_outline
+    - paragraphs.paragraphs_type.cta_button
+  module:
+    - options
+id: paragraph.cta_button.field_cta_outline
+field_name: field_cta_outline
+entity_type: paragraph
+bundle: cta_button
+label: 'Outline style'
+description: 'Apply the outline button style to this CTA.'
+required: false
+translatable: true
+default_value: { }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

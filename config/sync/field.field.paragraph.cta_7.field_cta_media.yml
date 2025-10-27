@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cta_media
+    - paragraphs.paragraphs_type.cta_7
+  module:
+    - image
+id: paragraph.cta_7.field_cta_media
+field_name: field_cta_media
+entity_type: paragraph
+bundle: cta_7
+label: 'Supporting image'
+description: 'Optional media displayed below the CTA content.'
+required: false
+translatable: true
+default_value: { }
+default_value_callback: ''
+settings:
+  file_directory: ''
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  alt_field: true
+  alt_field_required: false
+  title_field: false
+  default_image: { }
+field_type: image

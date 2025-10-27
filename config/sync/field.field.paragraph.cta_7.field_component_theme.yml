@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_theme
+    - paragraphs.paragraphs_type.cta_7
+  module:
+    - options
+id: paragraph.cta_7.field_component_theme
+field_name: field_component_theme
+entity_type: paragraph
+bundle: cta_7
+label: 'Component theme'
+description: 'Controls light or dark styling for the CTA component.'
+required: false
+translatable: true
+default_value:
+  - { value: 'light' }
+default_value_callback: ''
+settings: { }
+field_type: list_string

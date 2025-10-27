@@ -1,0 +1,17 @@
+{#
+/**
+ * @file
+ * Theme override for the CTA 7 paragraph.
+ */
+#}
+{% set classes = [
+  'paragraph',
+  'paragraph--type--cta-7',
+  paragraph.isPublished() ? 'paragraph--status--published' : 'paragraph--status--unpublished'
+] %}
+{% if view_mode %}
+  {% set classes = classes|merge(['paragraph--view-mode--' ~ view_mode|clean_class]) %}
+{% endif %}
+<div{{ attributes.addClass(classes) }}>
+  {% include '@labl/organisms/CTAs/CTA-7/CTA-7.twig' with cta_7 %}
+</div>
