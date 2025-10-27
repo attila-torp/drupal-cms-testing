@@ -35,18 +35,18 @@
 @import "~bootstrap/scss/utilities/api";
 //@import "../../design-system/storybook/src/assets/scss/styles.scss";
 
-@import "../../design-system/storybook/src/assets/scss/utilities/typography";
-@import "../../design-system/storybook/src/assets/scss/utilities/utilities-overrides";
-@import "../../design-system/storybook/src/assets/scss/utilities/forms";
-@import "../../design-system/storybook/src/assets/scss/utilities/globals";
+@import "../../src/assets/scss/utilities/typography";
+@import "../../src/assets/scss/utilities/utilities-overrides";
+@import "../../src/assets/scss/utilities/forms";
+@import "../../src/assets/scss/utilities/globals";
 
 //@import "@accessible360/accessible-slick/slick/slick";
-@import "../../design-system/storybook/src/assets/scss/utilities/slick-theme";
+@import "../../src/assets/scss/utilities/slick-theme";
 
 
-@import "../../design-system/storybook/src/assets/scss/atoms/atoms";
-@import "../../design-system/storybook/src/assets/scss/molecules/molecules";
-@import "../../design-system/storybook/src/assets/scss/organisms/organisms";
+@import "../../src/assets/scss/atoms/atoms";
+@import "../../src/assets/scss/molecules/molecules";
+@import "../../src/assets/scss/organisms/organisms";
 body {
   background-color: #f6f6f6;
 }
