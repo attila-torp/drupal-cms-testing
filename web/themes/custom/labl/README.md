@@ -22,7 +22,7 @@ same Storybook workspace instead of maintaining a separate configuration.
 
 ## Running Storybook for LABL components
 
-The LABL `npm run storybook` script links the theme's `components/` directory
+The LABL `npm run storybook` script links the theme's `src/components/` directory
 into Emulsify's pattern library so Storybook discovers it alongside the
 upstream components.
 
@@ -34,14 +34,14 @@ npm run storybook
 The command will:
 
 1. Verify that `web/themes/contrib/emulsify` exists and has its dependencies.
-2. Symlink `web/themes/custom/labl/components` to
+2. Symlink `web/themes/custom/labl/src/components` to
    `web/themes/contrib/emulsify/components/_project/labl`.
 3. Launch Emulsify's Storybook instance (`npm run storybook --prefix
    ../contrib/emulsify`).
 
 ## Example: Example Content Block
 
-`components/example-block` contains:
+`src/components/example-block` contains:
 
 - `example-block.twig` – the Twig template Drupal will render.
 - `example-block.yml` – field metadata and default values that Storybook exposes

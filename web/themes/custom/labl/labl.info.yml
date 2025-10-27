@@ -18,4 +18,4 @@ libraries:
 component-libraries:
   labl:
     paths:
-      - components
+      - src/components
