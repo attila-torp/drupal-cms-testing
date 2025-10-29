@@ -15,3 +15,14 @@ function labl_blocks_update_9001() {
 
   return t('Installed Example Block paragraph configuration.');
 }
+
+/**
+ * Installs configuration for the CTA-7 paragraph bundle.
+ */
+function labl_blocks_update_9002() {
+  /** @var \Drupal\Core\Config\ConfigInstallerInterface $config_installer */
+  $config_installer = \Drupal::service('config.installer');
+  $config_installer->installDefaultConfig('module', 'labl_blocks');
+
+  return t('Installed CTA-7 paragraph configuration.');
+}
