@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cta_7_ctas
+    - paragraphs.paragraphs_type.cta_7
+  module:
+    - text
+    - labl_blocks
+id: paragraph.cta_7.field_cta_7_ctas
+field_name: field_cta_7_ctas
+entity_type: paragraph
+bundle: cta_7
+label: CTAs
+description: 'JSON structure representing CTA props.'
+required: false
+translatable: true
+default_value: { }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_long

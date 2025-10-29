@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cta_7_text
+    - paragraphs.paragraphs_type.cta_7
+  module:
+    - text
+    - labl_blocks
+id: paragraph.cta_7.field_cta_7_text
+field_name: field_cta_7_text
+entity_type: paragraph
+bundle: cta_7
+label: Text
+description: 'Rich text content for the text prop.'
+required: false
+translatable: true
+default_value: { }
+default_value_callback: ''
+settings:
+  display_summary: false
+field_type: text_long

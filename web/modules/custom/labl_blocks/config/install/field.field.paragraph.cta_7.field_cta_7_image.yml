@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_cta_7_image
+    - paragraphs.paragraphs_type.cta_7
+  module:
+    - media
+    - labl_blocks
+id: paragraph.cta_7.field_cta_7_image
+field_name: field_cta_7_image
+entity_type: paragraph
+bundle: cta_7
+label: 'Image'
+description: 'Media item used for the image prop.'
+required: false
+translatable: true
+default_value: { }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: null
+field_type: entity_reference
