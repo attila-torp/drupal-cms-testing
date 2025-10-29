@@ -1,0 +1,12 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - labl_blocks
+id: cta_7
+label: 'CTA 7'
+icon_uuid: null
+icon_default: paragraph
+description: 'CTA component using the CTA-7 design system variant.'
+behavior_plugins: { }
