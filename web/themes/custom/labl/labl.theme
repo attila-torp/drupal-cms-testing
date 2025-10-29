@@ -16,6 +16,35 @@ function labl_theme_registry_alter(array &$theme_registry): void {
 }
 
 /**
+ * Populates reusable "labl" field values for paragraph components.
+ */
+function labl_preprocess_paragraph(array &$variables): void {
+  $paragraph = $variables['paragraph'];
+
+  if (!isset($variables['labl']) || !is_array($variables['labl'])) {
+    $variables['labl'] = [];
+  }
+
+  foreach ($paragraph->getFields() as $field_name => $field) {
+    if (strpos($field_name, 'field_labl_') !== 0) {
+      continue;
+    }
+
+    $render_array = $variables['content'][$field_name] ?? NULL;
+
+    if ($field->isEmpty()) {
+      unset($variables['content'][$field_name]);
+      continue;
+    }
+
+    $slug = substr($field_name, strlen('field_labl_'));
+    _labl_apply_labl_field($variables, $slug, $field, $render_array);
+
+    unset($variables['content'][$field_name]);
+  }
+}
+
+/**
  * Prepares variables for the Example block paragraph template.
  */
 function labl_preprocess_paragraph__example_block(array &$variables): void {
@@ -68,4 +97,270 @@ function labl_preprocess_paragraph__example_block(array &$variables): void {
   unset($variables['content']['field_example_block_body']);
   unset($variables['content']['field_example_block_link']);
   unset($variables['content']['field_example_block_highlights']);
+}
+
+/**
+ * Prepares variables for the CTA-7 paragraph template.
+ */
+function labl_preprocess_paragraph__cta_7(array &$variables): void {
+  $paragraph = $variables['paragraph'];
+
+  if (!array_key_exists('hasBorder', $variables)) {
+    $variables['hasBorder'] = FALSE;
+    if ($paragraph->hasField('field_cta_7_has_border') && !$paragraph->get('field_cta_7_has_border')->isEmpty()) {
+      $variables['hasBorder'] = (bool) $paragraph->get('field_cta_7_has_border')->value;
+    }
+  }
+
+  if (!array_key_exists('componentTheme', $variables)) {
+    $variables['componentTheme'] = 'light';
+    if ($paragraph->hasField('field_cta_7_component_theme') && !$paragraph->get('field_cta_7_component_theme')->isEmpty()) {
+      $variables['componentTheme'] = $paragraph->get('field_cta_7_component_theme')->value;
+    }
+  }
+  $variables['componentTheme'] = $variables['componentTheme'] ?: 'light';
+
+  if (!array_key_exists('heading', $variables)) {
+    $variables['heading'] = NULL;
+    if ($paragraph->hasField('field_cta_7_heading') && !$paragraph->get('field_cta_7_heading')->isEmpty()) {
+      $variables['heading'] = $paragraph->get('field_cta_7_heading')->value;
+    }
+  }
+
+  if (!array_key_exists('eyebrow', $variables)) {
+    $variables['eyebrow'] = NULL;
+    if ($paragraph->hasField('field_cta_7_eyebrow') && !$paragraph->get('field_cta_7_eyebrow')->isEmpty()) {
+      $variables['eyebrow'] = $paragraph->get('field_cta_7_eyebrow')->value;
+    }
+  }
+
+  if (!array_key_exists('subHeadingText', $variables)) {
+    $variables['subHeadingText'] = NULL;
+    if ($paragraph->hasField('field_cta_7_sub_heading') && !$paragraph->get('field_cta_7_sub_heading')->isEmpty()) {
+      $variables['subHeadingText'] = $paragraph->get('field_cta_7_sub_heading')->value;
+    }
+  }
+
+  if (!array_key_exists('text', $variables)) {
+    $variables['text'] = $variables['content']['field_cta_7_text'] ?? NULL;
+  }
+
+  if (!array_key_exists('subscribeForm', $variables)) {
+    $variables['subscribeForm'] = FALSE;
+    if ($paragraph->hasField('field_cta_7_subscribe_form') && !$paragraph->get('field_cta_7_subscribe_form')->isEmpty()) {
+      $variables['subscribeForm'] = (bool) $paragraph->get('field_cta_7_subscribe_form')->value;
+    }
+  }
+
+  if (!array_key_exists('ctas', $variables)) {
+    $variables['ctas'] = [];
+    if ($paragraph->hasField('field_cta_7_ctas') && !$paragraph->get('field_cta_7_ctas')->isEmpty()) {
+      $variables['ctas'] = _labl_decode_cta_field((string) $paragraph->get('field_cta_7_ctas')->value);
+    }
+  }
+
+  if (!array_key_exists('bgImage', $variables)) {
+    $variables['bgImage'] = NULL;
+    if ($paragraph->hasField('field_cta_7_bg_image') && !$paragraph->get('field_cta_7_bg_image')->isEmpty()) {
+      $media_items = $paragraph->get('field_cta_7_bg_image')->referencedEntities();
+      $variables['bgImage'] = _labl_extract_media_image($media_items);
+    }
+  }
+
+  if (!array_key_exists('image', $variables)) {
+    $variables['image'] = NULL;
+  }
+  if (!array_key_exists('imageAlt', $variables)) {
+    $variables['imageAlt'] = NULL;
+  }
+
+  if ($paragraph->hasField('field_cta_7_image') && !$paragraph->get('field_cta_7_image')->isEmpty()) {
+    if (!array_key_exists('image', $variables) || $variables['image'] === NULL) {
+      $media_items = $paragraph->get('field_cta_7_image')->referencedEntities();
+      $image_data = _labl_extract_media_image($media_items, TRUE);
+      if (is_array($image_data)) {
+        $variables['image'] = $image_data['src'] ?? $variables['image'];
+        if (!empty($image_data['alt']) && empty($variables['imageAlt'])) {
+          $variables['imageAlt'] = $image_data['alt'];
+        }
+      }
+    }
+  }
+
+  if ($paragraph->hasField('field_cta_7_image_alt') && !$paragraph->get('field_cta_7_image_alt')->isEmpty()) {
+    $variables['imageAlt'] = $paragraph->get('field_cta_7_image_alt')->value;
+  }
+
+  unset($variables['content']['field_cta_7_component_theme']);
+  unset($variables['content']['field_cta_7_has_border']);
+  unset($variables['content']['field_cta_7_heading']);
+  unset($variables['content']['field_cta_7_eyebrow']);
+  unset($variables['content']['field_cta_7_sub_heading']);
+  unset($variables['content']['field_cta_7_text']);
+  unset($variables['content']['field_cta_7_subscribe_form']);
+  unset($variables['content']['field_cta_7_ctas']);
+  unset($variables['content']['field_cta_7_bg_image']);
+  unset($variables['content']['field_cta_7_image']);
+  unset($variables['content']['field_cta_7_image_alt']);
+}
+
+/**
+ * Extracts image data from referenced media entities.
+ *
+ * @param \Drupal\media\MediaInterface[] $media_entities
+ *   The referenced media entities.
+ * @param bool $include_alt
+ *   Whether to return an array with both src and alt keys.
+ *
+ * @return string|array|null
+ *   The image URL string, an array containing src and alt values, or NULL.
+ */
+function _labl_extract_media_image(array $media_entities, bool $include_alt = FALSE) {
+  foreach ($media_entities as $media) {
+    if (!$media instanceof \Drupal\media\MediaInterface) {
+      continue;
+    }
+
+    if (!$media->hasField('field_media_image') || $media->get('field_media_image')->isEmpty()) {
+      continue;
+    }
+
+    $image_item = $media->get('field_media_image')->first();
+    if (!$image_item || !$image_item->entity) {
+      continue;
+    }
+
+    $uri = $image_item->entity->getFileUri();
+    $url = file_create_url($uri);
+    if ($include_alt) {
+      $values = $image_item->getValue();
+      return [
+        'src' => $url,
+        'alt' => $values['alt'] ?? '',
+      ];
+    }
+
+    return $url;
+  }
+
+  return NULL;
+}
+
+/**
+ * Normalizes a "labl" field value and maps it into template variables.
+ *
+ * @param array $variables
+ *   The paragraph template variables array.
+ * @param string $slug
+ *   The labl field suffix (without the "field_labl_" prefix).
+ * @param \Drupal\Core\Field\FieldItemListInterface $field
+ *   The field item list.
+ * @param array|null $render_array
+ *   The pre-built render array for the field, when available.
+ */
+function _labl_apply_labl_field(array &$variables, string $slug, \Drupal\Core\Field\FieldItemListInterface $field, ?array $render_array = NULL): void {
+  $snake = str_replace('-', '_', $slug);
+  $camel = _labl_camel_case($slug);
+
+  switch ($slug) {
+    case 'bg_image':
+      $image = _labl_extract_media_image($field->referencedEntities());
+      if ($image !== NULL) {
+        $variables['labl'][$snake] = $image;
+        if (!array_key_exists($camel, $variables)) {
+          $variables[$camel] = $image;
+        }
+      }
+      return;
+
+    case 'image':
+      $image_data = _labl_extract_media_image($field->referencedEntities(), TRUE);
+      if (is_array($image_data)) {
+        $variables['labl'][$snake] = $image_data;
+        if (!array_key_exists($camel, $variables)) {
+          $variables[$camel] = $image_data['src'] ?? NULL;
+        }
+        if (!empty($image_data['alt']) && empty($variables['imageAlt'])) {
+          $variables['imageAlt'] = $image_data['alt'];
+        }
+      }
+      return;
+
+    case 'ctas':
+      $value = _labl_decode_cta_field((string) $field->value);
+      break;
+
+    case 'has_border':
+    case 'subscribe_form':
+      $value = (bool) $field->value;
+      break;
+
+    case 'component_theme':
+    case 'heading':
+    case 'eyebrow':
+    case 'sub_heading':
+    case 'image_alt':
+      $value = $field->value;
+      break;
+
+    default:
+      if ($render_array !== NULL) {
+        $value = $render_array;
+      }
+      else {
+        $value = $field->view();
+      }
+      break;
+  }
+
+  if ($value !== NULL) {
+    $variables['labl'][$snake] = $value;
+    if (!array_key_exists($camel, $variables)) {
+      $variables[$camel] = $value;
+    }
+  }
+}
+
+/**
+ * Converts a field suffix into camelCase.
+ */
+function _labl_camel_case(string $value): string {
+  $value = strtolower($value);
+  $value = preg_replace('/[^a-z0-9]+/i', ' ', $value) ?? '';
+  $value = str_replace(' ', '', ucwords($value));
+
+  return lcfirst($value);
+}
+
+/**
+ * Normalizes CTA JSON field payloads into an array of CTA definitions.
+ *
+ * @param string $raw
+ *   The raw JSON stored in the CTA field.
+ *
+ * @return array
+ *   A cleaned list of CTA definitions.
+ */
+function _labl_decode_cta_field(string $raw): array {
+  if ($raw === '') {
+    return [];
+  }
+
+  $decoded = json_decode($raw, TRUE);
+  if (!is_array($decoded)) {
+    return [];
+  }
+
+  if (isset($decoded['ctas']) && is_array($decoded['ctas'])) {
+    $decoded = $decoded['ctas'];
+  }
+
+  $ctas = [];
+  foreach ($decoded as $cta) {
+    if (is_array($cta)) {
+      $ctas[] = $cta;
+    }
+  }
+
+  return $ctas;
 }
