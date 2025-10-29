@@ -1,0 +1,116 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.cta_7.field_cta_7_bg_image
+    - field.field.paragraph.cta_7.field_cta_7_component_theme
+    - field.field.paragraph.cta_7.field_cta_7_ctas
+    - field.field.paragraph.cta_7.field_cta_7_eyebrow
+    - field.field.paragraph.cta_7.field_cta_7_has_border
+    - field.field.paragraph.cta_7.field_cta_7_heading
+    - field.field.paragraph.cta_7.field_cta_7_image
+    - field.field.paragraph.cta_7.field_cta_7_image_alt
+    - field.field.paragraph.cta_7.field_cta_7_sub_heading
+    - field.field.paragraph.cta_7.field_cta_7_subscribe_form
+    - field.field.paragraph.cta_7.field_cta_7_text
+    - paragraphs.paragraphs_type.cta_7
+  module:
+    - media
+    - options
+    - paragraphs
+    - text
+    - labl_blocks
+id: paragraph.cta_7.default
+targetEntityType: paragraph
+bundle: cta_7
+mode: default
+content:
+  field_cta_7_component_theme:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: 'light'
+    third_party_settings: { }
+  field_cta_7_has_border:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: { }
+  field_cta_7_subscribe_form:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: { }
+  field_cta_7_heading:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: { }
+  field_cta_7_sub_heading:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: { }
+  field_cta_7_eyebrow:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: { }
+  field_cta_7_text:
+    type: text_textarea
+    weight: 6
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: { }
+  field_cta_7_image:
+    type: entity_reference_autocomplete
+    weight: 7
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: { }
+  field_cta_7_image_alt:
+    type: string_textfield
+    weight: 8
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: { }
+  field_cta_7_bg_image:
+    type: entity_reference_autocomplete
+    weight: 9
+    region: content
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: { }
+  field_cta_7_ctas:
+    type: text_textarea
+    weight: 10
+    region: content
+    settings:
+      rows: 5
+      placeholder: '{"cta1": {"label": "Button"}}'
+    third_party_settings: { }
+hidden: { }
