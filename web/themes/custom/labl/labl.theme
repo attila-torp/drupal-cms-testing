@@ -7,10 +7,34 @@ declare(strict_types=1);
  */
 function labl_theme_registry_alter(array &$theme_registry): void {
   $loader = \Drupal::service('twig.loader.filesystem');
-  $components_path = DRUPAL_ROOT . '/themes/custom/labl/src/components';
+  /** @var \Drupal\Core\Extension\ExtensionList $extension_list */
+  $extension_list = \Drupal::service('extension.list.theme');
+  $theme_path = $extension_list->getPath('labl');
 
-  $existing_paths = $loader->getPaths('labl');
-  if (!in_array($components_path, $existing_paths, TRUE)) {
+  if ($theme_path) {
+    $components_path = DRUPAL_ROOT . '/' . $theme_path . '/src/components';
+  }
+  else {
+    $components_path = DRUPAL_ROOT . '/themes/custom/labl/src/components';
+  }
+
+  if (!is_dir($components_path)) {
+    return;
+  }
+
+  try {
+    $existing_paths = $loader->getPaths('labl');
+  }
+  catch (\Twig\Error\LoaderError $exception) {
+    $existing_paths = [];
+  }
+
+  $real_components_path = realpath($components_path) ?: $components_path;
+  $normalized_paths = array_map(static function ($path) {
+    return realpath($path) ?: $path;
+  }, $existing_paths);
+
+  if (!in_array($real_components_path, $normalized_paths, TRUE)) {
     $loader->addPath($components_path, 'labl');
   }
 }
