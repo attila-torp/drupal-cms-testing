@@ -1,48 +1,47 @@
 <div class="ctas cta-7 {% if hasBorder %}has-border{% endif %} {% if not bgImage %}bg-solid {% endif %}"
      data-bs-theme="{{ componentTheme }}">
-    {% if hasBorder %}
-    <div class="border-wrapper">{% endif %}
-        {% if bgImage %}
-            {% include '../../../atoms/Image/Image.twig'  with {
-                image: bgImage,
-                background: true
-            } %}
-            <div class="overlay"></div>
-        {% endif %}
-        <div class="container">
-            <div class="cta-content row">
-                <div class="col-lg-6">
-                    {% include '../../../molecules/Content/Content.twig' with {
-                        heading: heading,
-                        headingSize: 'h2',
-                        eyebrow: eyebrow,
-                        text: subHeadingText,
-                        ctas: false} %}
-                </div>
-
-
-                <div class="col-lg-6">
-                    {% include '../../../molecules/Content/Content.twig' with {
-                        eyebrow: false,
-                        heading: false,
-                        text: text,
-                        ctas: ctas,
-                        subscribe: subscribeForm } %}
-                </div>
+    {% if hasBorder %}<div class="border-wrapper">{% endif %}
+    {% if bgImage %}
+        {% include '@labl/atoms/Image/Image.twig' with {
+            image: bgImage,
+            background: true
+        } %}
+        <div class="overlay"></div>
+    {% endif %}
+    <div class="container">
+        <div class="cta-content row">
+            <div class="col-lg-6">
+                {% include '@labl/molecules/Content/Content.twig' with {
+                    heading: heading,
+                    headingSize: 'h2',
+                    eyebrow: eyebrow,
+                    text: subHeadingText,
+                    ctas: false
+                } %}
             </div>
-            {% if image %}
-                <div class="row">
-                    <div class="col-12">
-                        <div class="media">
-                            {% include '../../../atoms/Image/Image.twig'  with {
-                                image: image,
-                                imageAlt: imageAlt,
-                                background: false
-                            } %}
-                        </div>
+            <div class="col-lg-6">
+                {% include '@labl/molecules/Content/Content.twig' with {
+                    eyebrow: false,
+                    heading: false,
+                    text: text,
+                    ctas: ctas,
+                    subscribe: subscribeForm
+                } %}
+            </div>
+        </div>
+        {% if image %}
+            <div class="row">
+                <div class="col-12">
+                    <div class="media">
+                        {% include '@labl/atoms/Image/Image.twig' with {
+                            image: image,
+                            imageAlt: imageAlt,
+                            background: false
+                        } %}
                     </div>
                 </div>
-            {% endif %}
-            <div>
-                {% if hasBorder %}</div> {% endif %}
-            <div>
+            </div>
+        {% endif %}
+    </div>
+    {% if hasBorder %}</div>{% endif %}
+</div>
