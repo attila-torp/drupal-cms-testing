@@ -216,6 +216,9 @@ function labl_preprocess_paragraph__cta_7(array &$variables): void {
  *   The image URL string, an array containing src and alt values, or NULL.
  */
 function _labl_extract_media_image(array $media_entities, bool $include_alt = FALSE) {
+  /** @var \Drupal\Core\File\FileUrlGeneratorInterface $file_url_generator */
+  $file_url_generator = \Drupal::service('file_url_generator');
+
   foreach ($media_entities as $media) {
     if (!$media instanceof \Drupal\media\MediaInterface) {
       continue;
@@ -231,7 +234,7 @@ function _labl_extract_media_image(array $media_entities, bool $include_alt = FA
     }
 
     $uri = $image_item->entity->getFileUri();
-    $url = file_create_url($uri);
+    $url = $file_url_generator->generateAbsoluteString($uri);
     if ($include_alt) {
       $values = $image_item->getValue();
       return [
