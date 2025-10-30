@@ -41,7 +41,7 @@ content:
     settings: { }
     third_party_settings: { }
   field_example_block_highlights:
-    type: entity_reference_revisions_paragraphs
+    type: paragraphs
     weight: 3
     region: content
     settings:
