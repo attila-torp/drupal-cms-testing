@@ -6,19 +6,25 @@ declare(strict_types=1);
  * Implements hook_theme_registry_alter().
  */
 function labl_theme_registry_alter(array &$theme_registry): void {
+  /** @var \Twig\Loader\FilesystemLoader $loader */
   $loader = \Drupal::service('twig.loader.filesystem');
-  /** @var \Drupal\Core\Extension\ExtensionList $extension_list */
-  $extension_list = \Drupal::service('extension.list.theme');
-  $theme_path = $extension_list->getPath('labl');
+  _labl_register_twig_namespace($loader);
+}
 
-  if ($theme_path) {
-    $components_path = DRUPAL_ROOT . '/' . $theme_path . '/src/components';
-  }
-  else {
-    $components_path = DRUPAL_ROOT . '/themes/custom/labl/src/components';
-  }
+/**
+ * Ensures the labl Twig namespace is registered.
+ */
+function labl_twig_loader_alter(\Twig\Loader\FilesystemLoader $loader): void {
+  _labl_register_twig_namespace($loader);
+}
 
-  if (!is_dir($components_path)) {
+/**
+ * Adds the theme's component directory to the Twig loader if needed.
+ */
+function _labl_register_twig_namespace(\Twig\Loader\FilesystemLoader $loader): void {
+  $components_path = _labl_components_path();
+
+  if ($components_path === NULL) {
     return;
   }
 
@@ -37,6 +43,24 @@ function labl_theme_registry_alter(array &$theme_registry): void {
   if (!in_array($real_components_path, $normalized_paths, TRUE)) {
     $loader->addPath($components_path, 'labl');
   }
+}
+
+/**
+ * Returns the absolute path to the labl component library.
+ */
+function _labl_components_path(): ?string {
+  /** @var \Drupal\Core\Extension\ExtensionList $extension_list */
+  $extension_list = \Drupal::service('extension.list.theme');
+  $theme_path = $extension_list->getPath('labl');
+
+  if ($theme_path) {
+    $components_path = DRUPAL_ROOT . '/' . $theme_path . '/src/components';
+  }
+  else {
+    $components_path = DRUPAL_ROOT . '/themes/custom/labl/src/components';
+  }
+
+  return is_dir($components_path) ? $components_path : NULL;
 }
 
 /**
