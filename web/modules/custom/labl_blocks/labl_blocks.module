@@ -25,5 +25,47 @@ function labl_blocks_theme($existing, $type, $theme, $path) {
       'template' => 'Hero-Header-1',
       'path' => 'themes/custom/labl/design-system/storybook/src/stories/organisms/Hero-Headers/Hero-Header-1',
     ],
+    'hero_animated' => [
+      'variables' => [
+        'heading' => '',
+        'description' => '',
+        'hasCta' => FALSE,
+        'ctaLabel' => '',
+        'ctaUrl' => '',
+        'ctaType' => 'primary',
+        'darkTheme' => FALSE,
+      ],
+      'template' => 'Hero-Animated',
+      'path' => 'themes/custom/labl/src/components/organisms/Hero-Headers/Hero-Animated',
+    ],
   ];
+}
+
+/**
+ * Implements hook_entity_base_field_info().
+ */
+function labl_blocks_entity_base_field_info(\Drupal\Core\Entity\EntityTypeInterface $entity_type) {
+  if ($entity_type->id() !== 'node') {
+    return [];
+  }
+
+  if (!\Drupal::moduleHandler()->moduleExists('gutenberg')) {
+    return [];
+  }
+
+  $field_name = 'field_gutenberg';
+  $config = \Drupal::config('gutenberg.settings');
+  if ($config && $config->get('field_name')) {
+    $field_name = $config->get('field_name');
+  }
+
+  $fields[$field_name] = \Drupal\Core\Field\BaseFieldDefinition::create('gutenberg')
+    ->setLabel(t('Gutenberg content'))
+    ->setDescription(t('Stores Gutenberg editor content.'))
+    ->setTranslatable(TRUE)
+    ->setRevisionable(TRUE)
+    ->setDisplayConfigurable('form', TRUE)
+    ->setDisplayConfigurable('view', TRUE);
+
+  return $fields;
 }
