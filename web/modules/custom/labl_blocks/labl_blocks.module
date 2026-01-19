@@ -53,6 +53,11 @@ function labl_blocks_entity_base_field_info(\Drupal\Core\Entity\EntityTypeInterf
     return [];
   }
 
+  $field_type_manager = \Drupal::service('plugin.manager.field.field_type');
+  if (!$field_type_manager->hasDefinition('gutenberg')) {
+    return [];
+  }
+
   $field_name = 'field_gutenberg';
   $config = \Drupal::config('gutenberg.settings');
   if ($config && $config->get('field_name')) {
