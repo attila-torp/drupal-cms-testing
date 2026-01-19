@@ -53,6 +53,11 @@ function labl_blocks_entity_base_field_info(\Drupal\Core\Entity\EntityTypeInterf
     return [];
   }
 
+  $field_type_manager = \Drupal::service('plugin.manager.field.field_type');
+  if (!$field_type_manager->hasDefinition('gutenberg')) {
+    return [];
+  }
+
   $field_name = 'field_gutenberg';
   $config = \Drupal::config('gutenberg.settings');
   if ($config && $config->get('field_name')) {
@@ -68,4 +73,61 @@ function labl_blocks_entity_base_field_info(\Drupal\Core\Entity\EntityTypeInterf
     ->setDisplayConfigurable('view', TRUE);
 
   return $fields;
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function labl_blocks_module_implements_alter(array &$implementations, $hook) {
+  if ($hook !== 'form_node_form_alter') {
+    return;
+  }
+
+  if (isset($implementations['gutenberg']) && !labl_blocks_should_run_gutenberg_form_alter()) {
+    unset($implementations['gutenberg']);
+  }
+}
+
+/**
+ * Determines whether Gutenberg's node form alter should run.
+ */
+function labl_blocks_should_run_gutenberg_form_alter() {
+  if (!\Drupal::moduleHandler()->moduleExists('gutenberg')) {
+    return FALSE;
+  }
+
+  $field_name = 'field_gutenberg';
+  $config = \Drupal::config('gutenberg.settings');
+  if ($config && $config->get('field_name')) {
+    $field_name = $config->get('field_name');
+  }
+
+  $route_match = \Drupal::routeMatch();
+  $node = $route_match->getParameter('node');
+  if ($node instanceof \Drupal\node\NodeInterface) {
+    return $node->hasField($field_name);
+  }
+
+  $node_type = $route_match->getParameter('node_type');
+  if ($node_type instanceof \Drupal\node\NodeTypeInterface) {
+    $node = \Drupal\node\Entity\Node::create(['type' => $node_type->id()]);
+    return $node->hasField($field_name);
+  }
+
+  return FALSE;
+}
+
+/**
+ * Implements hook_form_node_form_alter().
+ */
+function labl_blocks_form_node_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if (!labl_blocks_should_run_gutenberg_form_alter()) {
+    return;
+  }
+
+  if (!function_exists('gutenberg_form_node_form_alter')) {
+    return;
+  }
+
+  gutenberg_form_node_form_alter($form, $form_state, $form_id);
 }
