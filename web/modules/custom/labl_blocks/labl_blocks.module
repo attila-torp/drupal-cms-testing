@@ -83,31 +83,17 @@ function labl_blocks_module_implements_alter(array &$implementations, $hook) {
     return;
   }
 
-  if (isset($implementations['gutenberg'])) {
+  if (isset($implementations['gutenberg']) && !labl_blocks_should_run_gutenberg_form_alter()) {
     unset($implementations['gutenberg']);
   }
 }
 
 /**
- * Implements hook_form_node_form_alter().
+ * Determines whether Gutenberg's node form alter should run.
  */
-function labl_blocks_form_node_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+function labl_blocks_should_run_gutenberg_form_alter() {
   if (!\Drupal::moduleHandler()->moduleExists('gutenberg')) {
-    return;
-  }
-
-  if (!function_exists('gutenberg_form_node_form_alter')) {
-    return;
-  }
-
-  $form_object = $form_state->getFormObject();
-  if (!$form_object || !method_exists($form_object, 'getEntity')) {
-    return;
-  }
-
-  $node = $form_object->getEntity();
-  if (!$node) {
-    return;
+    return FALSE;
   }
 
   $field_name = 'field_gutenberg';
@@ -116,9 +102,17 @@ function labl_blocks_form_node_form_alter(array &$form, \Drupal\Core\Form\FormSt
     $field_name = $config->get('field_name');
   }
 
-  if (!$node->hasField($field_name)) {
-    return;
+  $route_match = \Drupal::routeMatch();
+  $node = $route_match->getParameter('node');
+  if ($node instanceof \Drupal\node\NodeInterface) {
+    return $node->hasField($field_name);
   }
 
-  gutenberg_form_node_form_alter($form, $form_state, $form_id);
+  $node_type = $route_match->getParameter('node_type');
+  if ($node_type instanceof \Drupal\node\NodeTypeInterface) {
+    $node = \Drupal\node\Entity\Node::create(['type' => $node_type->id()]);
+    return $node->hasField($field_name);
+  }
+
+  return FALSE;
 }
