@@ -7,5 +7,7 @@ dependencies:
   - drupal:block
   - drupal:entity_reference_revisions
   - drupal:link
+  - drupal:media
+  - drupal:options
   - drupal:paragraphs
   - drupal:text

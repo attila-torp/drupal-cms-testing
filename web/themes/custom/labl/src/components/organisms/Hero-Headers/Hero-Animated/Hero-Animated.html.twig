@@ -1,0 +1,35 @@
+{% set section_classes = [
+  'jumbotron',
+  'jumbotron-fluid',
+  'is-animated',
+] %}
+{% if darkTheme %}
+  {% set section_classes = section_classes|merge(['is-dark', 'bg-primary']) %}
+{% endif %}
+
+<section class="{{ section_classes|join(' ') }}">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-9 offset-md-1">
+        {% if heading %}
+          <h1>{{ heading }}</h1>
+        {% endif %}
+
+        {% if description %}
+          <p class="is-large">{{ description }}</p>
+        {% endif %}
+
+        {% if hasCta and ctaLabel and ctaUrl %}
+          {% include '@storybook/stories/atoms/Button/Button.twig' with {
+            label: ctaLabel,
+            buttonHref: ctaUrl,
+            type: 'link',
+            primary: ctaType == 'primary',
+            outline: ctaType == 'outline',
+            linkButton: true,
+          } %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
