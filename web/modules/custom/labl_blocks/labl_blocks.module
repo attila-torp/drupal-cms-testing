@@ -116,3 +116,18 @@ function labl_blocks_should_run_gutenberg_form_alter() {
 
   return FALSE;
 }
+
+/**
+ * Implements hook_form_node_form_alter().
+ */
+function labl_blocks_form_node_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if (!labl_blocks_should_run_gutenberg_form_alter()) {
+    return;
+  }
+
+  if (!function_exists('gutenberg_form_node_form_alter')) {
+    return;
+  }
+
+  gutenberg_form_node_form_alter($form, $form_state, $form_id);
+}
