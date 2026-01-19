@@ -6,6 +6,7 @@ package: Custom
 dependencies:
   - drupal:block
   - drupal:entity_reference_revisions
+  - drupal:gutenberg
   - drupal:link
   - drupal:media
   - drupal:options

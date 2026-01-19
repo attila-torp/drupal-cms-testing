@@ -40,3 +40,32 @@ function labl_blocks_theme($existing, $type, $theme, $path) {
     ],
   ];
 }
+
+/**
+ * Implements hook_entity_base_field_info().
+ */
+function labl_blocks_entity_base_field_info(\Drupal\Core\Entity\EntityTypeInterface $entity_type) {
+  if ($entity_type->id() !== 'node') {
+    return [];
+  }
+
+  if (!\Drupal::moduleHandler()->moduleExists('gutenberg')) {
+    return [];
+  }
+
+  $field_name = 'field_gutenberg';
+  $config = \Drupal::config('gutenberg.settings');
+  if ($config && $config->get('field_name')) {
+    $field_name = $config->get('field_name');
+  }
+
+  $fields[$field_name] = \Drupal\Core\Field\BaseFieldDefinition::create('gutenberg')
+    ->setLabel(t('Gutenberg content'))
+    ->setDescription(t('Stores Gutenberg editor content.'))
+    ->setTranslatable(TRUE)
+    ->setRevisionable(TRUE)
+    ->setDisplayConfigurable('form', TRUE)
+    ->setDisplayConfigurable('view', TRUE);
+
+  return $fields;
+}
