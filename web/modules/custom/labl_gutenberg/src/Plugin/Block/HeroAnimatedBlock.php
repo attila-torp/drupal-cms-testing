@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\labl_blocks\Plugin\Block;
+namespace Drupal\labl_gutenberg\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Form\FormStateInterface;

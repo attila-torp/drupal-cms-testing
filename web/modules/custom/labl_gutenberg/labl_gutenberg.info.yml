@@ -1,0 +1,11 @@
+name: 'Labl Gutenberg'
+type: module
+description: 'Gutenberg blocks for the Labl theme.'
+core_version_requirement: ^10|^11
+package: Custom
+dependencies:
+  - drupal:block
+  - drupal:gutenberg
+  - drupal:link
+  - drupal:options
+  - drupal:text

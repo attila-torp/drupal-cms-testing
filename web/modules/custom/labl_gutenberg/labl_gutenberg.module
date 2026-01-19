@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * @file
+ * Theme hook registration for Labl Gutenberg module.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function labl_gutenberg_theme($existing, $type, $theme, $path) {
+  return [
+    'hero_animated' => [
+      'variables' => [
+        'heading' => '',
+        'description' => '',
+        'hasCta' => FALSE,
+        'ctaLabel' => '',
+        'ctaUrl' => '',
+        'ctaType' => 'primary',
+        'darkTheme' => FALSE,
+      ],
+      'template' => 'Hero-Animated',
+      'path' => 'themes/custom/labl/src/components/organisms/Hero-Headers/Hero-Animated',
+    ],
+  ];
+}
