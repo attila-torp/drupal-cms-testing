@@ -74,3 +74,51 @@ function labl_blocks_entity_base_field_info(\Drupal\Core\Entity\EntityTypeInterf
 
   return $fields;
 }
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function labl_blocks_module_implements_alter(array &$implementations, $hook) {
+  if ($hook !== 'form_node_form_alter') {
+    return;
+  }
+
+  if (isset($implementations['gutenberg'])) {
+    unset($implementations['gutenberg']);
+  }
+}
+
+/**
+ * Implements hook_form_node_form_alter().
+ */
+function labl_blocks_form_node_form_alter(array &$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  if (!\Drupal::moduleHandler()->moduleExists('gutenberg')) {
+    return;
+  }
+
+  if (!function_exists('gutenberg_form_node_form_alter')) {
+    return;
+  }
+
+  $form_object = $form_state->getFormObject();
+  if (!$form_object || !method_exists($form_object, 'getEntity')) {
+    return;
+  }
+
+  $node = $form_object->getEntity();
+  if (!$node) {
+    return;
+  }
+
+  $field_name = 'field_gutenberg';
+  $config = \Drupal::config('gutenberg.settings');
+  if ($config && $config->get('field_name')) {
+    $field_name = $config->get('field_name');
+  }
+
+  if (!$node->hasField($field_name)) {
+    return;
+  }
+
+  gutenberg_form_node_form_alter($form, $form_state, $form_id);
+}
