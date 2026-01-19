@@ -92,6 +92,10 @@ function labl_blocks_module_implements_alter(array &$implementations, $hook) {
  * Determines whether Gutenberg's node form alter should run.
  */
 function labl_blocks_should_run_gutenberg_form_alter() {
+  if (!\Drupal::hasContainer()) {
+    return FALSE;
+  }
+
   if (!\Drupal::moduleHandler()->moduleExists('gutenberg')) {
     return FALSE;
   }
