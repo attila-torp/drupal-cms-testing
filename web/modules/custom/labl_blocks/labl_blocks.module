@@ -25,19 +25,6 @@ function labl_blocks_theme($existing, $type, $theme, $path) {
       'template' => 'Hero-Header-1',
       'path' => 'themes/custom/labl/design-system/storybook/src/stories/organisms/Hero-Headers/Hero-Header-1',
     ],
-    'hero_animated' => [
-      'variables' => [
-        'heading' => '',
-        'description' => '',
-        'hasCta' => FALSE,
-        'ctaLabel' => '',
-        'ctaUrl' => '',
-        'ctaType' => 'primary',
-        'darkTheme' => FALSE,
-      ],
-      'template' => 'Hero-Animated',
-      'path' => 'themes/custom/labl/src/components/organisms/Hero-Headers/Hero-Animated',
-    ],
   ];
 }
 
